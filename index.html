@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/tags/golang/" style="font-size: 10px;">golang</a>
                     </div>
                 </section>
                 
@@ -137,7 +137,7 @@
                 
                 <section class="switch-part switch-part3">
                 
-                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                    <div id="js-aboutme">我是一只普普通通的程序猿，有个做全栈架构师的梦想，为了梦想可以放弃香蕉的猿！</div>
                 </section>
                 
             </div>
@@ -188,11 +188,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Go语言的接受者什么时候用值类型什么时候用指针类型" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/18/hello-world/" class="article-date">
-      <time datetime="2017-03-18T14:04:10.000Z" itemprop="datePublished">2017-03-18</time>
+      <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" class="article-date">
+      <time datetime="2017-03-19T11:31:29.000Z" itemprop="datePublished">2017-03-19</time>
 </a>
     </div>
   
@@ -205,7 +205,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/18/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/">Go语言的接收体类型</a>
     </h1>
   
 
@@ -215,15 +215,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><strong>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是比较有一定作用的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指南：</strong></p>
+<ol>
+<li><p>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</p>
+</li>
+<li><p>如果方法需要改变接收体，那么这个接收体的类型必须是指针类型。</p>
+</li>
+<li><p>如果接收体中包含sync.Mutex或类似的同步字段结构时，则接收体必须是指针类型，以避免接收体复制后导致同步失效。</p>
+</li>
+<li><p>如果接收体是一个大的结构体或者数组，那么使用指针类型的接收体就会更有效率。多大算大呢？假设把接收体的所有元素作为参数传给方法，如果你觉得参数有点多，那么它就是大的。</p>
+</li>
+<li><p>函数在并发调用接收体的方法时，可以在方法中改变此接收体吗？当并发调用值类型接收体的方法时，这时每一次调用都会复制一份新接收体，所以其他方法对于接收体的修改，并不会对原接收体产生作用。若想让所有的修改在原接收体上起作用，那么接收体的类型必须是指针类型。</p>
+</li>
+<li><p>如果接收体是一个结构体，数组或者切片，并且它们当中有的元素就是指针，它们指向了值可能发生变化的元素，那么就请使用指针类型的接收体，因为它将使读代码的人对于接收体的意图更加的清晰。</p>
+</li>
+<li><p>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</p>
+</li>
+<li><p>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</p>
+<p>​</p>
+</li>
+</ol>
 
       
       
@@ -234,6 +245,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
