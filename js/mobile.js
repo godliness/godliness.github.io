@@ -37,10 +37,11 @@ define([], function(){
         var tagStr = $tag?'<span class="viewer-title">标签</span><div class="viewer-div tagcloud" id="js-mobile-tagcloud"></div>':"";
         var friendsStr = $friends?'<span class="viewer-title">友情链接</span><div class="viewer-div friends" id="js-mobile-friends"></div>':"";
         var aboutmeStr = $aboutme?'<span class="viewer-title">关于我</span><div class="viewer-div aboutme" id="js-mobile-aboutme"></div>':"";
+	var archiveStr = '<div class="viewer-title"><a href="/archives">归档</a></div>'
 
         $viewer.innerHTML = '<div id="viewer-box">\
         <div class="viewer-box-l">\
-            <div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
+            <div class="viewer-box-wrap">'+aboutmeStr+archiveStr+tagStr+'</div>\
         </div>\
         <div class="viewer-box-r"></div>\
         </div>';
