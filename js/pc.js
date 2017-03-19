@@ -62,32 +62,30 @@ define([], function(){
             }
         });
 
-        var timeout;
-        var isEnterBtn = false;
-        var isEnterTips = false;
+        var isEnter = false;
 
         $(".icon").bind("mouseenter", function(){
-            isEnterBtn = true;
+            isEnter = true;
             Tips.show();
         }).bind("mouseleave", function(){
-            isEnterBtn = false;
+            isEnter = false;
             setTimeout(function(){
-                if(!isEnterTips){
+                if(!isEnter){
                     Tips.hide();
                 }
-            }, 100);
+            }, 700);
         });
 
         $(".tips-box").bind("mouseenter", function(){
-            isEnterTips = true;
+            isEnter = true;
             Tips.show();
         }).bind("mouseleave", function(){
-            isEnterTips = false;
+            isEnter = false;
             setTimeout(function(){
-                if(!isEnterBtn){
+                if(!isEnter){
                     Tips.hide();
                 }
-            }, 100);
+            }, 700);
         });
 
         $(".tips-inner li").bind("click", function(){

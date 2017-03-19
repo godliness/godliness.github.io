@@ -3749,6 +3749,7 @@ pre .link_url {
   margin: 10px auto -4px;
   position: relative;
   width: 70px;
+  high: 70px;
   text-align: center;
 }
 .switch-btn .tips-box {
@@ -3771,7 +3772,7 @@ pre .link_url {
   color: #fff;
   width: 80px;
   text-align: center;
-  border-radius: 3px;
+  border-radius: 20px;
   position: absolute;
   z-index: 99;
   left: -13px;
@@ -3784,6 +3785,7 @@ pre .link_url {
 }
 .switch-btn .tips-box .tips-inner li:hover {
   background: #4d4d4d;
+  border-radius: 10px;
 }
 .switch-btn .icon {
   height: 32px;
