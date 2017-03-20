@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Go协程的生命周期 | Peter&#39;s Blog</title>
+  <title>Go变量的命名 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
+  <meta name="description" content="Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。
+基本规则：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go协程的生命周期">
-<meta property="og:url" content="http://godliness.github.io/2017/03/20/Go协程的生命周期/index.html">
+<meta property="og:title" content="Go变量的命名">
+<meta property="og:url" content="http://godliness.github.io/2017/03/20/Go变量的命名/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
-<meta property="og:updated_time" content="2017-03-20T06:58:38.000Z">
+<meta property="og:description" content="Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。
+基本规则：">
+<meta property="og:updated_time" content="2017-03-20T14:18:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go协程的生命周期">
-<meta name="twitter:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
+<meta name="twitter:title" content="Go变量的命名">
+<meta name="twitter:description" content="Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。
+基本规则：">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -190,11 +190,11 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Go协程的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Go变量的命名" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/20/Go协程的生命周期/" class="article-date">
-      <time datetime="2017-03-20T03:22:38.000Z" itemprop="datePublished">2017-03-20</time>
+      <a href="/2017/03/20/Go变量的命名/" class="article-date">
+      <time datetime="2017-03-20T14:08:23.000Z" itemprop="datePublished">2017-03-20</time>
 </a>
     </div>
   
@@ -207,7 +207,7 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
         
   
     <h1 class="article-title" itemprop="name">
-      Go协程的生命周期
+      Go变量的命名
     </h1>
   
 
@@ -228,9 +228,8 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。</p>
-<p>Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。<br><a id="more"></a><br>如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。</p>
-<p>尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。</p>
+        <p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。</p>
+<p>基本规则：</p>
 
       
       
@@ -285,13 +284,13 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/20/Go协程的生命周期/">Go协程的生命周期</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/20/Go变量的命名/">Go变量的命名</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年03月20日 - 11时22分</p>
-        <p><span>最后更新:</span>2017年03月20日 - 14时58分</p>
+        <p><span>发布时间:</span>2017年03月20日 - 22时08分</p>
+        <p><span>最后更新:</span>2017年03月20日 - 22时18分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/20/Go协程的生命周期/" title="Go协程的生命周期">http://godliness.github.io/2017/03/20/Go协程的生命周期/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/Go协程的生命周期/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/20/Go变量的命名/" title="Go变量的命名">http://godliness.github.io/2017/03/20/Go变量的命名/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/Go变量的命名/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -304,18 +303,9 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
 
 <nav id="article-nav">
   
-    <a href="/2017/03/20/Go变量的命名/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Go变量的命名
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Go语言的接收体类型</div>
+    <a href="/2017/03/20/Go协程的生命周期/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go协程的生命周期</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -374,7 +364,7 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/20/Go协程的生命周期/" data-title="Go协程的生命周期" data-url="http://godliness.github.io/2017/03/20/Go协程的生命周期/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/20/Go变量的命名/" data-title="Go变量的命名" data-url="http://godliness.github.io/2017/03/20/Go变量的命名/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -397,13 +387,11 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/20/Go变量的命名/" title="上一篇: Go变量的命名">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" title="下一篇: Go语言的接收体类型">
+            <a href="/2017/03/20/Go协程的生命周期/" title="下一篇: Go协程的生命周期">
                 <i class="fa fa-angle-right"></i>
             </a>
         
