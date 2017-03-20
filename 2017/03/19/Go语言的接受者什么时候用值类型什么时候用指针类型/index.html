@@ -5,22 +5,16 @@
   
   <title>Go语言的接收体类型 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导：
-
-如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们">
+  <meta name="description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言的接收体类型">
 <meta property="og:url" content="http://godliness.github.io/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导：
-
-如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们">
-<meta property="og:updated_time" content="2017-03-19T23:49:40.000Z">
+<meta property="og:description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:">
+<meta property="og:updated_time" content="2017-03-20T06:58:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言的接收体类型">
-<meta name="twitter:description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导：
-
-如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们">
+<meta name="twitter:description" content="对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -231,7 +225,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导：</strong></p>
+        <p>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:<br><a id="more"></a></p>
 <ol>
 <li><p>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</p>
 </li>
@@ -248,7 +242,6 @@
 <li><p>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</p>
 </li>
 <li><p>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</p>
-<p>​</p>
 </li>
 </ol>
 
@@ -308,7 +301,7 @@
         <p><span>本文标题:</span><a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/">Go语言的接收体类型</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月19日 - 19时31分</p>
-        <p><span>最后更新:</span>2017年03月20日 - 07时49分</p>
+        <p><span>最后更新:</span>2017年03月20日 - 14时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" title="Go语言的接收体类型">http://godliness.github.io/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -6,21 +6,18 @@
   <title>Go协程的生命周期 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
-如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go协程的生命周期">
 <meta property="og:url" content="http://godliness.github.io/2017/03/20/Go协程的生命周期/index.html">
 <meta property="og:site_name" content="Peter's Blog">
 <meta property="og:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
-如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
-<meta property="og:updated_time" content="2017-03-20T05:30:56.000Z">
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
+<meta property="og:updated_time" content="2017-03-20T06:58:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go协程的生命周期">
 <meta name="twitter:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
-Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
-如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -232,8 +229,7 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
       
           
         <p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。</p>
-<p>Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。</p>
-<p>如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。</p>
+<p>Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。<br><a id="more"></a><br>如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。</p>
 <p>尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。</p>
 
       
@@ -292,7 +288,7 @@ Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：�
         <p><span>本文标题:</span><a href="/2017/03/20/Go协程的生命周期/">Go协程的生命周期</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月20日 - 11时22分</p>
-        <p><span>最后更新:</span>2017年03月20日 - 13时30分</p>
+        <p><span>最后更新:</span>2017年03月20日 - 14时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/20/Go协程的生命周期/" title="Go协程的生命周期">http://godliness.github.io/2017/03/20/Go协程的生命周期/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/Go协程的生命周期/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
