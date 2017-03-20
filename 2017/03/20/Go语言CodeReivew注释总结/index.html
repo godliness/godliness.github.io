@@ -13,7 +13,7 @@ Go协程的生命周">
 <meta property="og:site_name" content="Peter's Blog">
 <meta property="og:description" content="Go变量命名Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。
 Go协程的生命周">
-<meta property="og:updated_time" content="2017-03-20T15:01:22.000Z">
+<meta property="og:updated_time" content="2017-03-20T15:05:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言CodeReivew注释总结">
 <meta name="twitter:description" content="Go变量命名Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。
@@ -130,7 +130,7 @@ Go协程的生命周">
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/golang-翻译/" style="font-size: 10px;">golang 翻译</a>
+                        <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
                     </div>
                 </section>
                 
@@ -218,7 +218,7 @@ Go协程的生命周">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang-翻译/">golang 翻译</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -229,7 +229,7 @@ Go协程的生命周">
       
           
         <h4 id="Go变量命名"><a href="#Go变量命名" class="headerlink" title="Go变量命名"></a>Go变量命名</h4><p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
-<h4 id="Go协程的生命周期"><a href="#Go协程的生命周期" class="headerlink" title="Go协程的生命周期"></a>Go协程的生命周期</h4><p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。</p>
+<h4 id="Go协程的生命周期"><a href="#Go协程的生命周期" class="headerlink" title="Go协程的生命周期"></a>Go协程的生命周期</h4><p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。<br><a id="more"></a></p>
 <h4 id="Go语言的接收体类型"><a href="#Go语言的接收体类型" class="headerlink" title="Go语言的接收体类型"></a>Go语言的接收体类型</h4><p>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:</p>
 <ol>
 <li><p>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</p>
@@ -306,7 +306,7 @@ Go协程的生命周">
         <p><span>本文标题:</span><a href="/2017/03/20/Go语言CodeReivew注释总结/">Go语言CodeReivew注释总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月20日 - 22时53分</p>
-        <p><span>最后更新:</span>2017年03月20日 - 23时01分</p>
+        <p><span>最后更新:</span>2017年03月20日 - 23时05分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/20/Go语言CodeReivew注释总结/" title="Go语言CodeReivew注释总结">http://godliness.github.io/2017/03/20/Go语言CodeReivew注释总结/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/Go语言CodeReivew注释总结/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
