@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Peter&#39;s Blog</title>
+  <title>Go协程的生命周期 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Peter's Blog">
-<meta property="og:url" content="http://godliness.github.io/index.html">
+  <meta name="description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
+如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go协程的生命周期">
+<meta property="og:url" content="http://godliness.github.io/2017/03/20/Go协程的生命周期/index.html">
 <meta property="og:site_name" content="Peter's Blog">
+<meta property="og:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
+如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
+<meta property="og:updated_time" content="2017-03-20T05:30:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter's Blog">
+<meta name="twitter:title" content="Go协程的生命周期">
+<meta name="twitter:description" content="当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。
+Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。
+如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -24,9 +34,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -38,8 +45,8 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -186,9 +193,7 @@
     </div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-Go协程的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Go协程的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/03/20/Go协程的生命周期/" class="article-date">
@@ -204,12 +209,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/Go协程的生命周期/">Go协程的生命周期</a>
+    <h1 class="article-title" itemprop="name">
+      Go协程的生命周期
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -222,113 +238,194 @@
 
       
       
-    </div>
-    
-    <div class="article-info article-info-index">
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>多谢客官</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weipay.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
       
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/20/Go协程的生命周期/">Go协程的生命周期</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
+        <p><span>发布时间:</span>2017年03月20日 - 11时22分</p>
+        <p><span>最后更新:</span>2017年03月20日 - 13时30分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/20/Go协程的生命周期/" title="Go协程的生命周期">http://godliness.github.io/2017/03/20/Go协程的生命周期/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/Go协程的生命周期/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go语言的接收体类型</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-Go语言的接受者什么时候用值类型什么时候用指针类型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" class="article-date">
-      <time datetime="2017-03-19T11:31:29.000Z" itemprop="datePublished">2017-03-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-      <input type="hidden" class="isFancy" />
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
     
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/20/Go协程的生命周期/" data-title="Go协程的生命周期" data-url="http://godliness.github.io/2017/03/20/Go协程的生命周期/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godliness"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/">Go语言的接收体类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导：</strong></p>
-<ol>
-<li><p>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</p>
-</li>
-<li><p>如果方法需要改变接收体，那么这个接收体的类型必须是指针类型。</p>
-</li>
-<li><p>如果接收体中包含sync.Mutex或类似的同步字段结构时，则接收体必须是指针类型，以避免接收体复制后导致同步失效。</p>
-</li>
-<li><p>如果接收体是一个大的结构体或者数组，那么使用指针类型的接收体就会更有效率。多大算大呢？假设把接收体的所有元素作为参数传给方法，如果你觉得参数有点多，那么它就是大的。</p>
-</li>
-<li><p>函数在并发调用接收体的方法时，可以在方法中改变此接收体吗？当并发调用值类型接收体的方法时，这时每一次调用都会复制一份新接收体，所以其他方法对于接收体的修改，并不会对原接收体产生作用。若想让所有的修改在原接收体上起作用，那么接收体的类型必须是指针类型。</p>
-</li>
-<li><p>如果接收体是一个结构体，数组或者切片，并且它们当中有的元素就是指针，它们指向了值可能发生变化的元素，那么就请使用指针类型的接收体，因为它将使读代码的人对于接收体的意图更加的清晰。</p>
-</li>
-<li><p>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</p>
-</li>
-<li><p>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</p>
-<p>​</p>
-</li>
-</ol>
-
-      
-      
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/" title="下一篇: Go语言的接收体类型">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/Go协程的生命周期/">Go协程的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/Go语言的接受者什么时候用值类型什么时候用指针类型/">Go语言的接收体类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
-
-
-  
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
