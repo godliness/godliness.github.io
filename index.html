@@ -215,12 +215,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="我们以安装docker-1-11-2为例"><a href="#我们以安装docker-1-11-2为例" class="headerlink" title="我们以安装docker 1.11.2为例"></a>我们以安装docker 1.11.2为例</h4><p>DOCKER_VERSION=1.11.2</p>
-<h4 id="下载-docker-engine"><a href="#下载-docker-engine" class="headerlink" title="下载 docker-engine"></a>下载 docker-engine</h4><p>wget <a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</a></p>
-<h4 id="下载-docker-engine-selinux"><a href="#下载-docker-engine-selinux" class="headerlink" title="下载 docker-engine-selinux"></a>下载 docker-engine-selinux</h4><p>wget <a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm</a></p>
-<p>yum install -y libtool-ltdl policycoreutils-python</p>
-<h4 id="先安装-docker-engine-selinux，再安装-docker-engine-selinux"><a href="#先安装-docker-engine-selinux，再安装-docker-engine-selinux" class="headerlink" title="先安装 docker-engine-selinux，再安装 docker-engine-selinux"></a>先安装 docker-engine-selinux，再安装 docker-engine-selinux</h4><p>rpm -ivh docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm<br>rpm -ivh docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</p>
-<h4 id="下面就可以开启docker服务了"><a href="#下面就可以开启docker服务了" class="headerlink" title="下面就可以开启docker服务了"></a>下面就可以开启docker服务了</h4><p>systemctl start docker<br>systemctl enable docker</p>
+        <h4 id="选定版本"><a href="#选定版本" class="headerlink" title="选定版本"></a>选定版本</h4><p>DOCKER_VERSION=1.11.2</p>
+<h4 id="首先下载安装包"><a href="#首先下载安装包" class="headerlink" title="首先下载安装包"></a>首先下载安装包</h4><p><a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</a></p>
+<p><a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>yum localinstall ./docker-engine*</p>
 
       
       

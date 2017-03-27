@@ -5,22 +5,22 @@
   
   <title>下载指定版本Docker并安装 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们以安装docker 1.11.2为例DOCKER_VERSION=1.11.2
-下载 docker-enginewget https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
-下载 docker-engine-selinu">
+  <meta name="description" content="选定版本DOCKER_VERSION=1.11.2
+首先下载安装包https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
+https://yum.dockerproject.org/repo/main/centos/7/Pack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="下载指定版本Docker并安装">
 <meta property="og:url" content="http://godliness.github.io/2017/03/27/下载指定版本Docker并安装/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="我们以安装docker 1.11.2为例DOCKER_VERSION=1.11.2
-下载 docker-enginewget https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
-下载 docker-engine-selinu">
-<meta property="og:updated_time" content="2017-03-27T11:23:02.000Z">
+<meta property="og:description" content="选定版本DOCKER_VERSION=1.11.2
+首先下载安装包https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
+https://yum.dockerproject.org/repo/main/centos/7/Pack">
+<meta property="og:updated_time" content="2017-03-27T11:28:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载指定版本Docker并安装">
-<meta name="twitter:description" content="我们以安装docker 1.11.2为例DOCKER_VERSION=1.11.2
-下载 docker-enginewget https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
-下载 docker-engine-selinu">
+<meta name="twitter:description" content="选定版本DOCKER_VERSION=1.11.2
+首先下载安装包https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
+https://yum.dockerproject.org/repo/main/centos/7/Pack">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -231,12 +231,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="我们以安装docker-1-11-2为例"><a href="#我们以安装docker-1-11-2为例" class="headerlink" title="我们以安装docker 1.11.2为例"></a>我们以安装docker 1.11.2为例</h4><p>DOCKER_VERSION=1.11.2</p>
-<h4 id="下载-docker-engine"><a href="#下载-docker-engine" class="headerlink" title="下载 docker-engine"></a>下载 docker-engine</h4><p>wget <a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</a></p>
-<h4 id="下载-docker-engine-selinux"><a href="#下载-docker-engine-selinux" class="headerlink" title="下载 docker-engine-selinux"></a>下载 docker-engine-selinux</h4><p>wget <a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm</a></p>
-<p>yum install -y libtool-ltdl policycoreutils-python</p>
-<h4 id="先安装-docker-engine-selinux，再安装-docker-engine-selinux"><a href="#先安装-docker-engine-selinux，再安装-docker-engine-selinux" class="headerlink" title="先安装 docker-engine-selinux，再安装 docker-engine-selinux"></a>先安装 docker-engine-selinux，再安装 docker-engine-selinux</h4><p>rpm -ivh docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm<br>rpm -ivh docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</p>
-<h4 id="下面就可以开启docker服务了"><a href="#下面就可以开启docker服务了" class="headerlink" title="下面就可以开启docker服务了"></a>下面就可以开启docker服务了</h4><p>systemctl start docker<br>systemctl enable docker</p>
+        <h4 id="选定版本"><a href="#选定版本" class="headerlink" title="选定版本"></a>选定版本</h4><p>DOCKER_VERSION=1.11.2</p>
+<h4 id="首先下载安装包"><a href="#首先下载安装包" class="headerlink" title="首先下载安装包"></a>首先下载安装包</h4><p><a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm</a></p>
+<p><a href="https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm" target="_blank" rel="external">https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>yum localinstall ./docker-engine*</p>
 
       
       
@@ -294,7 +292,7 @@
         <p><span>本文标题:</span><a href="/2017/03/27/下载指定版本Docker并安装/">下载指定版本Docker并安装</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月27日 - 19时19分</p>
-        <p><span>最后更新:</span>2017年03月27日 - 19时23分</p>
+        <p><span>最后更新:</span>2017年03月27日 - 19时28分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/27/下载指定版本Docker并安装/" title="下载指定版本Docker并安装">http://godliness.github.io/2017/03/27/下载指定版本Docker并安装/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/27/下载指定版本Docker并安装/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -323,7 +321,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#我们以安装docker-1-11-2为例"><span class="toc-number">1.</span> <span class="toc-text">我们以安装docker 1.11.2为例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-docker-engine"><span class="toc-number">2.</span> <span class="toc-text">下载 docker-engine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-docker-engine-selinux"><span class="toc-number">3.</span> <span class="toc-text">下载 docker-engine-selinux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先安装-docker-engine-selinux，再安装-docker-engine-selinux"><span class="toc-number">4.</span> <span class="toc-text">先安装 docker-engine-selinux，再安装 docker-engine-selinux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下面就可以开启docker服务了"><span class="toc-number">5.</span> <span class="toc-text">下面就可以开启docker服务了</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#选定版本"><span class="toc-number">1.</span> <span class="toc-text">选定版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#首先下载安装包"><span class="toc-number">2.</span> <span class="toc-text">首先下载安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
