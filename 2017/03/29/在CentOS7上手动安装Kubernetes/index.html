@@ -15,7 +15,7 @@ Kubernetes的包提供了一些服务： kube-apiserver, kube-schedu">
 <meta property="og:description" content="先决条件在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。
 搭建集群这是在CentOS上搭建Kubernetes的入门指南。 接下来是要进行手动配置的，所以你要了解所有的底层包/services/ports等…
 Kubernetes的包提供了一些服务： kube-apiserver, kube-schedu">
-<meta property="og:updated_time" content="2017-03-29T06:11:35.000Z">
+<meta property="og:updated_time" content="2017-03-29T06:16:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在CentOS7上手动安装Kubernetes">
 <meta name="twitter:description" content="先决条件在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。
@@ -252,11 +252,11 @@ Kubernetes的包提供了一些服务： kube-apiserver, kube-schedu">
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">echo &quot;192.168.121.9    centos-master</div><div class="line">192.168.121.65    centos-minion-1</div><div class="line">192.168.121.66  centos-minion-2</div><div class="line">192.168.121.67  centos-minion-3&quot; &gt;&gt; /etc/hosts</div></pre></td></tr></table></figure>
 <ul>
-<li><p>按如下内容编辑所有主机上的/etc/kubernetes/config文件：</p>
+<li>按如下内容编辑所有主机上的/etc/kubernetes/config文件：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 将日志定向到标准错误输出意味着我们可以在systemd日志中获取到日志信息</div><div class="line">KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;</div><div class="line"></div><div class="line"># 日志信息的级别，0代表是调试模式</div><div class="line">KUBE_LOG_LEVEL=&quot;--v=0&quot;</div><div class="line"></div><div class="line"># 是否以特权的方式来运行Docker容器</div><div class="line">KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;</div><div class="line"></div><div class="line"># replication controller 和 scheduler 如何能够找到这个kube-apiserver</div><div class="line">KUBE_MASTER=&quot;--master=http://centos-master:8080&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>禁用所有主机的防火墙，因为docker在防火墙的作用下无法正常运行。只要SELinux正在运行，CentOS是不会让你禁用防火墙的，所以需要首先禁用SELinux。</p>
-</li>
+<ul>
+<li>禁用所有主机的防火墙，因为docker在防火墙的作用下无法正常运行。只要SELinux正在运行，CentOS是不会让你禁用防火墙的，所以需要首先禁用SELinux。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setenforce 0</div><div class="line">systemctl disable iptables-services firewalld</div><div class="line">systemctl stop iptables-services firewalld</div></pre></td></tr></table></figure>
 <h5 id="在master主节点上配置Kubernetes的服务。"><a href="#在master主节点上配置Kubernetes的服务。" class="headerlink" title="在master主节点上配置Kubernetes的服务。"></a>在master主节点上配置Kubernetes的服务。</h5><ul>
@@ -273,11 +273,11 @@ Kubernetes的包提供了一些服务： kube-apiserver, kube-schedu">
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start etcd</div><div class="line">etcdctl mkdir /kube-centos/network</div><div class="line">etcdctl mk /kube-centos/network/config &quot;&#123; \&quot;Network\&quot;: \&quot;172.30.0.0/16\&quot;, \&quot;SubnetLen\&quot;: 24, \&quot;Backend\&quot;: &#123; \&quot;Type\&quot;: \&quot;vxlan\&quot; &#125; &#125;&quot;</div></pre></td></tr></table></figure>
 <ul>
-<li><p>配置flannel overlay Docker 网络,编辑所有点的/etc/sysconfig/flanneld文件:</p>
+<li>配置flannel overlay Docker 网络,编辑所有点的/etc/sysconfig/flanneld文件:</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># Flanneld 配置选项</div><div class="line"></div><div class="line"># etcd url 地址.  指向etcd所运行的地址，多节点用逗号分隔</div><div class="line">FLANNEL_ETCD_ENDPOINTS=&quot;http://centos-master:2379&quot;</div><div class="line"></div><div class="line"># etcd配置，该配置由flannel查询使用</div><div class="line"># 相关地址分配</div><div class="line">FLANNEL_ETCD_PREFIX=&quot;/kube-centos/network&quot;</div><div class="line"></div><div class="line"># 额外参数</div><div class="line">#FLANNEL_OPTIONS=&quot;&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在master节点启动合适的服务</p>
-</li>
+<ul>
+<li>在master节点启动合适的服务</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler flanneld; do</div><div class="line">    systemctl restart $SERVICES</div><div class="line">    systemctl enable $SERVICES</div><div class="line">    systemctl status $SERVICES</div><div class="line">done</div></pre></td></tr></table></figure>
 <p><strong>在其他节点配置Kubernetes服务.</strong></p>
@@ -355,7 +355,7 @@ Kubernetes的包提供了一些服务： kube-apiserver, kube-schedu">
         <p><span>本文标题:</span><a href="/2017/03/29/在CentOS7上手动安装Kubernetes/">在CentOS7上手动安装Kubernetes</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月29日 - 11时05分</p>
-        <p><span>最后更新:</span>2017年03月29日 - 14时11分</p>
+        <p><span>最后更新:</span>2017年03月29日 - 14时16分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/29/在CentOS7上手动安装Kubernetes/" title="在CentOS7上手动安装Kubernetes">http://godliness.github.io/2017/03/29/在CentOS7上手动安装Kubernetes/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/29/在CentOS7上手动安装Kubernetes/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
