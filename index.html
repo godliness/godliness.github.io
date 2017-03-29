@@ -215,73 +215,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h4><p>在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。</p>
+              <h4 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h4><p>在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。</p>
 <h4 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h4><p>这是在CentOS上搭建Kubernetes的入门指南。 接下来是要进行手动配置的，所以你要了解所有的底层包/services/ports等…</p>
 <p>Kubernetes的包提供了一些服务： kube-apiserver, kube-scheduler, kube-controller-manager, kubelet, kube-proxy。这些服务通过systemd来进行管理，相关配置集中存放在目录：/etc/kubernetes下。这些服务将会按照功能划分拆分到各个主机上。第一个主机，假设它的主机名是centos-master, 它将作为Kubernetes的主节点。这个主节点将会运行服务kube-apiserver，kube-controller-manager，kube-scheduler。此外，主节点将会运行etcd（你也可以安装etcd集群到其他主机）。剩下的主机centos-minion-n将会安装kubelet,proxy,cadvisor还有docker.</p>
 <p>本例默认所采取的网络是flanneld。</p>
-<h5 id="系统信息："><a href="#系统信息：" class="headerlink" title="系统信息："></a>系统信息：</h5><p>主机：</p>
-<p>你可以将下面的主机IP替换成你自己环境的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">centos-master = 192.168.121.9</div><div class="line">centos-minion-1 = 192.168.121.65</div><div class="line">centos-minion-2 = 192.168.121.66</div><div class="line">centos-minion-3 = 192.168.121.67</div></pre></td></tr></table></figure>
-<h5 id="部署主机环境："><a href="#部署主机环境：" class="headerlink" title="部署主机环境："></a>部署主机环境：</h5><ul>
-<li>创建一个/etc/yum.repos.d/virt7-docker-common-release.repo文件在所有的主机上，并将下面内容写入文件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[virt7-docker-common-release]</div><div class="line">name=virt7-docker-common-release</div><div class="line">baseurl=http://cbs.centos.org/repos/virt7-docker-common-release/x86_64/os/</div><div class="line">gpgcheck=0</div></pre></td></tr></table></figure>
-<ul>
-<li>安装Kubernetes，etcd还有flannel在所有的主机上。这里面也会安装docker和cadvisor。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install --enablerepo=virt7-docker-common-release kubernetes etcd flannel</div></pre></td></tr></table></figure>
-<ul>
-<li>将master节点以及其他节点的主机名映射写进所有主机的/etc/hosts文件里（若DNS里已经配置了相关记录，这步就不需要了）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">echo &quot;192.168.121.9    centos-master</div><div class="line">192.168.121.65    centos-minion-1</div><div class="line">192.168.121.66  centos-minion-2</div><div class="line">192.168.121.67  centos-minion-3&quot; &gt;&gt; /etc/hosts</div></pre></td></tr></table></figure>
-<ul>
-<li><p>按如下内容编辑所有主机上的/etc/kubernetes/config文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 将日志定向到标准错误输出意味着我们可以在systemd日志中获取到日志信息</div><div class="line">KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;</div><div class="line"></div><div class="line"># 日志信息的级别，0代表是调试模式</div><div class="line">KUBE_LOG_LEVEL=&quot;--v=0&quot;</div><div class="line"></div><div class="line"># 是否以特权的方式来运行Docker容器</div><div class="line">KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;</div><div class="line"></div><div class="line"># replication controller 和 scheduler 如何能够找到这个kube-apiserver</div><div class="line">KUBE_MASTER=&quot;--master=http://centos-master:8080&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>禁用所有主机的防火墙，因为docker在防火墙的作用下无法正常运行。只要SELinux正在运行，CentOS是不会让你禁用防火墙的，所以需要首先禁用SELinux。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setenforce 0</div><div class="line">systemctl disable iptables-services firewalld</div><div class="line">systemctl stop iptables-services firewalld</div></pre></td></tr></table></figure>
-<h5 id="在master主节点上配置Kubernetes的服务。"><a href="#在master主节点上配置Kubernetes的服务。" class="headerlink" title="在master主节点上配置Kubernetes的服务。"></a>在master主节点上配置Kubernetes的服务。</h5><ul>
-<li><p>按如下内容编辑/etc/etcds/etcd.conf 文件：</p>
-<p>（为了方便教学这里仅仅在主节点上部署了一个单节点的etcd，若要部署多节点的etcd集群，请参考etcd官方文档：<a href="https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md）" target="_blank" rel="external">https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md）</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># [member]</div><div class="line">ETCD_NAME=default</div><div class="line">ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;</div><div class="line">ETCD_LISTEN_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;</div><div class="line"></div><div class="line">#[cluster]</div><div class="line">ETCD_ADVERTISE_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>按如下内容编辑/etc/kubernetes/apiserver 文件：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 本地服务监听IP地址.</div><div class="line">KUBE_API_ADDRESS=&quot;--address=0.0.0.0&quot;</div><div class="line"></div><div class="line"># 本地服务监听端口.</div><div class="line">KUBE_API_PORT=&quot;--port=8080&quot;</div><div class="line"></div><div class="line"># kubelets服务监听端口</div><div class="line">KUBELET_PORT=&quot;--kubelet-port=10250&quot;</div><div class="line"></div><div class="line"># 若etcd有多个节点，可以用逗号进行分割</div><div class="line">KUBE_ETCD_SERVERS=&quot;--etcd-servers=http://centos-master:2379&quot;</div><div class="line"></div><div class="line"># 服务集群的地址范围</div><div class="line">KUBE_SERVICE_ADDRESSES=&quot;--service-cluster-ip-range=10.254.0.0/16&quot;</div><div class="line"></div><div class="line"># 添加自己的参数</div><div class="line">KUBE_API_ARGS=&quot;&quot;</div></pre></td></tr></table></figure>
-<ul>
-<li>启动etcd并在主节点上配置overlay网络：<strong>注意</strong> 这个网络必须是你自己环境中没有被占用的网络！在我自己的环境中172.30.0.0/16这个网络是可用的。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start etcd</div><div class="line">etcdctl mkdir /kube-centos/network</div><div class="line">etcdctl mk /kube-centos/network/config &quot;&#123; \&quot;Network\&quot;: \&quot;172.30.0.0/16\&quot;, \&quot;SubnetLen\&quot;: 24, \&quot;Backend\&quot;: &#123; \&quot;Type\&quot;: \&quot;vxlan\&quot; &#125; &#125;&quot;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>配置flannel overlay Docker 网络,编辑所有点的/etc/sysconfig/flanneld文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># Flanneld 配置选项</div><div class="line"></div><div class="line"># etcd url 地址.  指向etcd所运行的地址，多节点用逗号分隔</div><div class="line">FLANNEL_ETCD_ENDPOINTS=&quot;http://centos-master:2379&quot;</div><div class="line"></div><div class="line"># etcd配置，该配置由flannel查询使用</div><div class="line"># 相关地址分配</div><div class="line">FLANNEL_ETCD_PREFIX=&quot;/kube-centos/network&quot;</div><div class="line"></div><div class="line"># 额外参数</div><div class="line">#FLANNEL_OPTIONS=&quot;&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在master节点启动合适的服务</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler flanneld; do</div><div class="line">    systemctl restart $SERVICES</div><div class="line">    systemctl enable $SERVICES</div><div class="line">    systemctl status $SERVICES</div><div class="line">done</div></pre></td></tr></table></figure>
-<p><strong>在其他节点配置Kubernetes服务.</strong></p>
-<p><strong>配置并启动kubelet 和 proxy</strong></p>
-<ul>
-<li>按如下内容编辑文件 /etc/kubernetes/kubelet </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># The address for the info server to serve on</div><div class="line">KUBELET_ADDRESS=&quot;--address=0.0.0.0&quot;</div><div class="line"></div><div class="line"># The port for the info server to serve on</div><div class="line">KUBELET_PORT=&quot;--port=10250&quot;</div><div class="line"></div><div class="line"># You may leave this blank to use the actual hostname</div><div class="line"># Check the node number!</div><div class="line">KUBELET_HOSTNAME=&quot;--hostname-override=centos-minion-n&quot;</div><div class="line"></div><div class="line"># Location of the api-server</div><div class="line">KUBELET_API_SERVER=&quot;--api-servers=http://centos-master:8080&quot;</div><div class="line"></div><div class="line"># Add your own!</div><div class="line">KUBELET_ARGS=&quot;&quot;</div></pre></td></tr></table></figure>
-<ul>
-<li>启动合适的服务在除主节点外的其他节点.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for SERVICES in kube-proxy kubelet flanneld docker; do</div><div class="line">    systemctl restart $SERVICES</div><div class="line">    systemctl enable $SERVICES</div><div class="line">    systemctl status $SERVICES</div><div class="line">done</div></pre></td></tr></table></figure>
-<ul>
-<li>配置 kubectl</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">kubectl config set-cluster default-cluster --server=http://centos-master:8080</div><div class="line">kubectl config set-context default-context --cluster=default-cluster --user=default-admin</div><div class="line">kubectl config use-context default-context</div></pre></td></tr></table></figure>
-<ul>
-<li>在主节点上检查并确定可以看到如下节点</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ kubectl get nodes</div><div class="line">NAME                   LABELS            STATUS</div><div class="line">centos-minion-1        &lt;none&gt;            Ready</div><div class="line">centos-minion-2        &lt;none&gt;            Ready</div><div class="line">centos-minion-3        &lt;none&gt;            Ready</div></pre></td></tr></table></figure>
-<h4 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a><strong>完成！</strong></h4>
+          
       
       
     </div>
@@ -295,6 +233,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2017/03/29/在CentOS7上手动安装Kubernetes/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
