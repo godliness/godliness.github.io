@@ -216,6 +216,11 @@
       
           
               <h1 id="Yum-安装方式"><a href="#Yum-安装方式" class="headerlink" title="Yum 安装方式"></a>Yum 安装方式</h1><h4 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h4><p>在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。</p>
+<p>Kubernetes1.6 :</p>
+<ul>
+<li>docker : 不再支持1.9.×版本，1.10.3, 1.11.2, 1.12.6 官方已经验证。</li>
+<li>etcd: 支持etcdV3版本</li>
+</ul>
 <h4 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h4><p>这是在CentOS上搭建Kubernetes的入门指南。 接下来是要进行手动配置的，所以你要了解所有的底层包/services/ports等…</p>
 <p>Kubernetes的包提供了一些服务： kube-apiserver, kube-scheduler, kube-controller-manager, kubelet, kube-proxy。这些服务通过systemd来进行管理，相关配置集中存放在目录：/etc/kubernetes下。这些服务将会按照功能划分拆分到各个主机上。第一个主机，假设它的主机名是centos-master, 它将作为Kubernetes的主节点。这个主节点将会运行服务kube-apiserver，kube-controller-manager，kube-scheduler。此外，主节点将会运行etcd（你也可以安装etcd集群到其他主机）。剩下的主机centos-minion-n将会安装kubelet,proxy,cadvisor还有docker.</p>
 <p>本例默认所采取的网络是flanneld。</p>
