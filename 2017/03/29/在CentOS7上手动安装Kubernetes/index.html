@@ -8,10 +8,10 @@
   <meta name="description" content="Yum 安装方式先决条件在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。
 Kubernetes1.6 :
 
-docker : 不再支持1.9.×版本，1.10.3, 1.11.2, 1.12.6 官方已经验证。
+docker : 不再支持1.9.×版本。1.10.3, 1.11.2, 1.12.6 官方已经验证通过可以放心使用。
 etcd: 支持etcdV3版本
 
-搭建集群这是在CentOS上搭建Kubernetes的入门">
+搭建集群这是在CentOS上搭建Kuber">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在CentOS7上手动安装Kubernetes">
 <meta property="og:url" content="http://godliness.github.io/2017/03/29/在CentOS7上手动安装Kubernetes/index.html">
@@ -19,20 +19,20 @@ etcd: 支持etcdV3版本
 <meta property="og:description" content="Yum 安装方式先决条件在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。
 Kubernetes1.6 :
 
-docker : 不再支持1.9.×版本，1.10.3, 1.11.2, 1.12.6 官方已经验证。
+docker : 不再支持1.9.×版本。1.10.3, 1.11.2, 1.12.6 官方已经验证通过可以放心使用。
 etcd: 支持etcdV3版本
 
-搭建集群这是在CentOS上搭建Kubernetes的入门">
-<meta property="og:updated_time" content="2017-03-30T10:36:38.000Z">
+搭建集群这是在CentOS上搭建Kuber">
+<meta property="og:updated_time" content="2017-03-31T03:02:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在CentOS7上手动安装Kubernetes">
 <meta name="twitter:description" content="Yum 安装方式先决条件在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。
 Kubernetes1.6 :
 
-docker : 不再支持1.9.×版本，1.10.3, 1.11.2, 1.12.6 官方已经验证。
+docker : 不再支持1.9.×版本。1.10.3, 1.11.2, 1.12.6 官方已经验证通过可以放心使用。
 etcd: 支持etcdV3版本
 
-搭建集群这是在CentOS上搭建Kubernetes的入门">
+搭建集群这是在CentOS上搭建Kuber">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -246,7 +246,7 @@ etcd: 支持etcdV3版本
         <h1 id="Yum-安装方式"><a href="#Yum-安装方式" class="headerlink" title="Yum 安装方式"></a>Yum 安装方式</h1><h4 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h4><p>在CentOS上配置Kubernetes的话，你需要一台CentOS主机来充当master节点，和至少一台CentOS主机充当集群的其他节点。</p>
 <p>Kubernetes1.6 :</p>
 <ul>
-<li>docker : 不再支持1.9.×版本，1.10.3, 1.11.2, 1.12.6 官方已经验证。</li>
+<li>docker : 不再支持1.9.×版本。1.10.3, 1.11.2, 1.12.6 官方已经验证通过可以放心使用。</li>
 <li>etcd: 支持etcdV3版本</li>
 </ul>
 <h4 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h4><p>这是在CentOS上搭建Kubernetes的入门指南。 接下来是要进行手动配置的，所以你要了解所有的底层包/services/ports等…</p>
@@ -257,7 +257,7 @@ etcd: 支持etcdV3版本
 <p>你可以将下面的主机IP替换成你自己环境的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">centos-master = 192.168.121.9</div><div class="line">centos-minion-1 = 192.168.121.65</div><div class="line">centos-minion-2 = 192.168.121.66</div><div class="line">centos-minion-3 = 192.168.121.67</div></pre></td></tr></table></figure>
 <h5 id="部署主机环境："><a href="#部署主机环境：" class="headerlink" title="部署主机环境："></a>部署主机环境：</h5><ul>
-<li>创建一个/etc/yum.repos.d/virt7-docker-common-release.repo文件在所有的主机上，并将下面内容写入文件：</li>
+<li>创建一个/etc/yum.repos.d/virt7-docker-common-release.repo文件在所有的主机上，并将下面内容写入文件（笔者强烈建议用rpm包的方式安装部署，下面是官方的源，若版本不是你想要的，请寻找指定版本的rpm包，或自己打包）：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[virt7-docker-common-release]</div><div class="line">name=virt7-docker-common-release</div><div class="line">baseurl=http://cbs.centos.org/repos/virt7-docker-common-release/x86_64/os/</div><div class="line">gpgcheck=0</div></pre></td></tr></table></figure>
 <ul>
@@ -372,7 +372,7 @@ etcd: 支持etcdV3版本
         <p><span>本文标题:</span><a href="/2017/03/29/在CentOS7上手动安装Kubernetes/">在CentOS7上手动安装Kubernetes</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年03月29日 - 11时05分</p>
-        <p><span>最后更新:</span>2017年03月30日 - 18时36分</p>
+        <p><span>最后更新:</span>2017年03月31日 - 11时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/29/在CentOS7上手动安装Kubernetes/" title="在CentOS7上手动安装Kubernetes">http://godliness.github.io/2017/03/29/在CentOS7上手动安装Kubernetes/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/29/在CentOS7上手动安装Kubernetes/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
