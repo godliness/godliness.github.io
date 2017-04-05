@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/index.html">
 <meta property="og:site_name" content="Peter's Blog">
 <meta property="og:description" content="前言Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个P">
-<meta property="og:updated_time" content="2017-04-05T10:57:29.000Z">
+<meta property="og:updated_time" content="2017-04-05T11:17:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes的DashBorad以及ingress安装教程">
 <meta name="twitter:description" content="前言Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个P">
@@ -240,7 +240,17 @@
 <p>部署后可以查看一下状态</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                                    READY     STATUS    RESTARTS   AGE</div><div class="line">kubernetes-dashboard-1074266307-hsgxx   1/1       Running   0          4h</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE</div><div class="line">kubernetes-dashboard   10.254.113.226   &lt;nodes&gt;       80:31370/TCP   4h</div></pre></td></tr></table></figure>
-<p>访问<a href="http://nodeIP:31370，就可以看到Dashboard页面了。" target="_blank" rel="external">http://nodeIP:31370，就可以看到Dashboard页面了。</a></p>
+<p>访问<a href="http://nodeIP:31370，就可以看到Dashboard页面了。这时我们无法看到监控的一些信息，因为我们还没有安装heaspter。" target="_blank" rel="external">http://nodeIP:31370，就可以看到Dashboard页面了。这时我们无法看到监控的一些信息，因为我们还没有安装heaspter。</a></p>
+<h4 id="安装heaspter"><a href="#安装heaspter" class="headerlink" title="安装heaspter"></a>安装heaspter</h4><p>下载安装文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:kubernetes/heapster.git</div></pre></td></tr></table></figure></p>
+<p>请将目录deploy/kube-config/influxdb/里面yaml文件的镜像地址改成我们自己私有镜像或者国内的镜像地址，因为需要翻墙！</p>
+<p>同时还要修改heapster-deployment.yaml文件：—source参数，让其指向apiserver的地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--source=kubernetes:http://&lt;apiServer&gt;:8080?inClusterConfig=false&amp;useServiceAccount=false</div></pre></td></tr></table></figure>
+<p>因为暂时我不想要使用ServiceAccount功能，所以这里我禁用了它，具体配置讲解可以参考官网:</p>
+<p><a href="https://github.com/kubernetes/heapster/blob/master/docs/source-configuration.md" target="_blank" rel="external">https://github.com/kubernetes/heapster/blob/master/docs/source-configuration.md</a></p>
+<p>部署并创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl create -f deploy/kube-config/influxdb/</div></pre></td></tr></table></figure>
+<p>检查一下状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                                    READY     STATUS    RESTARTS   AGE</div><div class="line">heapster-3669180046-06n3d               1/1       Running   0          2h</div><div class="line">kubernetes-dashboard-1074266307-hsgxx   1/1       Running   0          5h</div><div class="line">monitoring-grafana-127711743-xl9v1      1/1       Running   0          2h</div><div class="line">monitoring-influxdb-1411048194-cvxmm    1/1       Running   0          2h</div></pre></td></tr></table></figure></p>
+<p>然后再次访问Dashborad页面，我们就可以看到一些资源的使用状态，比如Cpu, Memory等。</p>
 
       
       
@@ -298,7 +308,7 @@
         <p><span>本文标题:</span><a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/">Kubernetes的DashBorad以及ingress安装教程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年04月05日 - 18时04分</p>
-        <p><span>最后更新:</span>2017年04月05日 - 18时57分</p>
+        <p><span>最后更新:</span>2017年04月05日 - 19时17分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" title="Kubernetes的DashBorad以及ingress安装教程">http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -327,7 +337,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">2.</span> <span class="toc-text">部署</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">2.</span> <span class="toc-text">部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装heaspter"><span class="toc-number">3.</span> <span class="toc-text">安装heaspter</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
