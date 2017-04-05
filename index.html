@@ -129,7 +129,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a>
+                        <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/kubernetes/" style="font-size: 20px;">kubernetes</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a>
                     </div>
                 </section>
                 
@@ -190,6 +190,73 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Kubernetes的DashBorad以及heapster安装教程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" class="article-date">
+      <time datetime="2017-04-05T10:04:54.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/">Kubernetes的DashBorad以及ingress安装教程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个Pod或者部署新的应用程序通过部署向导。</p>
+<p>Dashboard也提供Kubernetes集群资源的相关信息，以及相关引起的错误。</p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>首先下载yaml文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml</div></pre></td></tr></table></figure>
+<p>并按照如下内容修改配置文件：</p>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-部署etcd简易教程" class="article article-type-post" itemscope itemprop="blogPost">
   
