@@ -5,18 +5,30 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Kubernetes的DashBorad以及heapster安装教程 | Peter&#39;s Blog</title>
+  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个P">
+  <meta name="description" content="对读Chanel进行Close操作会失败
+对关闭了的Chanel进行写操作会失败
+单向Channel无法再转换回双向Channel
+关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
+每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubernetes的DashBorad以及heapster安装教程">
-<meta property="og:url" content="http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/index.html">
+<meta property="og:title" content="Go语言学习笔记">
+<meta property="og:url" content="http://godliness.github.io/2017/04/06/Go语言学习笔记/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="前言Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个P">
-<meta property="og:updated_time" content="2017-04-06T03:48:49.000Z">
+<meta property="og:description" content="对读Chanel进行Close操作会失败
+对关闭了的Chanel进行写操作会失败
+单向Channel无法再转换回双向Channel
+关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
+每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
+<meta property="og:updated_time" content="2017-04-06T10:02:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubernetes的DashBorad以及heapster安装教程">
-<meta name="twitter:description" content="前言Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个P">
+<meta name="twitter:title" content="Go语言学习笔记">
+<meta name="twitter:description" content="对读Chanel进行Close操作会失败
+对关闭了的Chanel进行写操作会失败
+单向Channel无法再转换回双向Channel
+关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
+每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -190,11 +202,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Kubernetes的DashBorad以及heapster安装教程" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Go语言学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" class="article-date">
-      <time datetime="2017-04-05T10:04:54.000Z" itemprop="datePublished">2017-04-05</time>
+      <a href="/2017/04/06/Go语言学习笔记/" class="article-date">
+      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
 </a>
     </div>
   
@@ -207,7 +219,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Kubernetes的DashBorad以及heapster安装教程
+      Go语言学习笔记
     </h1>
   
 
@@ -218,7 +230,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -228,29 +240,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Dashboard是一个Kubernetes的web用户接口，我们可以使用dashborad来部署容器化的应用程序到Kubernetes集群，定位容器化应用的问题所在，管理集群所占用的资源。可以通过Dashboard对集群上的应用程序有一个概览，也可以创建，修改独立的Kubernetes资源（例如部署Jobs，DaemonSets等）。举个例子，你可以扩展一个部署，开始一个滚动更新，重启一个Pod或者部署新的应用程序通过部署向导。</p>
-<p>Dashboard也提供Kubernetes集群资源的相关信息，以及相关引起的错误。</p>
-<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>首先下载yaml文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml</div></pre></td></tr></table></figure>
-<p>并按照如下内容修改配置文件：</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">kind: Deployment</div><div class="line">apiVersion: extensions/v1beta1</div><div class="line">metadata:</div><div class="line">  labels:</div><div class="line"></div><div class="line">    app: kubernetes-dashboard</div><div class="line">  name: kubernetes-dashboard</div><div class="line">  namespace: kube-system</div><div class="line">spec:</div><div class="line">  replicas: 1</div><div class="line">  revisionHistoryLimit: 10</div><div class="line">  selector:</div><div class="line">    matchLabels:</div><div class="line">      app: kubernetes-dashboard</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: kubernetes-dashboard</div><div class="line">      # Comment the following annotation if Dashboard must not be deployed on master</div><div class="line">      annotations:</div><div class="line">        scheduler.alpha.kubernetes.io/tolerations: |</div><div class="line">          [</div><div class="line">            &#123;</div><div class="line">              &quot;key&quot;: &quot;dedicated&quot;,</div><div class="line">              &quot;operator&quot;: &quot;Equal&quot;,</div><div class="line">              &quot;value&quot;: &quot;master&quot;,</div><div class="line">              &quot;effect&quot;: &quot;NoSchedule&quot;</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: kubernetes-dashboard</div><div class="line">        (这里的镜像可以更改成自己本地的，因为国内需要翻墙)</div><div class="line">        image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0</div><div class="line">        imagePullPolicy: Always</div><div class="line">        ports:</div><div class="line">        - containerPort: 9090</div><div class="line">          protocol: TCP</div><div class="line">        args:</div><div class="line">          # Uncomment the following line to manually specify Kubernetes API server Host</div><div class="line">          # If not specified, Dashboard will attempt to auto discover the API server and connect</div><div class="line">          # to it. Uncomment only if the default does not work.</div><div class="line">          - --apiserver-host=http://&lt;&lt;API-SERVER&gt;&gt;:8080</div><div class="line">        livenessProbe:</div><div class="line">          httpGet:</div><div class="line">            path: /</div><div class="line">            port: 9090</div><div class="line">          initialDelaySeconds: 30</div><div class="line">          timeoutSeconds: 30</div><div class="line">---</div><div class="line">kind: Service</div><div class="line">apiVersion: v1</div><div class="line">metadata:</div><div class="line">  labels:</div><div class="line">    app: kubernetes-dashboard</div><div class="line">  name: kubernetes-dashboard</div><div class="line">  namespace: kube-system</div><div class="line">spec:</div><div class="line">  type: NodePort</div><div class="line">  ports:</div><div class="line">- port: 80</div><div class="line">    targetPort: 9090</div><div class="line">    selector:</div><div class="line">    app: kubernetes-dashboard</div></pre></td></tr></table></figure>
-<p>创建并部署</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl create -f kubernetes-dashboard.yaml</div></pre></td></tr></table></figure>
-<p>部署后可以查看一下状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                                    READY     STATUS    RESTARTS   AGE</div><div class="line">kubernetes-dashboard-1074266307-hsgxx   1/1       Running   0          4h</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE</div><div class="line">kubernetes-dashboard   10.254.113.226   &lt;nodes&gt;       80:31370/TCP   4h</div></pre></td></tr></table></figure>
-<p>访问<a href="http://nodeIP:31370，就可以看到Dashboard页面了。这时我们无法看到监控的一些信息，因为我们还没有安装heaspter。" target="_blank" rel="external">http://nodeIP:31370，就可以看到Dashboard页面了。这时我们无法看到监控的一些信息，因为我们还没有安装heaspter。</a></p>
-<h4 id="安装heapster"><a href="#安装heapster" class="headerlink" title="安装heapster"></a>安装heapster</h4><p>下载安装文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/kubernetes/heapster</div></pre></td></tr></table></figure></p>
-<p>请将目录deploy/kube-config/influxdb/里面yaml文件的镜像地址改成我们自己私有镜像或者国内的镜像地址，因为需要翻墙！</p>
-<p>同时还要修改heapster-deployment.yaml文件：—source参数，让其指向apiserver的地址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--source=kubernetes:http://&lt;apiServer&gt;:8080?inClusterConfig=false&amp;useServiceAccount=false</div></pre></td></tr></table></figure>
-<p>因为暂时我不想要使用ServiceAccount功能，所以这里我禁用了它，具体配置讲解可以参考官网:</p>
-<p><a href="https://github.com/kubernetes/heapster/blob/master/docs/source-configuration.md" target="_blank" rel="external">https://github.com/kubernetes/heapster/blob/master/docs/source-configuration.md</a></p>
-<p>部署并创建：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kubectl create -f deploy/kube-config/influxdb/</div></pre></td></tr></table></figure>
-<p>检查一下状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">kubectl get pods --namespace=kube-system</div><div class="line"></div><div class="line">NAME                                    READY     STATUS    RESTARTS   AGE</div><div class="line">heapster-3669180046-06n3d               1/1       Running   0          2h</div><div class="line">kubernetes-dashboard-1074266307-hsgxx   1/1       Running   0          5h</div><div class="line">monitoring-grafana-127711743-xl9v1      1/1       Running   0          2h</div><div class="line">monitoring-influxdb-1411048194-cvxmm    1/1       Running   0          2h</div></pre></td></tr></table></figure></p>
-<p>然后再次访问Dashborad页面，我们就可以看到一些资源的使用状态，比如Cpu, Memory等。</p>
+        <ol>
+<li>对读Chanel进行Close操作会失败</li>
+<li>对关闭了的Chanel进行写操作会失败</li>
+<li>单向Channel无法再转换回双向Channel</li>
+<li>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</li>
+<li>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</li>
+<li>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</li>
+<li>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</li>
+<li>被设置成nil的Channel会处于阻塞状态</li>
+<li>select语句要记得加default，如此可以避免select阻塞</li>
+<li>在使用Mutex时，尽量缩小锁力度</li>
+<li>Mutex不支持递归锁，双重锁定会导致死锁</li>
+<li>对性能要求较高时，应避免使用defer Unlock</li>
+<li>读写并发时，用RWMutex性能会更好一些</li>
+<li>对单个数据读写保护，可尝试使用原子操作</li>
+</ol>
+<p>未完待续。。。。。。。。</p>
 
       
       
@@ -305,13 +311,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/">Kubernetes的DashBorad以及heapster安装教程</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/06/Go语言学习笔记/">Go语言学习笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月05日 - 18时04分</p>
-        <p><span>最后更新:</span>2017年04月06日 - 11时48分</p>
+        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
+        <p><span>最后更新:</span>2017年04月06日 - 18时02分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" title="Kubernetes的DashBorad以及heapster安装教程">http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/06/Go语言学习笔记/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/Go语言学习笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/Go语言学习笔记/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -324,18 +330,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/06/Go语言学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/06/在Kubernetes上安装ingress/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Go语言学习笔记
+          在Kubernetes上安装ingress
         
       </div>
     </a>
   
   
-    <a href="/2017/03/30/部署etcd简易教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部署etcd简易教程</div>
+    <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kubernetes的DashBorad以及heapster安装教程</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -346,7 +352,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">2.</span> <span class="toc-text">部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装heapster"><span class="toc-number">3.</span> <span class="toc-text">安装heapster</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -394,7 +400,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" data-title="Kubernetes的DashBorad以及heapster安装教程" data-url="http://godliness.github.io/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/06/Go语言学习笔记/" data-title="Go语言学习笔记" data-url="http://godliness.github.io/2017/04/06/Go语言学习笔记/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -417,13 +423,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/06/Go语言学习笔记/" title="上一篇: Go语言学习笔记">
+            <a href="/2017/04/06/在Kubernetes上安装ingress/" title="上一篇: 在Kubernetes上安装ingress">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/30/部署etcd简易教程/" title="下一篇: 部署etcd简易教程">
+            <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" title="下一篇: Kubernetes的DashBorad以及heapster安装教程">
                 <i class="fa fa-angle-right"></i>
             </a>
         

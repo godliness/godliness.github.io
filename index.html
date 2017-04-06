@@ -129,7 +129,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/kubernetes/" style="font-size: 20px;">kubernetes</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a>
+                        <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/kubernetes/" style="font-size: 20px;">kubernetes</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -190,6 +190,139 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-在Kubernetes上安装ingress" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/06/在Kubernetes上安装ingress/" class="article-date">
+      <time datetime="2017-04-06T10:00:22.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/在Kubernetes上安装ingress/">在Kubernetes上安装ingress</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Go语言学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/06/Go语言学习笔记/" class="article-date">
+      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/Go语言学习笔记/">Go语言学习笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>对读Chanel进行Close操作会失败</li>
+<li>对关闭了的Chanel进行写操作会失败</li>
+<li>单向Channel无法再转换回双向Channel</li>
+<li>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</li>
+<li>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</li>
+<li>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</li>
+<li>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</li>
+<li>被设置成nil的Channel会处于阻塞状态</li>
+<li>select语句要记得加default，如此可以避免select阻塞</li>
+<li>在使用Mutex时，尽量缩小锁力度</li>
+<li>Mutex不支持递归锁，双重锁定会导致死锁</li>
+<li>对性能要求较高时，应避免使用defer Unlock</li>
+<li>读写并发时，用RWMutex性能会更好一些</li>
+<li>对单个数据读写保护，可尝试使用原子操作</li>
+</ol>
+<p>未完待续。。。。。。。。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Kubernetes的DashBorad以及heapster安装教程" class="article article-type-post" itemscope itemprop="blogPost">
   
