@@ -5,30 +5,21 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
+  <title>Go语言CodeReivew注释总结 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败
-对关闭了的Chanel进行写操作会失败
-单向Channel无法再转换回双向Channel
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
+  <meta name="description" content="Gofmt在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。
+Go变量命名Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是slic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言学习笔记">
-<meta property="og:url" content="http://godliness.github.io/2017/04/06/Go语言学习笔记/index.html">
+<meta property="og:title" content="Go语言CodeReivew注释总结">
+<meta property="og:url" content="http://godliness.github.io/2017/03/20/go_comments_review/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败
-对关闭了的Chanel进行写操作会失败
-单向Channel无法再转换回双向Channel
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
-<meta property="og:updated_time" content="2017-04-06T10:18:02.000Z">
+<meta property="og:description" content="Gofmt在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。
+Go变量命名Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是slic">
+<meta property="og:updated_time" content="2017-03-27T08:13:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败
-对关闭了的Chanel进行写操作会失败
-单向Channel无法再转换回双向Channel
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所">
+<meta name="twitter:title" content="Go语言CodeReivew注释总结">
+<meta name="twitter:description" content="Gofmt在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。
+Go变量命名Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是slic">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -142,7 +133,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/kubernetes/" style="font-size: 20px;">kubernetes</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a>
+                        <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -202,11 +193,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Go语言学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-go_comments_review" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/06/Go语言学习笔记/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+      <a href="/2017/03/20/go_comments_review/" class="article-date">
+      <time datetime="2017-03-20T14:53:28.000Z" itemprop="datePublished">2017-03-20</time>
 </a>
     </div>
   
@@ -219,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言学习笔记
+      Go语言CodeReivew注释总结
     </h1>
   
 
@@ -230,7 +221,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -240,23 +231,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li>对读Chanel进行Close操作会失败</li>
-<li>对关闭了的Chanel进行写操作会失败</li>
-<li>单向Channel无法再转换回双向Channel</li>
-<li>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</li>
-<li>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</li>
-<li>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</li>
-<li>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</li>
-<li>被设置成nil的Channel会处于阻塞状态</li>
-<li>select语句要记得加default，如此可以避免select阻塞</li>
-<li>在使用Mutex时，尽量缩小锁力度</li>
-<li>Mutex不支持递归锁，双重锁定会导致死锁</li>
-<li>对性能要求较高时，应避免使用defer Unlock</li>
-<li>读写并发时，用RWMutex性能会更好一些</li>
-<li>对单个数据读写保护，可尝试使用原子操作</li>
+        <h4 id="Gofmt"><a href="#Gofmt" class="headerlink" title="Gofmt"></a>Gofmt</h4><p>在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。</p>
+<h4 id="Go变量命名"><a href="#Go变量命名" class="headerlink" title="Go变量命名"></a>Go变量命名</h4><p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
+<h4 id="Go协程的生命周期"><a href="#Go协程的生命周期" class="headerlink" title="Go协程的生命周期"></a>Go协程的生命周期</h4><p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。<br><a id="more"></a></p>
+<h4 id="Go语言的接收体类型"><a href="#Go语言的接收体类型" class="headerlink" title="Go语言的接收体类型"></a>Go语言的接收体类型</h4><p>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:</p>
+<ol>
+<li>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</li>
+<li>如果方法需要改变接收体，那么这个接收体的类型必须是指针类型。</li>
+<li>如果接收体中包含sync.Mutex或类似的同步字段结构时，则接收体必须是指针类型，以避免接收体复制后导致同步失效。</li>
+<li>如果接收体是一个大的结构体或者数组，那么使用指针类型的接收体就会更有效率。多大算大呢？假设把接收体的所有元素作为参数传给方法，如果你觉得参数有点多，那么它就是大的。</li>
+<li>函数在并发调用接收体的方法时，可以在方法中改变此接收体吗？当并发调用值类型接收体的方法时，这时每一次调用都会复制一份新接收体，所以其他方法对于接收体的修改，并不会对原接收体产生作用。若想让所有的修改在原接收体上起作用，那么接收体的类型必须是指针类型。</li>
+<li>如果接收体是一个结构体，数组或者切片，并且它们当中有的元素就是指针，它们指向了值可能发生变化的元素，那么就请使用指针类型的接收体，因为它将使读代码的人对于接收体的意图更加的清晰。</li>
+<li>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</li>
+<li>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</li>
 </ol>
-<p>未完待续。。。。。。。。</p>
 
       
       
@@ -311,13 +299,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/06/Go语言学习笔记/">Go语言学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/20/go_comments_review/">Go语言CodeReivew注释总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年04月06日 - 18时18分</p>
+        <p><span>发布时间:</span>2017年03月20日 - 22时53分</p>
+        <p><span>最后更新:</span>2017年03月27日 - 16时13分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/06/Go语言学习笔记/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/Go语言学习笔记/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/Go语言学习笔记/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/20/go_comments_review/" title="Go语言CodeReivew注释总结">http://godliness.github.io/2017/03/20/go_comments_review/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/20/go_comments_review/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -330,20 +318,15 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/06/在Kubernetes上安装ingress/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/30/install_etcd_teach/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          在Kubernetes上安装ingress
+          部署etcd简易教程
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kubernetes的DashBorad以及heapster安装教程</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
   
 </nav>
 
@@ -352,7 +335,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gofmt"><span class="toc-number">1.</span> <span class="toc-text">Gofmt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Go变量命名"><span class="toc-number">2.</span> <span class="toc-text">Go变量命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Go协程的生命周期"><span class="toc-number">3.</span> <span class="toc-text">Go协程的生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Go语言的接收体类型"><span class="toc-number">4.</span> <span class="toc-text">Go语言的接收体类型</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -400,7 +383,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/06/Go语言学习笔记/" data-title="Go语言学习笔记" data-url="http://godliness.github.io/2017/04/06/Go语言学习笔记/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/20/go_comments_review/" data-title="Go语言CodeReivew注释总结" data-url="http://godliness.github.io/2017/03/20/go_comments_review/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -423,18 +406,16 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/06/在Kubernetes上安装ingress/" title="上一篇: 在Kubernetes上安装ingress">
+            <a href="/2017/03/30/install_etcd_teach/" title="上一篇: 部署etcd简易教程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/" title="下一篇: Kubernetes的DashBorad以及heapster安装教程">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/在Kubernetes上安装ingress/">在Kubernetes上安装ingress</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/Go语言学习笔记/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/05/Kubernetes的DashBorad以及heapster安装教程/">Kubernetes的DashBorad以及heapster安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/部署etcd简易教程/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/29/在CentOS7上手动安装Kubernetes/">在CentOS7上手动安装Kubernetes</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/下载指定版本Docker并安装/">下载指定版本Docker并安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/Go语言CodeReivew注释总结/">Go语言CodeReivew注释总结</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go_language_study_records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install_etcd_teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go_comments_review/">Go语言CodeReivew注释总结</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
