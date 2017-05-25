@@ -5,18 +5,21 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>部署etcd简易教程 | Peter&#39;s Blog</title>
+  <title>python_small_tips | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下载二进制文件1234567DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址ETCD_VER=v3.1.5  #设置etcd版本号wget $&amp;#123;DOWNLOAD_URL&amp;#125;/$&amp;#123;ETCD_VER&amp;#125;/etcd-$&amp;#123;ETCD_VER&amp;#125;-linux-amd64.tar.gzta">
+  <meta name="description" content="当调用含有yield关键字函数的时候,函数里的代码并没有运行.函数仅仅返回生成器对象,这就是它最微妙的地方。之后遍历生成器的时候，每一次遍历都会运行一次函数，而不是把所有内容一次性都load进内存。
+​">
 <meta property="og:type" content="article">
-<meta property="og:title" content="部署etcd简易教程">
-<meta property="og:url" content="http://godliness.github.io/2017/03/30/install_etcd_teach/index.html">
+<meta property="og:title" content="python_small_tips">
+<meta property="og:url" content="http://godliness.github.io/2017/04/11/python_small_tips/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="下载二进制文件1234567DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址ETCD_VER=v3.1.5  #设置etcd版本号wget $&amp;#123;DOWNLOAD_URL&amp;#125;/$&amp;#123;ETCD_VER&amp;#125;/etcd-$&amp;#123;ETCD_VER&amp;#125;-linux-amd64.tar.gzta">
-<meta property="og:updated_time" content="2017-03-30T10:51:05.000Z">
+<meta property="og:description" content="当调用含有yield关键字函数的时候,函数里的代码并没有运行.函数仅仅返回生成器对象,这就是它最微妙的地方。之后遍历生成器的时候，每一次遍历都会运行一次函数，而不是把所有内容一次性都load进内存。
+​">
+<meta property="og:updated_time" content="2017-04-11T05:48:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部署etcd简易教程">
-<meta name="twitter:description" content="下载二进制文件1234567DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址ETCD_VER=v3.1.5  #设置etcd版本号wget $&amp;#123;DOWNLOAD_URL&amp;#125;/$&amp;#123;ETCD_VER&amp;#125;/etcd-$&amp;#123;ETCD_VER&amp;#125;-linux-amd64.tar.gzta">
+<meta name="twitter:title" content="python_small_tips">
+<meta name="twitter:description" content="当调用含有yield关键字函数的时候,函数里的代码并没有运行.函数仅仅返回生成器对象,这就是它最微妙的地方。之后遍历生成器的时候，每一次遍历都会运行一次函数，而不是把所有内容一次性都load进内存。
+​">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -190,11 +193,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-install_etcd_teach" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-python_small_tips" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/30/install_etcd_teach/" class="article-date">
-      <time datetime="2017-03-30T10:25:11.000Z" itemprop="datePublished">2017-03-30</time>
+      <a href="/2017/04/11/python_small_tips/" class="article-date">
+      <time datetime="2017-04-11T05:41:44.000Z" itemprop="datePublished">2017-04-11</time>
 </a>
     </div>
   
@@ -207,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      部署etcd简易教程
+      python_small_tips
     </h1>
   
 
@@ -218,7 +221,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -228,14 +231,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址</div><div class="line"></div><div class="line">ETCD_VER=v3.1.5  #设置etcd版本号</div><div class="line"></div><div class="line">wget $&#123;DOWNLOAD_URL&#125;/$&#123;ETCD_VER&#125;/etcd-$&#123;ETCD_VER&#125;-linux-amd64.tar.gz</div><div class="line"></div><div class="line">tar xvf etcd-$&#123;ETCD_VER&#125;-linux-amd64.tar.gz</div></pre></td></tr></table></figure>
-<h4 id="部署文件"><a href="#部署文件" class="headerlink" title="部署文件"></a>部署文件</h4><p>将如下内容写入文件 /etc/etcd/etcd.conf 中：</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># [member]</div><div class="line"></div><div class="line">ETCD_NAME=default</div><div class="line">ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;</div><div class="line"></div><div class="line"># ETCD_WAL_DIR=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_SNAPSHOT_COUNT=&quot;10000&quot;</div><div class="line"></div><div class="line"># ETCD_HEARTBEAT_INTERVAL=&quot;100&quot;</div><div class="line"></div><div class="line"># ETCD_ELECTION_TIMEOUT=&quot;1000&quot;</div><div class="line"></div><div class="line"># ETCD_LISTEN_PEER_URLS=&quot;http://localhost:2380&quot;</div><div class="line"></div><div class="line">ETCD_LISTEN_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;</div><div class="line"></div><div class="line"># ETCD_MAX_SNAPSHOTS=&quot;5&quot;</div><div class="line"></div><div class="line"># ETCD_MAX_WALS=&quot;5&quot;</div><div class="line"></div><div class="line"># ETCD_CORS=&quot;&quot;</div><div class="line"></div><div class="line">#</div><div class="line"></div><div class="line"># [cluster]</div><div class="line"></div><div class="line"># ETCD_INITIAL_ADVERTISE_PEER_URLS=&quot;http://localhost:2380&quot;</div><div class="line"></div><div class="line"># if you use different ETCD_NAME (e.g. test), set ETCD_INITIAL_CLUSTER value for this name, i.e. &quot;test=http://...&quot;</div><div class="line"></div><div class="line"># ETCD_INITIAL_CLUSTER=&quot;default=http://localhost:2380&quot;</div><div class="line"></div><div class="line"># ETCD_INITIAL_CLUSTER_STATE=&quot;new&quot;</div><div class="line"></div><div class="line"># ETCD_INITIAL_CLUSTER_TOKEN=&quot;etcd-cluster&quot;</div><div class="line"></div><div class="line">ETCD_ADVERTISE_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;</div><div class="line"></div><div class="line"># ETCD_DISCOVERY=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_DISCOVERY_SRV=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_DISCOVERY_FALLBACK=&quot;proxy&quot;</div><div class="line"></div><div class="line"># ETCD_DISCOVERY_PROXY=&quot;&quot;</div><div class="line"></div><div class="line">#</div><div class="line"></div><div class="line"># [proxy]</div><div class="line"></div><div class="line"># ETCD_PROXY=&quot;off&quot;</div><div class="line"></div><div class="line"># ETCD_PROXY_FAILURE_WAIT=&quot;5000&quot;</div><div class="line"></div><div class="line"># ETCD_PROXY_REFRESH_INTERVAL=&quot;30000&quot;</div><div class="line"></div><div class="line"># ETCD_PROXY_DIAL_TIMEOUT=&quot;1000&quot;</div><div class="line"></div><div class="line"># ETCD_PROXY_WRITE_TIMEOUT=&quot;5000&quot;</div><div class="line"></div><div class="line"># ETCD_PROXY_READ_TIMEOUT=&quot;0&quot;</div><div class="line"></div><div class="line">#</div><div class="line"></div><div class="line"># [security]</div><div class="line"></div><div class="line"># ETCD_CERT_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_KEY_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_CLIENT_CERT_AUTH=&quot;false&quot;</div><div class="line"></div><div class="line"># ETCD_TRUSTED_CA_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_PEER_CERT_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_PEER_KEY_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># ETCD_PEER_CLIENT_CERT_AUTH=&quot;false&quot;</div><div class="line"></div><div class="line"># ETCD_PEER_TRUSTED_CA_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># [logging]</div><div class="line"></div><div class="line"># ETCD_DEBUG=&quot;false&quot;</div><div class="line"></div><div class="line"># examples for -log-package-levels etcdserver=WARNING,security=DEBUG</div><div class="line"></div><div class="line"># ETCD_LOG_PACKAGE_LEVELS=&quot;&quot;</div></pre></td></tr></table></figure>
-<p>将 etcd, etcdctl放入 /usr/bin/下，并将如下内容写进/usr/lib/systemd/system/etcd.service文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Etcd Server</div><div class="line">After=network.target</div><div class="line">After=network-online.target</div><div class="line">Wants=network-online.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=notify</div><div class="line">WorkingDirectory=/var/lib/etcd/</div><div class="line">EnvironmentFile=-/etc/etcd/etcd.conf</div><div class="line">User=etcd</div><div class="line"># set GOMAXPROCS to number of processors</div><div class="line">ExecStart=/bin/bash -c &quot;GOMAXPROCS=$(nproc) /usr/bin/etcd --name=\&quot;$&#123;ETCD_NAME&#125;\&quot; --data-dir=\&quot;$&#123;ETCD_DATA_DIR&#125;\&quot; --listen-client-urls=\&quot;$&#123;ETCD_LISTEN_CLIENT_URLS&#125;\&quot;&quot;</div><div class="line">Restart=on-failure</div><div class="line">LimitNOFILE=65536</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure></p>
-<h4 id="启动并校验"><a href="#启动并校验" class="headerlink" title="启动并校验"></a>启动并校验</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">systemctl start etcd</div><div class="line"></div><div class="line">systemctl enable etcd</div><div class="line"></div><div class="line">systemctl status etcd</div><div class="line"></div><div class="line">etcdctl ls</div></pre></td></tr></table></figure>
-<h4 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h4><p>若要部署多节点集群也比较简单，只要更改etcd.conf文件以及etcd.service添加相应配置即可</p>
-<p>可以参考链接：<a href="https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md" target="_blank" rel="external">https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md</a></p>
+        <ol>
+<li>当调用含有yield关键字函数的时候,函数里的代码并没有运行.函数仅仅返回生成器对象,这就是它最微妙的地方。之后遍历生成器的时候，每一次遍历都会运行一次函数，而不是把所有内容一次性都load进内存。</li>
+<li>​</li>
+</ol>
 
       
       
@@ -290,13 +289,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/30/install_etcd_teach/">部署etcd简易教程</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/11/python_small_tips/">python_small_tips</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年03月30日 - 18时25分</p>
-        <p><span>最后更新:</span>2017年03月30日 - 18时51分</p>
+        <p><span>发布时间:</span>2017年04月11日 - 13时41分</p>
+        <p><span>最后更新:</span>2017年04月11日 - 13时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/30/install_etcd_teach/" title="部署etcd简易教程">http://godliness.github.io/2017/03/30/install_etcd_teach/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/03/30/install_etcd_teach/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/11/python_small_tips/" title="python_small_tips">http://godliness.github.io/2017/04/11/python_small_tips/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/11/python_small_tips/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -309,18 +308,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/06/go_language_study_records/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/13/k8s_install_ingress_with_traefik/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Go语言学习笔记
+          k8s_install_ingress_with_traefik
         
       </div>
     </a>
   
   
-    <a href="/2017/03/20/go_comments_review/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Go语言CodeReivew注释总结</div>
+    <a href="/2017/04/06/go_language_study_records/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go语言学习笔记</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -331,7 +330,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载二进制文件"><span class="toc-number">1.</span> <span class="toc-text">下载二进制文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署文件"><span class="toc-number">2.</span> <span class="toc-text">部署文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动并校验"><span class="toc-number">3.</span> <span class="toc-text">启动并校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集群"><span class="toc-number">4.</span> <span class="toc-text">集群</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -379,7 +378,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/30/install_etcd_teach/" data-title="部署etcd简易教程" data-url="http://godliness.github.io/2017/03/30/install_etcd_teach/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/11/python_small_tips/" data-title="python_small_tips" data-url="http://godliness.github.io/2017/04/11/python_small_tips/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -402,13 +401,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/06/go_language_study_records/" title="上一篇: Go语言学习笔记">
+            <a href="/2017/04/13/k8s_install_ingress_with_traefik/" title="上一篇: k8s_install_ingress_with_traefik">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/20/go_comments_review/" title="下一篇: Go语言CodeReivew注释总结">
+            <a href="/2017/04/06/go_language_study_records/" title="下一篇: Go语言学习笔记">
                 <i class="fa fa-angle-right"></i>
             </a>
         
