@@ -2,20 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://godliness.github.io/2017/04/13/k8s_install_ingress_with_traefik/</loc>
-    
-    <lastmod>2017-04-14T02:33:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://godliness.github.io/2017/04/11/python_small_tips/</loc>
-    
-    <lastmod>2017-04-11T05:48:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://godliness.github.io/2017/04/06/go_language_study_records/</loc>
     
     <lastmod>2017-04-11T05:37:03.000Z</lastmod>
