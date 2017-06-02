@@ -21,7 +21,7 @@ main.go 文件中 init 方法会在 main 方法之前执行
 main方法在main包中才会编译出可执行文件
 import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法
 package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可">
-<meta property="og:updated_time" content="2017-06-01T09:35:08.000Z">
+<meta property="og:updated_time" content="2017-06-02T03:05:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go In Action">
 <meta name="twitter:description" content="Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。
@@ -253,7 +253,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
 <li>函数传参都是值拷贝</li>
 <li>定义常量时不需要指定类型</li>
 <li>定义接口时，若方法只有一个，那么它的命名需要加上后缀“er”</li>
-<li>若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然</li>
+<li>若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然<a id="more"></a></li>
 <li>接收类型为引用类型的方法不能被赋值为值的接口调用，接收类型为值类型的方法，可以被赋值类型为引用类型和值类型的接口调用</li>
 <li>接口类型的实现可以是某个类的引用类型也可以是值类型</li>
 <li>array := […]int{10, 20, 30, 40, 50} 这种方式声明数组无需指定数组长度</li>
@@ -324,7 +324,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
         <p><span>本文标题:</span><a href="/2017/05/25/go-in-action-records/">Go In Action</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年05月25日 - 10时10分</p>
-        <p><span>最后更新:</span>2017年06月01日 - 17时35分</p>
+        <p><span>最后更新:</span>2017年06月02日 - 11时05分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/05/25/go-in-action-records/" title="Go In Action">http://godliness.github.io/2017/05/25/go-in-action-records/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/05/25/go-in-action-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
