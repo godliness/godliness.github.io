@@ -5,42 +5,42 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
+  <title>采用ELK进行网络流量分析的安装过程 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败
+  <meta name="description" content="所有ELK组件均基于版本5.4.1
 
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。
+1vim /etc/sysconfig/selinux
+将 SELINUX的值从enforcing改成disabled。
+1SELINUX=disabled
+然后重启服务器1reboot
+再次登录服务器并检查 SELinux 状态。
+1getenforce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言学习笔记">
-<meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
+<meta property="og:title" content="采用ELK进行网络流量分析的安装过程">
+<meta property="og:url" content="http://godliness.github.io/2017/06/09/elk-install/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败
+<meta property="og:description" content="所有ELK组件均基于版本5.4.1
 
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-05-25T02:13:59.000Z">
+Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。
+1vim /etc/sysconfig/selinux
+将 SELINUX的值从enforcing改成disabled。
+1SELINUX=disabled
+然后重启服务器1reboot
+再次登录服务器并检查 SELinux 状态。
+1getenforce">
+<meta property="og:updated_time" content="2017-06-09T09:20:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败
+<meta name="twitter:title" content="采用ELK进行网络流量分析的安装过程">
+<meta name="twitter:description" content="所有ELK组件均基于版本5.4.1
 
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。
+1vim /etc/sysconfig/selinux
+将 SELINUX的值从enforcing改成disabled。
+1SELINUX=disabled
+然后重启服务器1reboot
+再次登录服务器并检查 SELinux 状态。
+1getenforce">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -214,11 +214,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-elk-install" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+      <a href="/2017/06/09/elk-install/" class="article-date">
+      <time datetime="2017-06-09T07:57:56.000Z" itemprop="datePublished">2017-06-09</time>
 </a>
     </div>
   
@@ -231,7 +231,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言学习笔记
+      采用ELK进行网络流量分析的安装过程
     </h1>
   
 
@@ -242,7 +242,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elk/">elk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -252,47 +252,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-</li>
-<li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
-</li>
-<li><p>被设置成nil的Channel会处于阻塞状态</p>
-</li>
-<li><p>select语句要记得加default，如此可以避免select阻塞</p>
-</li>
-<li><p>在使用Mutex时，尽量缩小锁力度</p>
-</li>
-<li><p>Mutex不支持递归锁，双重锁定会导致死锁</p>
-</li>
-<li><p>对性能要求较高时，应避免使用defer Unlock</p>
-</li>
-<li><p>读写并发时，用RWMutex性能会更好一些</p>
-<a id="more"></a>
-</li>
-<li><p>对单个数据读写保护，可尝试使用原子操作</p>
-</li>
-<li><p>GOBIN环境变量用于替代工作空间的bin目录，作为go install 保存路径。</p>
-</li>
-<li><p>在使用Git版本控制器时，要避免使用bin,pkg目录，尽量的src下创建存储仓库</p>
-</li>
-<li><p>Import . pkgname 的方式不建议在正式代码中使用</p>
-</li>
-<li><p>所有Internal的包只能被其父级目录访问</p>
-</li>
-<li><p>从当前源文件所在目录开始逐级向上构造vendor全路径，直到发现路径匹配的目标为止。匹配失败择依旧搜索GOPATH目录</p>
-</li>
-</ol>
+        <blockquote>
+<p>所有ELK组件均基于版本5.4.1</p>
+</blockquote>
+<h3 id="Step1-操作系统的准备"><a href="#Step1-操作系统的准备" class="headerlink" title="Step1 操作系统的准备"></a>Step1 操作系统的准备</h3><p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/selinux</div></pre></td></tr></table></figure>
+<p>将 SELINUX的值从enforcing改成disabled。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELINUX=disabled</div></pre></td></tr></table></figure>
+<p>然后重启服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reboot</div></pre></td></tr></table></figure></p>
+<p>再次登录服务器并检查 SELinux 状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getenforce</div></pre></td></tr></table></figure>
+<p>确保结果是 <code>disabled</code>。</p>
+<h3 id="Step2-安装Java"><a href="#Step2-安装Java" class="headerlink" title="Step2 安装Java"></a>Step2 安装Java</h3><p>部署 Elastic stack 依赖于Java，Elasticsearch 需要 Java 8 版本，推荐使用 Oracle JDK 1.8 。我将从官方的 Oracle rpm 包安装 Java 8。</p>
+<p>使用 <code>wget</code> 命令下载 Java 8 的 JDK。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http:%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u77-b02/jdk-8u77-linux-x64.rpm&quot;</div></pre></td></tr></table></figure>
+<p>然后使用 <code>rpm</code> 命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -ivh jdk-8u77-linux-x64.rpm</div></pre></td></tr></table></figure>
+<p>最后，检查 java JDK 版本，确保它正常工作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<p>您将看到服务器的 Java 版本。</p>
+<p>这里要注意的是，可能有您安装的服务器上已经有java 7了，那么就要运行下面命令，让默认版本为java 8。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/sbin/alternatives --config java</div></pre></td></tr></table></figure>
+<p>显示如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">There are 2 programs which provide &apos;java&apos;.</div><div class="line"></div><div class="line">  Selection    Command</div><div class="line">-----------------------------------------------</div><div class="line">*  1  /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.101-2.6.6.1.el7_2.x86_64/jre/bin/java</div><div class="line">   2   /usr/java/jdk1.8.0_131/jre/bin/java</div><div class="line"></div><div class="line">Enter to keep the current selection[+], or type selection number:</div></pre></td></tr></table></figure></p>
+<p>这个时候输入数字2就可以了，然后敲击回车，之后再检测一下Java的版本，应该就没有问题了。</p>
+<h3 id="Step3-安装和配置-Elasticsearch"><a href="#Step3-安装和配置-Elasticsearch" class="headerlink" title="Step3 安装和配置 Elasticsearch"></a>Step3 安装和配置 Elasticsearch</h3><p>在安装 Elasticsearch 之前，将 elastic.co 的密钥添加到服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch</div></pre></td></tr></table></figure>
+<p>接下来，使用 <code>wget</code> 下载 Elasticsearch 5.4.1，然后安装它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.1.rpm</div><div class="line">rpm -ivh elasticsearch-5.4.1.rpm</div></pre></td></tr></table></figure>
+<p>Elasticsearch 已经安装好了。 现在进入配置目录编辑 <code>elasticsaerch.yml</code> 配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/elasticsearch/</div><div class="line">vim elasticsearch.yml</div></pre></td></tr></table></figure>
+<p>启用 Elasticsearch 的内存锁。这将禁用 Elasticsearch 的内存交换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bootstrap.memory_lock: true</div></pre></td></tr></table></figure>
+<p>在 <code>Network</code> 块中，取消注释 <code>network.host</code> 和 <code>http.port</code> 行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">network.host: 0.0.0.0</div><div class="line">http.port: 9200</div></pre></td></tr></table></figure>
+<p>保存文件并退出编辑器。</p>
+<p>现在编辑 <code>elasticsearch.service</code> 文件的内存锁配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /usr/lib/systemd/system/elasticsearch.service</div></pre></td></tr></table></figure>
+<p>确保该值为 infinity。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LimitMEMLOCK=infinity</div></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<p>然后编辑/etc/sysconfig/elasticsearch文件的内存锁配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MAX_LOCKED_MEMORY=unlimited</div></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<p>Elasticsearch 配置到此结束。Elasticsearch 将在本机的 9200 端口运行，我们通过在 CentOS 服务器上启用 <code>mlockall</code> 来禁用内存交换。重新加载 systemd，将 Elasticsearch 置为开机启动，然后启动服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reloadsudo </div><div class="line">systemctl enable elasticsearchsudo </div><div class="line">systemctl start elasticsearch</div></pre></td></tr></table></figure>
+<p>等待 Eelasticsearch 启动成功，然后检查服务器上打开的端口，确保 9200 端口的状态是 <code>LISTEN</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -plntu | grep 9200</div></pre></td></tr></table></figure>
+<p>然后检查内存锁以确保启用 <code>mlockall</code>，并使用以下命令检查 Elasticsearch 是否正在运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">curl -XGET &apos;localhost:9200/_nodes?filter_path=**.mlockall&amp;pretty&apos;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  &quot;nodes&quot; : &#123;</div><div class="line">    &quot;o6f3SEdsRg-IidCsiaicHw&quot; : &#123;</div><div class="line">      &quot;process&quot; : &#123;</div><div class="line">        &quot;mlockall&quot; : true</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">curl -XGET &apos;localhost:9200/?pretty&apos;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  &quot;name&quot; : &quot;*****&quot;,</div><div class="line">  &quot;cluster_name&quot; : &quot;production&quot;,</div><div class="line">  &quot;cluster_uuid&quot; : &quot;n8VLYl__Qo6WWC-VDbAUcg&quot;,</div><div class="line">  &quot;version&quot; : &#123;</div><div class="line">    &quot;number&quot; : &quot;5.4.1&quot;,</div><div class="line">    &quot;build_hash&quot; : &quot;2cfe0df&quot;,</div><div class="line">    &quot;build_date&quot; : &quot;2017-05-29T16:05:51.443Z&quot;,</div><div class="line">    &quot;build_snapshot&quot; : false,</div><div class="line">    &quot;lucene_version&quot; : &quot;6.5.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到此elasticsearch安装完了。</p>
 
       
       
@@ -347,13 +355,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年05月25日 - 10时13分</p>
+        <p><span>发布时间:</span>2017年06月09日 - 15时57分</p>
+        <p><span>最后更新:</span>2017年06月09日 - 17时20分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/09/elk-install/" title="采用ELK进行网络流量分析的安装过程">http://godliness.github.io/2017/06/09/elk-install/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/09/elk-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -366,18 +374,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/05/25/go-in-action-records/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/09/mysql-install/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Go In Action
+          MYAQL5.7安装
         
       </div>
     </a>
   
   
-    <a href="/2017/03/30/install-etcd-teach/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部署etcd简易教程</div>
+    <a href="/2017/05/25/go-in-action-records/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go In Action</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -388,7 +396,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step1-操作系统的准备"><span class="toc-number">1.</span> <span class="toc-text">Step1 操作系统的准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step2-安装Java"><span class="toc-number">2.</span> <span class="toc-text">Step2 安装Java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step3-安装和配置-Elasticsearch"><span class="toc-number">3.</span> <span class="toc-text">Step3 安装和配置 Elasticsearch</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -436,7 +444,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/06/go-language-study-records/" data-title="Go语言学习笔记" data-url="http://godliness.github.io/2017/04/06/go-language-study-records/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/09/elk-install/" data-title="采用ELK进行网络流量分析的安装过程" data-url="http://godliness.github.io/2017/06/09/elk-install/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -459,13 +467,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/25/go-in-action-records/" title="上一篇: Go In Action">
+            <a href="/2017/06/09/mysql-install/" title="上一篇: MYAQL5.7安装">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/30/install-etcd-teach/" title="下一篇: 部署etcd简易教程">
+            <a href="/2017/05/25/go-in-action-records/" title="下一篇: Go In Action">
                 <i class="fa fa-angle-right"></i>
             </a>
         

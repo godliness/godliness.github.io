@@ -129,7 +129,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -190,6 +190,297 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/22/thinking-in-java/" class="article-date">
+      <time datetime="2017-06-22T02:54:08.000Z" itemprop="datePublished">2017-06-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/thinking-in-java/">thinking-in-java</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>Socket readline() 自动阻塞</li>
+<li>public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。</li>
+<li>java中的变量都是静态绑定的，方法的话只有构造函数，static和final(所有private默认是final的)是静态绑定的。</li>
+<li>多态：父类的引用指向子类对象，父类引用调用子类中没有的方法时会去父类中找（如果子类中有直接调用子类，动态绑定），父类引用调用成员变量时，去调用父类的成员变量而不是子类（静态绑定）。</li>
+<li>成员变量不初始化的话，虚拟机会自动为其初始化；但是，局部变量不初始化的话，虚拟机不会自动为其初始化（报错）。</li>
+<li>switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。</li>
+<li>子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。</li>
+<li>new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。</li>
+<li>static关键字不能应用于局部变量，只能应用于静态域。</li>
+<li>static方法中不能使用this,super关键字</li>
+<li>JAVA接口中对于字段会加上隐式的public,final,static,方法会加上public,abstract.</li>
+<li>is-a 继承 has-a 组合</li>
+<li>类的信息加载一次后被多次重用，static变量在类加载是被初始化和赋值</li>
+<li>类中所有private方法，都隐式的指定为final.</li>
+<li>final类中的方法全部隐式的定义为final方法.</li>
+<li>将方法声明为final，可以关闭该方法的后期绑定.</li>
+<li>在父类构造器中调用被子类覆盖的方法时，方法中所涉及到的子类变量，无论子类为该变量的初始化值为多少，在父类中该变量的值都是零/null</li>
+<li>子类对象的堆内存中包含父类的对象</li>
+<li>栈有一个很重要的特殊性，就是存在栈中的数据可以共享。</li>
+<li>string immutable 特性</li>
+<li>当继承某个具体类，与此同时实现某些接口时，那个具体类必须放在前面，否则编译错误。</li>
+<li>Arrays.asList不会自动向上转型，泛型中的类型为什么类型它便只认那个类型，但是Collections.addAll是可以的。</li>
+<li>set集合存储的元素不能重复，并且没有顺序，TreeSet子集合按照所存储元素的升序排列，LinkedHashSet按照存储的顺序保存元素。</li>
+<li>JAVA中的标签必须放在循环之前，且中间不能有其他语句。例如：tag:for或while或do–while</li>
+<li>Class<number> genericNumberClass = int.class 虽然Integer继承自Number，但是他无法工作，因为Integer Class对象不是NumberClass对象的子类</number></li>
+<li>Class&lt;? Super FancyToy&gt; = xxx.getSuperClass(); &lt;&gt;里面不能填写确切的类型时能这样，即使你知道父类确切的类型也不行。</li>
+<li>final字段成员 允许在构造函数中为其赋值</li>
+<li>类型推断只对赋值操作有效，其他时候并不起作用（只能手动的显式表明类型）。</li>
+<li>方向：输入流/输出流 功能：节点流/处理流（转换流、缓冲流、数据流、Print流、Object流）  数据类型：字节流/字符流 </li>
+<li>加了synchronized关键字的方法不允许多进程去访问它，此时同一个对象中没加synchronized的方法可以被其他线程访问，但是如果加了synchronized关键字也就不能了。以上都是针对某一个特定对象来谈的这件事。某一个方法加了synchronized关键字其实就是针对调用这个方法的对象而言。这个对象里面的方法加了synchronized关键字的其实都加了锁，没加的就是没有加锁。这里的锁是同一个线程的同一个锁。</li>
+<li>wait()方法是当某个线程获得了锁（调用了有synchronized关键字的方法或者给某个对象加锁）之后才会等待。wait()和synchronied必须一一对应，notify（）方法是叫醒在该对象是等待的线程.</li>
+<li>匿名内部类可以实现多个接口以及扩展某个类。</li>
+<li>局部变量没有访问权限修饰符！</li>
+</ol>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-mysql-install" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/09/mysql-install/" class="article-date">
+      <time datetime="2017-06-09T09:20:49.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>安装环境：CentOS7 64位，MySQL5.7</p>
+<h2 id="Step-1-配置YUM源"><a href="#Step-1-配置YUM源" class="headerlink" title="Step 1 配置YUM源"></a>Step 1 配置YUM源</h2><p>在官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> ，或者手动下载安装包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</div><div class="line"></div><div class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</div></pre></td></tr></table></figure>
+<p>检查mysql源是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div><div class="line"> </div><div class="line">mysql-connectors-community/x86_64 MySQL Connectors Community                  36</div><div class="line">mysql-tools-community/x86_64      MySQL Tools Community                       47</div><div class="line">mysql57-community/x86_64          MySQL 5.7 Community Server                 187</div></pre></td></tr></table></figure>
+<p>看到如上显示则表示安装成功了。 </p>
+<p>其次可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p>
+<h2 id="Step-2-安装MySQL"><a href="#Step-2-安装MySQL" class="headerlink" title="Step 2 安装MySQL"></a>Step 2 安装MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-community-server</div></pre></td></tr></table></figure>
+<h2 id="Step-3-启动MySQL服务"><a href="#Step-3-启动MySQL服务" class="headerlink" title="Step 3 启动MySQL服务"></a>Step 3 启动MySQL服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl enable mysqld</div><div class="line">systemctl start mysqld</div><div class="line">systemctl status mysqld</div></pre></td></tr></table></figure>
+<h2 id="Step-4-修改root本地登录密码"><a href="#Step-4-修改root本地登录密码" class="headerlink" title="Step 4 修改root本地登录密码"></a>Step 4 修改root本地登录密码</h2><p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep &apos;temporary password&apos; /var/log/mysqld.log</div></pre></td></tr></table></figure>
+<p>注意：mysql5.7默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。否则会提示ERROR 1819 (HY000): Your password does not satisfy the current policy requirements错误。</p>
+<p>在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件</div><div class="line">validate_password_policy=0</div></pre></td></tr></table></figure>
+<p>如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">validate_password = off</div></pre></td></tr></table></figure>
+<p>重新启动mysql服务使配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root&apos;;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; set password for &apos;root&apos;@&apos;localhost&apos;=password(&apos;root&apos;);</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; update user set password=PASSWORD(‘root’) where User=&apos;root&apos;;</div></pre></td></tr></table></figure></p>
+<h3 id="Step-5-添加远程登录用户"><a href="#Step-5-添加远程登录用户" class="headerlink" title="Step 5 添加远程登录用户"></a>Step 5 添加远程登录用户</h3><p>允许mysql远程访问,可以使用以下三种方式:</p>
+<p>1、改表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -u root –p</div><div class="line"></div><div class="line">mysql&gt;use mysql;</div><div class="line"></div><div class="line">mysql&gt;update user set host = &apos;%&apos; where user = &apos;root&apos;;</div><div class="line"></div><div class="line">mysql&gt;select host, user from user;</div></pre></td></tr></table></figure></p>
+<p>2、授权</p>
+<p>例如，你想root使用root从任何主机连接到mysql服务器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;root&apos; WITH GRANT OPTION;</div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure></p>
+<p>3、在安装mysql的机器上运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mysql -h localhost -u root</div><div class="line"></div><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; WITH GRANT OPTION</div><div class="line"></div><div class="line">FLUSH PRIVILEGES</div></pre></td></tr></table></figure>
+<h3 id="Step-6、配置默认编码为utf8"><a href="#Step-6、配置默认编码为utf8" class="headerlink" title="Step 6、配置默认编码为utf8"></a>Step 6、配置默认编码为utf8</h3><p>修改/etc/my.cnf配置文件，在[mysqld]下添加编码配置，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">character_set_server=utf8</div><div class="line">init_connect=&apos;SET NAMES utf8&apos;</div></pre></td></tr></table></figure>
+<p>保存退出，重启mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
+<p>检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%character%&apos;;</div></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-elk-install" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/09/elk-install/" class="article-date">
+      <time datetime="2017-06-09T07:57:56.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>所有ELK组件均基于版本5.4.1</p>
+</blockquote>
+<h3 id="Step1-操作系统的准备"><a href="#Step1-操作系统的准备" class="headerlink" title="Step1 操作系统的准备"></a>Step1 操作系统的准备</h3><p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/selinux</div></pre></td></tr></table></figure>
+<p>将 SELINUX的值从enforcing改成disabled。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELINUX=disabled</div></pre></td></tr></table></figure>
+<p>然后重启服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reboot</div></pre></td></tr></table></figure></p>
+<p>再次登录服务器并检查 SELinux 状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getenforce</div></pre></td></tr></table></figure>
+<p>确保结果是 <code>disabled</code>。</p>
+<h3 id="Step2-安装Java"><a href="#Step2-安装Java" class="headerlink" title="Step2 安装Java"></a>Step2 安装Java</h3><p>部署 Elastic stack 依赖于Java，Elasticsearch 需要 Java 8 版本，推荐使用 Oracle JDK 1.8 。我将从官方的 Oracle rpm 包安装 Java 8。</p>
+<p>使用 <code>wget</code> 命令下载 Java 8 的 JDK。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http:%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u77-b02/jdk-8u77-linux-x64.rpm&quot;</div></pre></td></tr></table></figure>
+<p>然后使用 <code>rpm</code> 命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -ivh jdk-8u77-linux-x64.rpm</div></pre></td></tr></table></figure>
+<p>最后，检查 java JDK 版本，确保它正常工作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<p>您将看到服务器的 Java 版本。</p>
+<p>这里要注意的是，可能有您安装的服务器上已经有java 7了，那么就要运行下面命令，让默认版本为java 8。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/sbin/alternatives --config java</div></pre></td></tr></table></figure>
+<p>显示如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">There are 2 programs which provide &apos;java&apos;.</div><div class="line"></div><div class="line">  Selection    Command</div><div class="line">-----------------------------------------------</div><div class="line">*  1  /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.101-2.6.6.1.el7_2.x86_64/jre/bin/java</div><div class="line">   2   /usr/java/jdk1.8.0_131/jre/bin/java</div><div class="line"></div><div class="line">Enter to keep the current selection[+], or type selection number:</div></pre></td></tr></table></figure></p>
+<p>这个时候输入数字2就可以了，然后敲击回车，之后再检测一下Java的版本，应该就没有问题了。</p>
+<h3 id="Step3-安装和配置-Elasticsearch"><a href="#Step3-安装和配置-Elasticsearch" class="headerlink" title="Step3 安装和配置 Elasticsearch"></a>Step3 安装和配置 Elasticsearch</h3><p>在安装 Elasticsearch 之前，将 elastic.co 的密钥添加到服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch</div></pre></td></tr></table></figure>
+<p>接下来，使用 <code>wget</code> 下载 Elasticsearch 5.4.1，然后安装它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.1.rpm</div><div class="line">rpm -ivh elasticsearch-5.4.1.rpm</div></pre></td></tr></table></figure>
+<p>Elasticsearch 已经安装好了。 现在进入配置目录编辑 <code>elasticsaerch.yml</code> 配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/elasticsearch/</div><div class="line">vim elasticsearch.yml</div></pre></td></tr></table></figure>
+<p>启用 Elasticsearch 的内存锁。这将禁用 Elasticsearch 的内存交换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bootstrap.memory_lock: true</div></pre></td></tr></table></figure>
+<p>在 <code>Network</code> 块中，取消注释 <code>network.host</code> 和 <code>http.port</code> 行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">network.host: 0.0.0.0</div><div class="line">http.port: 9200</div></pre></td></tr></table></figure>
+<p>保存文件并退出编辑器。</p>
+<p>现在编辑 <code>elasticsearch.service</code> 文件的内存锁配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /usr/lib/systemd/system/elasticsearch.service</div></pre></td></tr></table></figure>
+<p>确保该值为 infinity。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LimitMEMLOCK=infinity</div></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<p>然后编辑/etc/sysconfig/elasticsearch文件的内存锁配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MAX_LOCKED_MEMORY=unlimited</div></pre></td></tr></table></figure>
+<p>保存并退出。</p>
+<p>Elasticsearch 配置到此结束。Elasticsearch 将在本机的 9200 端口运行，我们通过在 CentOS 服务器上启用 <code>mlockall</code> 来禁用内存交换。重新加载 systemd，将 Elasticsearch 置为开机启动，然后启动服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reloadsudo </div><div class="line">systemctl enable elasticsearchsudo </div><div class="line">systemctl start elasticsearch</div></pre></td></tr></table></figure>
+<p>等待 Eelasticsearch 启动成功，然后检查服务器上打开的端口，确保 9200 端口的状态是 <code>LISTEN</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -plntu | grep 9200</div></pre></td></tr></table></figure>
+<p>然后检查内存锁以确保启用 <code>mlockall</code>，并使用以下命令检查 Elasticsearch 是否正在运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">curl -XGET &apos;localhost:9200/_nodes?filter_path=**.mlockall&amp;pretty&apos;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  &quot;nodes&quot; : &#123;</div><div class="line">    &quot;o6f3SEdsRg-IidCsiaicHw&quot; : &#123;</div><div class="line">      &quot;process&quot; : &#123;</div><div class="line">        &quot;mlockall&quot; : true</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">curl -XGET &apos;localhost:9200/?pretty&apos;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  &quot;name&quot; : &quot;*****&quot;,</div><div class="line">  &quot;cluster_name&quot; : &quot;production&quot;,</div><div class="line">  &quot;cluster_uuid&quot; : &quot;n8VLYl__Qo6WWC-VDbAUcg&quot;,</div><div class="line">  &quot;version&quot; : &#123;</div><div class="line">    &quot;number&quot; : &quot;5.4.1&quot;,</div><div class="line">    &quot;build_hash&quot; : &quot;2cfe0df&quot;,</div><div class="line">    &quot;build_date&quot; : &quot;2017-05-29T16:05:51.443Z&quot;,</div><div class="line">    &quot;build_snapshot&quot; : false,</div><div class="line">    &quot;lucene_version&quot; : &quot;6.5.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到此elasticsearch安装完了。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elk/">elk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-go-in-action-records" class="article article-type-post" itemscope itemprop="blogPost">
   

@@ -5,42 +5,21 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
+  <title>thinking-in-java | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+  <meta name="description" content="Socket readline() 自动阻塞
+public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言学习笔记">
-<meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
+<meta property="og:title" content="thinking-in-java">
+<meta property="og:url" content="http://godliness.github.io/2017/06/22/thinking-in-java/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-05-25T02:13:59.000Z">
+<meta property="og:description" content="Socket readline() 自动阻塞
+public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任">
+<meta property="og:updated_time" content="2017-06-22T03:00:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta name="twitter:title" content="thinking-in-java">
+<meta name="twitter:description" content="Socket readline() 自动阻塞
+public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -214,11 +193,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+      <a href="/2017/06/22/thinking-in-java/" class="article-date">
+      <time datetime="2017-06-22T02:54:08.000Z" itemprop="datePublished">2017-06-22</time>
 </a>
     </div>
   
@@ -231,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言学习笔记
+      thinking-in-java
     </h1>
   
 
@@ -242,7 +221,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -253,45 +232,39 @@
       
           
         <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-</li>
-<li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
-</li>
-<li><p>被设置成nil的Channel会处于阻塞状态</p>
-</li>
-<li><p>select语句要记得加default，如此可以避免select阻塞</p>
-</li>
-<li><p>在使用Mutex时，尽量缩小锁力度</p>
-</li>
-<li><p>Mutex不支持递归锁，双重锁定会导致死锁</p>
-</li>
-<li><p>对性能要求较高时，应避免使用defer Unlock</p>
-</li>
-<li><p>读写并发时，用RWMutex性能会更好一些</p>
-<a id="more"></a>
-</li>
-<li><p>对单个数据读写保护，可尝试使用原子操作</p>
-</li>
-<li><p>GOBIN环境变量用于替代工作空间的bin目录，作为go install 保存路径。</p>
-</li>
-<li><p>在使用Git版本控制器时，要避免使用bin,pkg目录，尽量的src下创建存储仓库</p>
-</li>
-<li><p>Import . pkgname 的方式不建议在正式代码中使用</p>
-</li>
-<li><p>所有Internal的包只能被其父级目录访问</p>
-</li>
-<li><p>从当前源文件所在目录开始逐级向上构造vendor全路径，直到发现路径匹配的目标为止。匹配失败择依旧搜索GOPATH目录</p>
-</li>
+<li>Socket readline() 自动阻塞</li>
+<li>public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。</li>
+<li>java中的变量都是静态绑定的，方法的话只有构造函数，static和final(所有private默认是final的)是静态绑定的。</li>
+<li>多态：父类的引用指向子类对象，父类引用调用子类中没有的方法时会去父类中找（如果子类中有直接调用子类，动态绑定），父类引用调用成员变量时，去调用父类的成员变量而不是子类（静态绑定）。</li>
+<li>成员变量不初始化的话，虚拟机会自动为其初始化；但是，局部变量不初始化的话，虚拟机不会自动为其初始化（报错）。</li>
+<li>switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。</li>
+<li>子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。</li>
+<li>new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。</li>
+<li>static关键字不能应用于局部变量，只能应用于静态域。</li>
+<li>static方法中不能使用this,super关键字</li>
+<li>JAVA接口中对于字段会加上隐式的public,final,static,方法会加上public,abstract.</li>
+<li>is-a 继承 has-a 组合</li>
+<li>类的信息加载一次后被多次重用，static变量在类加载是被初始化和赋值</li>
+<li>类中所有private方法，都隐式的指定为final.</li>
+<li>final类中的方法全部隐式的定义为final方法.</li>
+<li>将方法声明为final，可以关闭该方法的后期绑定.</li>
+<li>在父类构造器中调用被子类覆盖的方法时，方法中所涉及到的子类变量，无论子类为该变量的初始化值为多少，在父类中该变量的值都是零/null</li>
+<li>子类对象的堆内存中包含父类的对象</li>
+<li>栈有一个很重要的特殊性，就是存在栈中的数据可以共享。</li>
+<li>string immutable 特性</li>
+<li>当继承某个具体类，与此同时实现某些接口时，那个具体类必须放在前面，否则编译错误。</li>
+<li>Arrays.asList不会自动向上转型，泛型中的类型为什么类型它便只认那个类型，但是Collections.addAll是可以的。</li>
+<li>set集合存储的元素不能重复，并且没有顺序，TreeSet子集合按照所存储元素的升序排列，LinkedHashSet按照存储的顺序保存元素。</li>
+<li>JAVA中的标签必须放在循环之前，且中间不能有其他语句。例如：tag:for或while或do–while</li>
+<li>Class<number> genericNumberClass = int.class 虽然Integer继承自Number，但是他无法工作，因为Integer Class对象不是NumberClass对象的子类</number></li>
+<li>Class&lt;? Super FancyToy&gt; = xxx.getSuperClass(); &lt;&gt;里面不能填写确切的类型时能这样，即使你知道父类确切的类型也不行。</li>
+<li>final字段成员 允许在构造函数中为其赋值</li>
+<li>类型推断只对赋值操作有效，其他时候并不起作用（只能手动的显式表明类型）。</li>
+<li>方向：输入流/输出流 功能：节点流/处理流（转换流、缓冲流、数据流、Print流、Object流）  数据类型：字节流/字符流 </li>
+<li>加了synchronized关键字的方法不允许多进程去访问它，此时同一个对象中没加synchronized的方法可以被其他线程访问，但是如果加了synchronized关键字也就不能了。以上都是针对某一个特定对象来谈的这件事。某一个方法加了synchronized关键字其实就是针对调用这个方法的对象而言。这个对象里面的方法加了synchronized关键字的其实都加了锁，没加的就是没有加锁。这里的锁是同一个线程的同一个锁。</li>
+<li>wait()方法是当某个线程获得了锁（调用了有synchronized关键字的方法或者给某个对象加锁）之后才会等待。wait()和synchronied必须一一对应，notify（）方法是叫醒在该对象是等待的线程.</li>
+<li>匿名内部类可以实现多个接口以及扩展某个类。</li>
+<li>局部变量没有访问权限修饰符！</li>
 </ol>
 
       
@@ -347,13 +320,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/22/thinking-in-java/">thinking-in-java</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年05月25日 - 10时13分</p>
+        <p><span>发布时间:</span>2017年06月22日 - 10时54分</p>
+        <p><span>最后更新:</span>2017年06月22日 - 11时00分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/22/thinking-in-java/" title="thinking-in-java">http://godliness.github.io/2017/06/22/thinking-in-java/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/22/thinking-in-java/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -366,18 +339,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/05/25/go-in-action-records/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Go In Action
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/30/install-etcd-teach/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部署etcd简易教程</div>
+    <a href="/2017/06/09/mysql-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MYAQL5.7安装</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -436,7 +400,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/06/go-language-study-records/" data-title="Go语言学习笔记" data-url="http://godliness.github.io/2017/04/06/go-language-study-records/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/22/thinking-in-java/" data-title="thinking-in-java" data-url="http://godliness.github.io/2017/06/22/thinking-in-java/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -459,13 +423,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/25/go-in-action-records/" title="上一篇: Go In Action">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/30/install-etcd-teach/" title="下一篇: 部署etcd简易教程">
+            <a href="/2017/06/09/mysql-install/" title="下一篇: MYAQL5.7安装">
                 <i class="fa fa-angle-right"></i>
             </a>
         

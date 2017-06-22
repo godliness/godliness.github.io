@@ -5,42 +5,24 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
+  <title>MYAQL5.7安装 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+  <meta name="description" content="安装环境：CentOS7 64位，MySQL5.7
+Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/downloads/repo/yum/ ，或者手动下载安装包。
+123wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpmyum localinstall">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言学习笔记">
-<meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
+<meta property="og:title" content="MYAQL5.7安装">
+<meta property="og:url" content="http://godliness.github.io/2017/06/09/mysql-install/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-05-25T02:13:59.000Z">
+<meta property="og:description" content="安装环境：CentOS7 64位，MySQL5.7
+Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/downloads/repo/yum/ ，或者手动下载安装包。
+123wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpmyum localinstall">
+<meta property="og:updated_time" content="2017-06-09T10:48:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta name="twitter:title" content="MYAQL5.7安装">
+<meta name="twitter:description" content="安装环境：CentOS7 64位，MySQL5.7
+Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/downloads/repo/yum/ ，或者手动下载安装包。
+123wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpmyum localinstall">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -214,11 +196,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-mysql-install" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+      <a href="/2017/06/09/mysql-install/" class="article-date">
+      <time datetime="2017-06-09T09:20:49.000Z" itemprop="datePublished">2017-06-09</time>
 </a>
     </div>
   
@@ -231,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言学习笔记
+      MYAQL5.7安装
     </h1>
   
 
@@ -242,7 +224,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -252,48 +234,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-</li>
-<li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
-</li>
-<li><p>被设置成nil的Channel会处于阻塞状态</p>
-</li>
-<li><p>select语句要记得加default，如此可以避免select阻塞</p>
-</li>
-<li><p>在使用Mutex时，尽量缩小锁力度</p>
-</li>
-<li><p>Mutex不支持递归锁，双重锁定会导致死锁</p>
-</li>
-<li><p>对性能要求较高时，应避免使用defer Unlock</p>
-</li>
-<li><p>读写并发时，用RWMutex性能会更好一些</p>
-<a id="more"></a>
-</li>
-<li><p>对单个数据读写保护，可尝试使用原子操作</p>
-</li>
-<li><p>GOBIN环境变量用于替代工作空间的bin目录，作为go install 保存路径。</p>
-</li>
-<li><p>在使用Git版本控制器时，要避免使用bin,pkg目录，尽量的src下创建存储仓库</p>
-</li>
-<li><p>Import . pkgname 的方式不建议在正式代码中使用</p>
-</li>
-<li><p>所有Internal的包只能被其父级目录访问</p>
-</li>
-<li><p>从当前源文件所在目录开始逐级向上构造vendor全路径，直到发现路径匹配的目标为止。匹配失败择依旧搜索GOPATH目录</p>
-</li>
-</ol>
-
+        <p>安装环境：CentOS7 64位，MySQL5.7</p>
+<h2 id="Step-1-配置YUM源"><a href="#Step-1-配置YUM源" class="headerlink" title="Step 1 配置YUM源"></a>Step 1 配置YUM源</h2><p>在官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> ，或者手动下载安装包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</div><div class="line"></div><div class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</div></pre></td></tr></table></figure>
+<p>检查mysql源是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div><div class="line"> </div><div class="line">mysql-connectors-community/x86_64 MySQL Connectors Community                  36</div><div class="line">mysql-tools-community/x86_64      MySQL Tools Community                       47</div><div class="line">mysql57-community/x86_64          MySQL 5.7 Community Server                 187</div></pre></td></tr></table></figure>
+<p>看到如上显示则表示安装成功了。 </p>
+<p>其次可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p>
+<h2 id="Step-2-安装MySQL"><a href="#Step-2-安装MySQL" class="headerlink" title="Step 2 安装MySQL"></a>Step 2 安装MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-community-server</div></pre></td></tr></table></figure>
+<h2 id="Step-3-启动MySQL服务"><a href="#Step-3-启动MySQL服务" class="headerlink" title="Step 3 启动MySQL服务"></a>Step 3 启动MySQL服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl enable mysqld</div><div class="line">systemctl start mysqld</div><div class="line">systemctl status mysqld</div></pre></td></tr></table></figure>
+<h2 id="Step-4-修改root本地登录密码"><a href="#Step-4-修改root本地登录密码" class="headerlink" title="Step 4 修改root本地登录密码"></a>Step 4 修改root本地登录密码</h2><p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep &apos;temporary password&apos; /var/log/mysqld.log</div></pre></td></tr></table></figure>
+<p>注意：mysql5.7默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。否则会提示ERROR 1819 (HY000): Your password does not satisfy the current policy requirements错误。</p>
+<p>在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件</div><div class="line">validate_password_policy=0</div></pre></td></tr></table></figure>
+<p>如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">validate_password = off</div></pre></td></tr></table></figure>
+<p>重新启动mysql服务使配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root&apos;;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; set password for &apos;root&apos;@&apos;localhost&apos;=password(&apos;root&apos;);</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; update user set password=PASSWORD(‘root’) where User=&apos;root&apos;;</div></pre></td></tr></table></figure></p>
+<h3 id="Step-5-添加远程登录用户"><a href="#Step-5-添加远程登录用户" class="headerlink" title="Step 5 添加远程登录用户"></a>Step 5 添加远程登录用户</h3><p>允许mysql远程访问,可以使用以下三种方式:</p>
+<p>1、改表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -u root –p</div><div class="line"></div><div class="line">mysql&gt;use mysql;</div><div class="line"></div><div class="line">mysql&gt;update user set host = &apos;%&apos; where user = &apos;root&apos;;</div><div class="line"></div><div class="line">mysql&gt;select host, user from user;</div></pre></td></tr></table></figure></p>
+<p>2、授权</p>
+<p>例如，你想root使用root从任何主机连接到mysql服务器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;root&apos; WITH GRANT OPTION;</div><div class="line">FLUSH PRIVILEGES;</div></pre></td></tr></table></figure></p>
+<p>3、在安装mysql的机器上运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mysql -h localhost -u root</div><div class="line"></div><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; WITH GRANT OPTION</div><div class="line"></div><div class="line">FLUSH PRIVILEGES</div></pre></td></tr></table></figure>
+<h3 id="Step-6、配置默认编码为utf8"><a href="#Step-6、配置默认编码为utf8" class="headerlink" title="Step 6、配置默认编码为utf8"></a>Step 6、配置默认编码为utf8</h3><p>修改/etc/my.cnf配置文件，在[mysqld]下添加编码配置，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">character_set_server=utf8</div><div class="line">init_connect=&apos;SET NAMES utf8&apos;</div></pre></td></tr></table></figure>
+<p>保存退出，重启mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
+<p>检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%character%&apos;;</div></pre></td></tr></table></figure>
       
       
         <div class="page-reward">
@@ -347,13 +321,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年05月25日 - 10时13分</p>
+        <p><span>发布时间:</span>2017年06月09日 - 17时20分</p>
+        <p><span>最后更新:</span>2017年06月09日 - 18时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/09/mysql-install/" title="MYAQL5.7安装">http://godliness.github.io/2017/06/09/mysql-install/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/09/mysql-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -366,18 +340,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/05/25/go-in-action-records/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/22/thinking-in-java/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Go In Action
+          thinking-in-java
         
       </div>
     </a>
   
   
-    <a href="/2017/03/30/install-etcd-teach/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部署etcd简易教程</div>
+    <a href="/2017/06/09/elk-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">采用ELK进行网络流量分析的安装过程</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -388,7 +362,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-1-配置YUM源"><span class="toc-number">1.</span> <span class="toc-text">Step 1 配置YUM源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-安装MySQL"><span class="toc-number">2.</span> <span class="toc-text">Step 2 安装MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-3-启动MySQL服务"><span class="toc-number">3.</span> <span class="toc-text">Step 3 启动MySQL服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-4-修改root本地登录密码"><span class="toc-number">4.</span> <span class="toc-text">Step 4 修改root本地登录密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-5-添加远程登录用户"><span class="toc-number">4.1.</span> <span class="toc-text">Step 5 添加远程登录用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-6、配置默认编码为utf8"><span class="toc-number">4.2.</span> <span class="toc-text">Step 6、配置默认编码为utf8</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -436,7 +410,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/06/go-language-study-records/" data-title="Go语言学习笔记" data-url="http://godliness.github.io/2017/04/06/go-language-study-records/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/09/mysql-install/" data-title="MYAQL5.7安装" data-url="http://godliness.github.io/2017/06/09/mysql-install/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -459,13 +433,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/25/go-in-action-records/" title="上一篇: Go In Action">
+            <a href="/2017/06/22/thinking-in-java/" title="上一篇: thinking-in-java">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/30/install-etcd-teach/" title="下一篇: 部署etcd简易教程">
+            <a href="/2017/06/09/elk-install/" title="下一篇: 采用ELK进行网络流量分析的安装过程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
