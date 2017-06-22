@@ -17,7 +17,7 @@ Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/d
 <meta property="og:description" content="安装环境：CentOS7 64位，MySQL5.7
 Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/downloads/repo/yum/ ，或者手动下载安装包。
 123wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpmyum localinstall">
-<meta property="og:updated_time" content="2017-06-09T10:48:28.000Z">
+<meta property="og:updated_time" content="2017-06-22T03:10:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYAQL5.7安装">
 <meta name="twitter:description" content="安装环境：CentOS7 64位，MySQL5.7
@@ -241,6 +241,7 @@ Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/d
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div><div class="line"> </div><div class="line">mysql-connectors-community/x86_64 MySQL Connectors Community                  36</div><div class="line">mysql-tools-community/x86_64      MySQL Tools Community                       47</div><div class="line">mysql57-community/x86_64          MySQL 5.7 Community Server                 187</div></pre></td></tr></table></figure>
 <p>看到如上显示则表示安装成功了。 </p>
 <p>其次可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p>
+<a id="more"></a>
 <h2 id="Step-2-安装MySQL"><a href="#Step-2-安装MySQL" class="headerlink" title="Step 2 安装MySQL"></a>Step 2 安装MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-community-server</div></pre></td></tr></table></figure>
 <h2 id="Step-3-启动MySQL服务"><a href="#Step-3-启动MySQL服务" class="headerlink" title="Step 3 启动MySQL服务"></a>Step 3 启动MySQL服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl enable mysqld</div><div class="line">systemctl start mysqld</div><div class="line">systemctl status mysqld</div></pre></td></tr></table></figure>
 <h2 id="Step-4-修改root本地登录密码"><a href="#Step-4-修改root本地登录密码" class="headerlink" title="Step 4 修改root本地登录密码"></a>Step 4 修改root本地登录密码</h2><p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
@@ -268,6 +269,7 @@ Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/d
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart mysqld</div></pre></td></tr></table></figure>
 <p>检查</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%character%&apos;;</div></pre></td></tr></table></figure>
+
       
       
         <div class="page-reward">
@@ -324,7 +326,7 @@ Step 1 配置YUM源在官网中下载YUM源rpm安装包：http://dev.mysql.com/d
         <p><span>本文标题:</span><a href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年06月09日 - 17时20分</p>
-        <p><span>最后更新:</span>2017年06月09日 - 18时48分</p>
+        <p><span>最后更新:</span>2017年06月22日 - 11时10分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/09/mysql-install/" title="MYAQL5.7安装">http://godliness.github.io/2017/06/09/mysql-install/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/09/mysql-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
