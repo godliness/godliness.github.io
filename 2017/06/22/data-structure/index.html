@@ -5,30 +5,15 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go In Action | Peter&#39;s Blog</title>
+  <title>data structure | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。
-main.go 文件中 init 方法会在 main 方法之前执行
-main方法在main包中才会编译出可执行文件
-import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法
-package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Go In Action">
-<meta property="og:url" content="http://godliness.github.io/2017/05/25/go-in-action-records/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="data structure">
+<meta property="og:url" content="http://godliness.github.io/2017/06/22/data-structure/index.html">
 <meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。
-main.go 文件中 init 方法会在 main 方法之前执行
-main方法在main包中才会编译出可执行文件
-import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法
-package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可">
-<meta property="og:updated_time" content="2017-06-02T03:15:15.000Z">
+<meta property="og:updated_time" content="2017-06-22T07:18:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go In Action">
-<meta name="twitter:description" content="Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。
-main.go 文件中 init 方法会在 main 方法之前执行
-main方法在main包中才会编译出可执行文件
-import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法
-package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可">
+<meta name="twitter:title" content="data structure">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -202,11 +187,11 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-go-in-action-records" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-data-structure" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/05/25/go-in-action-records/" class="article-date">
-      <time datetime="2017-05-25T02:10:55.000Z" itemprop="datePublished">2017-05-25</time>
+      <a href="/2017/06/22/data-structure/" class="article-date">
+      <time datetime="2017-06-22T03:18:14.000Z" itemprop="datePublished">2017-06-22</time>
 </a>
     </div>
   
@@ -219,7 +204,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
         
   
     <h1 class="article-title" itemprop="name">
-      Go In Action
+      data structure
     </h1>
   
 
@@ -230,7 +215,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -240,34 +225,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li>Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。</li>
-<li>main.go 文件中 init 方法会在 main 方法之前执行</li>
-<li>main方法在main包中才会编译出可执行文件</li>
-<li>import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法</li>
-<li>package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量</li>
-<li>引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil</li>
-<li>var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。</li>
-<li>在main方法结束前来结束所有的go协程会减少bug和错误</li>
-<li>for range 的第二个参数其实就是value的复制元素</li>
-<li>函数传参都是值拷贝</li>
-<li>定义常量时不需要指定类型</li>
-<li>定义接口时，若方法只有一个，那么它的命名需要加上后缀“er”</li>
-<li>若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然<a id="more"></a></li>
-<li>接收类型为引用类型的方法不能被赋值为值的接口调用，接收类型为值类型的方法，可以被赋值类型为引用类型和值类型的接口调用</li>
-<li>接口类型的实现可以是某个类的引用类型也可以是值类型</li>
-<li>array := […]int{10, 20, 30, 40, 50} 这种方式声明数组无需指定数组长度</li>
-<li>array := [5]int{1: 10, 2: 20} 指定特定位置为固定的值</li>
-<li>slice := []int{10, 20, 30, 40, 50} 创建长度为5的数组切片</li>
-<li>一个线程绑定到一个逻辑处理器上，多个协程被添加到逻辑任务队列中，由go运行时调度器进行调度，当有一个协程调用了系统blocking syscall后，这个线程就会从该逻辑处理器中卸下来，继续等待，调度器会再创建一个线程来绑定到该逻辑处理器上，并从运行队列中挑选一个go协程来运行。</li>
-<li>若一个go协程需要进行一个网络I/O调用，那么该协程就会从逻辑处理器上卸下来并转移到由go运行时构造的网络轮询器上，当轮询器检测到读或写操作准备好后，该go协程就会重新调度到逻辑处理器上去处理相应的操作</li>
-<li>默认的运行时可以启动的线程数是10000，这个值可以通过SetMaxThreads方法更改，当线程数超过最大值，程序将崩溃。</li>
-<li>并发的实质是一个物理CPU(也可以多个物理CPU) 在若干道程序之间多路复用，并发性是对有限物理资源强制行使多用户共享以提高效率。</li>
-<li>并行性指两个或两个以上事件或活动在同一时刻发生。在多道程序环境下，并行性使多个程序同一时刻可在不同CPU上同时执行。</li>
-<li>若想go协程真正的并行运行，那么就必须运行的多物理处理器的机器上若机器只有一个处理器，就算是多线程也只是并发而已</li>
-<li>单元测试的方法必须以Test开头，接收参数是Test的指针类型，无返回值，这样才能被识别为单元测试方法</li>
-</ol>
-
+        
       
       
         <div class="page-reward">
@@ -321,13 +279,13 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/05/25/go-in-action-records/">Go In Action</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/22/data-structure/">data structure</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年05月25日 - 10时10分</p>
-        <p><span>最后更新:</span>2017年06月02日 - 11时15分</p>
+        <p><span>发布时间:</span>2017年06月22日 - 11时18分</p>
+        <p><span>最后更新:</span>2017年06月22日 - 15时18分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/05/25/go-in-action-records/" title="Go In Action">http://godliness.github.io/2017/05/25/go-in-action-records/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/05/25/go-in-action-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/22/data-structure/" title="data structure">http://godliness.github.io/2017/06/22/data-structure/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/22/data-structure/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -340,18 +298,18 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
 
 <nav id="article-nav">
   
-    <a href="/2017/06/09/elk-install/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/22/c-language-study-note/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          采用ELK进行网络流量分析的安装过程
+          c-language-study-note
         
       </div>
     </a>
   
   
-    <a href="/2017/04/06/go-language-study-records/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Go语言学习笔记</div>
+    <a href="/2017/06/22/thinking-in-java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java编程思想</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -410,7 +368,7 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/05/25/go-in-action-records/" data-title="Go In Action" data-url="http://godliness.github.io/2017/05/25/go-in-action-records/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/22/data-structure/" data-title="data structure" data-url="http://godliness.github.io/2017/06/22/data-structure/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -433,13 +391,13 @@ package中小写字母开头的变量是不可导出（不可被其他包访问�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/09/elk-install/" title="上一篇: 采用ELK进行网络流量分析的安装过程">
+            <a href="/2017/06/22/c-language-study-note/" title="上一篇: c-language-study-note">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/04/06/go-language-study-records/" title="下一篇: Go语言学习笔记">
+            <a href="/2017/06/22/thinking-in-java/" title="下一篇: Java编程思想">
                 <i class="fa fa-angle-right"></i>
             </a>
         
