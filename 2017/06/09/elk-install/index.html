@@ -30,7 +30,7 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 再次登录服务器并检查 SELinux 状态。
 1getenforce">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170627-122212@2x.png">
-<meta property="og:updated_time" content="2017-06-27T04:25:16.000Z">
+<meta property="og:updated_time" content="2017-06-27T04:30:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="采用ELK进行网络流量分析的安装过程">
 <meta name="twitter:description" content="所有ELK组件均基于版本5.4.1
@@ -323,7 +323,9 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">server.port: 5601</div><div class="line">server.host: &quot;YourIP&quot;</div><div class="line">elasticsearch.url: &quot;http://localhost:9200&quot;</div></pre></td></tr></table></figure>
 <p>将 Kibana 设为开机启动，并且启动 Kibana 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable kibana</div><div class="line">sudo systemctl start kibana</div></pre></td></tr></table></figure>
+<p>安装Kibana的Xpack插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kibana-plugin install x-pack</div></pre></td></tr></table></figure></p>
 <p>至此所有都已经安装完成，打开网址<a href="http://YouKibanaIP:5601/,就能看到相应的数据。记得创建Kibana" target="_blank" rel="external">http://YouKibanaIP:5601/,就能看到相应的数据。记得创建Kibana</a> Sflow的索引，logstash-sflow-*。</p>
+<p>安装Kibana的Xpack插件</p>
 <p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170627-122212@2x.png" alt=""></p>
 
       
@@ -382,7 +384,7 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
         <p><span>本文标题:</span><a href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年06月09日 - 15时57分</p>
-        <p><span>最后更新:</span>2017年06月27日 - 12时25分</p>
+        <p><span>最后更新:</span>2017年06月27日 - 12时30分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/09/elk-install/" title="采用ELK进行网络流量分析的安装过程">http://godliness.github.io/2017/06/09/elk-install/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/09/elk-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
