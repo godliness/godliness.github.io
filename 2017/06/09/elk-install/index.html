@@ -31,7 +31,7 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 1getenforce">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170627-122212@2x.png">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170630-145117@2x.png">
-<meta property="og:updated_time" content="2017-06-30T06:53:58.000Z">
+<meta property="og:updated_time" content="2017-08-09T02:12:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="采用ELK进行网络流量分析的安装过程">
 <meta name="twitter:description" content="所有ELK组件均基于版本5.4.1
@@ -268,8 +268,8 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 <a id="more"></a>
 <p>确保结果是 <code>disabled</code>。</p>
 <h3 id="Step2-安装Java"><a href="#Step2-安装Java" class="headerlink" title="Step2 安装Java"></a>Step2 安装Java</h3><p>部署 Elastic stack 依赖于Java，Elasticsearch 需要 Java 8 版本，推荐使用 Oracle JDK 1.8 。我将从官方的 Oracle rpm 包安装 Java 8。</p>
-<p>使用 <code>wget</code> 命令下载 Java 8 的 JDK。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http:%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u77-b02/jdk-8u77-linux-x64.rpm&quot;</div></pre></td></tr></table></figure>
+<p>下载 Java 8 的JDK, 请选择linux64的rpm包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</div></pre></td></tr></table></figure>
 <p>然后使用 <code>rpm</code> 命令安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -ivh jdk-8u77-linux-x64.rpm</div></pre></td></tr></table></figure>
 <p>最后，检查 java JDK 版本，确保它正常工作。</p>
@@ -299,7 +299,7 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MAX_LOCKED_MEMORY=unlimited</div></pre></td></tr></table></figure>
 <p>保存并退出。</p>
 <p>Elasticsearch 配置到此结束。Elasticsearch 将在本机的 9200 端口运行，我们通过在 CentOS 服务器上启用 <code>mlockall</code> 来禁用内存交换。重新加载 systemd，将 Elasticsearch 置为开机启动，然后启动服务。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl daemon-reloadsudo </div><div class="line">systemctl enable elasticsearchsudo </div><div class="line">systemctl start elasticsearch</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl daemon-reload </div><div class="line">sudo systemctl enable elasticsearch </div><div class="line">sudo systemctl start elasticsearch</div></pre></td></tr></table></figure>
 <p>等待 Eelasticsearch 启动成功，然后检查服务器上打开的端口，确保 9200 端口的状态是 <code>LISTEN</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -plntu | grep 9200</div></pre></td></tr></table></figure>
 <p>然后检查内存锁以确保启用 <code>mlockall</code>，并使用以下命令检查 Elasticsearch 是否正在运行。</p>
@@ -314,8 +314,6 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 <p>这里我们需要安装一个logstash的插件，让它支持slfow协议的解码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">logstash-plugin install logstash-codec-sflow</div></pre></td></tr></table></figure></p>
 <p>修改<code>/etc/logstash/logstash.yml</code>配置文件添加xpack对于logstash的监控:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xpack.monitoring.elasticsearch.url: http://localhost:9200</div></pre></td></tr></table></figure></p>
 <p>这里我们没有启用xpack的鉴权，所以不需要指定用户名与密码。</p>
-<p>安装logstash的xpack插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">logstash-plugin install x-pack</div></pre></td></tr></table></figure>
 <h3 id="Step5-安装和配置-Kibana"><a href="#Step5-安装和配置-Kibana" class="headerlink" title="Step5 安装和配置 Kibana"></a>Step5 安装和配置 Kibana</h3><p>用 <code>wget</code> 下载 Kibana 5.4.1，然后使用 <code>rpm</code> 命令安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.1-x86_64.rpm</div><div class="line">rpm -ivh kibana-5.4.1-x86_64.rpm</div></pre></td></tr></table></figure>
 <p>编辑 Kibana 配置文件。</p>
@@ -324,7 +322,6 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">server.port: 5601</div><div class="line">server.host: &quot;YourIP&quot;</div><div class="line">elasticsearch.url: &quot;http://localhost:9200&quot;</div></pre></td></tr></table></figure>
 <p>将 Kibana 设为开机启动，并且启动 Kibana 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable kibana</div><div class="line">sudo systemctl start kibana</div></pre></td></tr></table></figure>
-<p>安装Kibana的Xpack插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kibana-plugin install x-pack</div></pre></td></tr></table></figure></p>
 <p>至此所有都已经安装完成，打开网址<a href="http://YouKibanaIP:5601/" target="_blank" rel="external">http://YouKibanaIP:5601/</a>, 就能看到相应的数据。记得创建Kibana Sflow的索引，logstash-sflow-*。</p>
 <p>安装Kibana的Xpack插件</p>
 <p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170627-122212@2x.png" alt=""></p>
@@ -386,7 +383,7 @@ Step1 操作系统的准备禁用CentOS7服务器上的SELinux。编辑SELinux�
         <p><span>本文标题:</span><a href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年06月09日 - 15时57分</p>
-        <p><span>最后更新:</span>2017年06月30日 - 14时53分</p>
+        <p><span>最后更新:</span>2017年08月09日 - 10时12分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/09/elk-install/" title="采用ELK进行网络流量分析的安装过程">http://godliness.github.io/2017/06/09/elk-install/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/09/elk-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
