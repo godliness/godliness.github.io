@@ -7,40 +7,17 @@
   
   <title>Go语言学习笔记 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+  <meta name="description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta name="keywords" content="golang,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言学习笔记">
 <meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
-<meta property="og:site_name" content="Peter's Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-05-25T02:13:59.000Z">
+<meta property="og:site_name" content="Peter&#39;s Blog">
+<meta property="og:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta property="og:updated_time" content="2017-08-14T08:54:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败
-
-对关闭了的Chanel进行写操作会失败
-
-单向Channel无法再转换回双向Channel
-
-关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。
-
-每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta name="twitter:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -154,7 +131,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -350,7 +327,7 @@
         <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年05月25日 - 10时13分</p>
+        <p><span>最后更新:</span>2017年08月14日 - 16时54分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -470,7 +447,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/thinking-in-java/">Java编程思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/go-in-action-records/">Go In Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/profiling-go-programs/">profiling-go-programs</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/thinking-in-java/">Java编程思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/go-in-action-records/">Go In Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
