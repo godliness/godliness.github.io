@@ -218,7 +218,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="The-Go-Blog"><a href="#The-Go-Blog" class="headerlink" title="The Go Blog"></a>The Go Blog</h1><h3 id="Profiling-Go-Programs"><a href="#Profiling-Go-Programs" class="headerlink" title="Profiling Go Programs"></a>Profiling Go Programs</h3><p>在 2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文<a href="http://research.google.com/pubs/pub37122.html" target="_blank" rel="external">Loop Recognition in C++/Java/Go/Scala.</a> 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。</p>
+              <h3 id="Go程序性能分析工具"><a href="#Go程序性能分析工具" class="headerlink" title="Go程序性能分析工具"></a>Go程序性能分析工具</h3><p>在 2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文<a href="http://research.google.com/pubs/pub37122.html" target="_blank" rel="external">Loop Recognition in C++/Java/Go/Scala.</a> 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。</p>
 <p>通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）</p>
 <p>Hundt的论文没有指定是使用的哪个版本的C++, Go, Java,和Scala工具。在这篇文章中，我们将使用最新的每周发布的6g Go编译器快照和Ubuntu Natty发行版附带g ++的版本。（我们将不会使用Java或者Scala,因为我们不擅长使用这些语言来写出有效率的程序，所以在这些语言中进行对比的话会有些不公平。由于C++是论文中所述最快的语言，所以和C++来进行对比就足够了。）（更新：在更新过的文章中，我们将要使用最近在amd64平台上开发的Go编译器的快照，并使用在2013年3月份发布的g++最新版本4.8.0）</p>
           
