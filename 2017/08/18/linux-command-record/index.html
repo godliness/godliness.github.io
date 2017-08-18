@@ -7,17 +7,17 @@
   
   <title>应用程序调优所需的一些Linux命令 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
+  <meta name="description" content="uptime  此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是2">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="应用程序调优所需的一些Linux命令">
 <meta property="og:url" content="http://godliness.github.io/2017/08/18/linux-command-record/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
-<meta property="og:description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
-<meta property="og:updated_time" content="2017-08-18T10:55:30.000Z">
+<meta property="og:description" content="uptime  此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是2">
+<meta property="og:updated_time" content="2017-08-18T10:59:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应用程序调优所需的一些Linux命令">
-<meta name="twitter:description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
+<meta name="twitter:description" content="uptime  此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是2">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -230,21 +230,19 @@
       
           
         <ul>
-<li><p>uptime</p>
+<li>uptime</li>
+</ul>
 <p>此命令可以查看服务器的系统负载情况：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ uptime</div><div class="line">12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08</div></pre></td></tr></table></figure>
 <p>第一列是系统当前时间和系统运行了多长时间</p>
 <p>第二列是当前在现用户</p>
 <p>第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24核，那么平均负载大于24以后就证明cpu超负荷）</p>
-<a id="more"></a></li>
-<li><p>dmesg | tail</p>
+<a id="more"></a>
+<p>dmesg | tail</p>
 <p>此命令可以查看系统的一些日志输出, 默认查看是10行日志，若要查看多行可以加上参数 -n 1000，这样的话查看的是1000行日志的输出。</p>
-</li>
-<li><p>vmstat 1</p>
+<p>vmstat 1</p>
 <p>此命令可以输出系统的一些详细指标:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">procs ---------memory---------- ---swap-- -----io---- -system-- ------cpu-----</div><div class="line"> r  b swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</div><div class="line">34  0    0 200889792  73708 591828    0    0     0     5    6   10 96  1  3  0  0</div><div class="line">32  0    0 200889920  73708 591860    0    0     0   592 13284 4282 98  1  1  0  0</div><div class="line">32  0    0 200890112  73708 591860    0    0     0     0 9501 2154 99  1  0  0  0</div><div class="line">32  0    0 200889568  73712 591856    0    0     0    48 11900 2459 99  0  0  0  0</div><div class="line">32  0    0 200890208  73712 591860    0    0     0     0 15898 4840 98  1  1  0  0</div></pre></td></tr></table></figure>
-</li>
-</ul>
 <p>​    r: 等待cpu资源的进程数。这个数值不包过等待IO的进程数。如果这个数值大于CPU            的核数，那么机器的CPU资源已经饱和。</p>
 <p>​    free：系统可用内存数（以千字节为单位），如果剩余内存不足，也会导致系统性能问题。下文介绍到的free命令，可以更详细的了解系统内存的使用情况。</p>
 <p>​    si, so：交换区写入和读取的数量。如果这个数据不为0，说明系统已经在使用交换区（swap），机器物理内存已经不足。</p>
@@ -361,7 +359,7 @@
         <p><span>本文标题:</span><a href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月18日 - 16时57分</p>
-        <p><span>最后更新:</span>2017年08月18日 - 18时55分</p>
+        <p><span>最后更新:</span>2017年08月18日 - 18时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/18/linux-command-record/" title="应用程序调优所需的一些Linux命令">http://godliness.github.io/2017/08/18/linux-command-record/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/18/linux-command-record/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
