@@ -5,14 +5,19 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Peter&#39;s Blog</title>
+  <title>应用程序调优所需的一些Linux命令 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Peter&#39;s Blog">
-<meta property="og:url" content="http://godliness.github.io/index.html">
+  <meta name="description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用程序调优所需的一些Linux命令">
+<meta property="og:url" content="http://godliness.github.io/2017/08/18/linux-command-record/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
+<meta property="og:description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
+<meta property="og:updated_time" content="2017-08-18T10:46:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter&#39;s Blog">
+<meta name="twitter:title" content="应用程序调优所需的一些Linux命令">
+<meta name="twitter:description" content="uptime 此命令可以查看服务器的系统负载情况： 12$ uptime12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08 第一列是系统当前时间和系统运行了多长时间 第二列是当前在现用户 第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -26,9 +31,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -40,8 +42,8 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -189,9 +191,7 @@
     </div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-linux-command-record" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-linux-command-record" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/08/18/linux-command-record/" class="article-date">
@@ -207,12 +207,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a>
+    <h1 class="article-title" itemprop="name">
+      应用程序调优所需的一些Linux命令
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -296,615 +307,194 @@
 
       
       
-    </div>
-    
-    <div class="article-info article-info-index">
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>多谢客官</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weipay.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
       
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-profiling-go-programs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/10/profiling-go-programs/" class="article-date">
-      <time datetime="2017-08-10T06:36:07.000Z" itemprop="datePublished">2017-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/profiling-go-programs/">Go程序性能分析工具</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文<a href="http://research.google.com/pubs/pub37122.html" target="_blank" rel="external">Loop Recognition in C++/Java/Go/Scala.</a> 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。</p>
-<p>通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）</p>
-<p>Hundt的论文没有指定是使用的哪个版本的C++, Go, Java,和Scala工具。在这篇文章中，我们将使用最新的每周发布的6g Go编译器快照和Ubuntu Natty发行版附带g ++的版本。（我们将不会使用Java或者Scala,因为我们不擅长使用这些语言来写出有效率的程序，所以在这些语言中进行对比的话会有些不公平。由于C++是论文中所述最快的语言，所以和C++来进行对比就足够了。）（更新：在更新过的文章中，我们将要使用最近在amd64平台上开发的Go编译器的快照，并使用在2013年3月份发布的g++最新版本4.8.0）</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/10/profiling-go-programs/#more">阅读全文 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
+        <p><span>发布时间:</span>2017年08月18日 - 16时57分</p>
+        <p><span>最后更新:</span>2017年08月18日 - 18时46分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/18/linux-command-record/" title="应用程序调优所需的一些Linux命令">http://godliness.github.io/2017/08/18/linux-command-record/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/18/linux-command-record/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/22/thinking-in-java/" class="article-date">
-      <time datetime="2017-06-22T02:54:08.000Z" itemprop="datePublished">2017-06-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/22/thinking-in-java/">Java编程思想</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li>Socket readline() 自动阻塞</li>
-<li>public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。</li>
-<li>java中的变量都是静态绑定的，方法的话只有构造函数，static和final(所有private默认是final的)是静态绑定的。</li>
-<li>多态：父类的引用指向子类对象，父类引用调用子类中没有的方法时会去父类中找（如果子类中有直接调用子类，动态绑定），父类引用调用成员变量时，去调用父类的成员变量而不是子类（静态绑定）。</li>
-<li>成员变量不初始化的话，虚拟机会自动为其初始化；但是，局部变量不初始化的话，虚拟机不会自动为其初始化（报错）。</li>
-<li>switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。</li>
-<li>子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。</li>
-<li>new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。</li>
-<li>static关键字不能应用于局部变量，只能应用于静态域。</li>
-<li>static方法中不能使用this,super关键字</li>
-<li>JAVA接口中对于字段会加上隐式的public,final,static,方法会加上public,abstract.</li>
-<li>is-a 继承 has-a 组合</li>
-<li>类的信息加载一次后被多次重用，static变量在类加载是被初始化和赋值</li>
-<li>类中所有private方法，都隐式的指定为final.</li>
-<li>final类中的方法全部隐式的定义为final方法.</li>
-<li>将方法声明为final，可以关闭该方法的后期绑定.
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/22/thinking-in-java/#more">阅读全文 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/10/profiling-go-programs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go程序性能分析工具</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysql-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/09/mysql-install/" class="article-date">
-      <time datetime="2017-06-09T09:20:49.000Z" itemprop="datePublished">2017-06-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-      <input type="hidden" class="isFancy" />
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
     
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/08/18/linux-command-record/" data-title="应用程序调优所需的一些Linux命令" data-url="http://godliness.github.io/2017/08/18/linux-command-record/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godliness"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>安装环境：CentOS7 64位，MySQL5.7</p>
-<h3 id="Step-1-配置YUM源"><a href="#Step-1-配置YUM源" class="headerlink" title="Step 1 配置YUM源"></a>Step 1 配置YUM源</h3><p>在官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> ，或者手动下载安装包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</div><div class="line"></div><div class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</div></pre></td></tr></table></figure>
-<p>检查mysql源是否安装成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> yum repolist enabled | grep &quot;mysql.*-community.*&quot;</div><div class="line"> </div><div class="line">mysql-connectors-community/x86_64 MySQL Connectors Community                  36</div><div class="line">mysql-tools-community/x86_64      MySQL Tools Community                       47</div><div class="line">mysql57-community/x86_64          MySQL 5.7 Community Server                 187</div></pre></td></tr></table></figure>
-<p>看到如上显示则表示安装成功了。 </p>
-<p>其次可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/09/mysql-install/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-elk-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/09/elk-install/" class="article-date">
-      <time datetime="2017-06-09T07:57:56.000Z" itemprop="datePublished">2017-06-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <blockquote>
-<p>所有ELK组件均基于版本5.4.1</p>
-</blockquote>
-<h3 id="Step1-操作系统的准备"><a href="#Step1-操作系统的准备" class="headerlink" title="Step1 操作系统的准备"></a>Step1 操作系统的准备</h3><p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/selinux</div></pre></td></tr></table></figure>
-<p>将 SELINUX的值从enforcing改成disabled。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELINUX=disabled</div></pre></td></tr></table></figure>
-<p>然后重启服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reboot</div></pre></td></tr></table></figure></p>
-<p>再次登录服务器并检查 SELinux 状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getenforce</div></pre></td></tr></table></figure>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elk/">elk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/09/elk-install/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-in-action-records" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/25/go-in-action-records/" class="article-date">
-      <time datetime="2017-05-25T02:10:55.000Z" itemprop="datePublished">2017-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/go-in-action-records/">Go In Action</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li>Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。</li>
-<li>main.go 文件中 init 方法会在 main 方法之前执行</li>
-<li>main方法在main包中才会编译出可执行文件</li>
-<li>import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法</li>
-<li>package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量</li>
-<li>引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil</li>
-<li>var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。</li>
-<li>在main方法结束前来结束所有的go协程会减少bug和错误</li>
-<li>for range 的第二个参数其实就是value的复制元素</li>
-<li>函数传参都是值拷贝</li>
-<li>定义常量时不需要指定类型</li>
-<li>定义接口时，若方法只有一个，那么它的命名需要加上后缀“er”</li>
-<li>若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/05/25/go-in-action-records/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <a href="/2017/08/10/profiling-go-programs/" title="下一篇: Go程序性能分析工具">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-</li>
-<li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
-</li>
-<li><p>被设置成nil的Channel会处于阻塞状态</p>
-</li>
-<li><p>select语句要记得加default，如此可以避免select阻塞</p>
-</li>
-<li><p>在使用Mutex时，尽量缩小锁力度</p>
-</li>
-<li><p>Mutex不支持递归锁，双重锁定会导致死锁</p>
-</li>
-<li><p>对性能要求较高时，应避免使用defer Unlock</p>
-</li>
-<li><p>读写并发时，用RWMutex性能会更好一些</p>
-          
-      
-      
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/04/06/go-language-study-records/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/profiling-go-programs/">Go程序性能分析工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/thinking-in-java/">Java编程思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/go-in-action-records/">Go In Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-install-etcd-teach" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/30/install-etcd-teach/" class="article-date">
-      <time datetime="2017-03-30T10:25:11.000Z" itemprop="datePublished">2017-03-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <script>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址</div><div class="line"></div><div class="line">ETCD_VER=v3.1.5  #设置etcd版本号</div><div class="line"></div><div class="line">wget $&#123;DOWNLOAD_URL&#125;/$&#123;ETCD_VER&#125;/etcd-$&#123;ETCD_VER&#125;-linux-amd64.tar.gz</div><div class="line"></div><div class="line">tar xvf etcd-$&#123;ETCD_VER&#125;-linux-amd64.tar.gz</div></pre></td></tr></table></figure>
-<h4 id="部署文件"><a href="#部署文件" class="headerlink" title="部署文件"></a>部署文件</h4><p>将如下内容写入文件 /etc/etcd/etcd.conf 中：</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/etcd/">etcd</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/03/30/install-etcd-teach/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-comments-review" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/20/go-comments-review/" class="article-date">
-      <time datetime="2017-03-20T14:53:28.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="Gofmt"><a href="#Gofmt" class="headerlink" title="Gofmt"></a>Gofmt</h4><p>在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。</p>
-<h4 id="Go变量命名"><a href="#Go变量命名" class="headerlink" title="Go变量命名"></a>Go变量命名</h4><p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
-<h4 id="Go协程的生命周期"><a href="#Go协程的生命周期" class="headerlink" title="Go协程的生命周期"></a>Go协程的生命周期</h4><p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。<br>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/03/20/go-comments-review/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-
-
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
