@@ -122,6 +122,8 @@
                             
                                 <a class="fl weibo" target="_blank" href="http://weibo.com/1570530605" title="weibo">weibo</a>
                             
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/godlinesssss" title="twitter">twitter</a>
+                            
                         </ul>
                     </nav>
                 </section>
@@ -129,7 +131,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -183,6 +185,8 @@
                     
                         <a class="weibo" target="_blank" href="http://weibo.com/1570530605" title="weibo">weibo</a>
                     
+                        <a class="twitter" target="_blank" href="https://twitter.com/godlinesssss" title="twitter">twitter</a>
+                    
                 </div>
             </nav>
         </header>                
@@ -190,6 +194,85 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-microservice-monitor-introduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/21/microservice-monitor-introduce/" class="article-date">
+      <time datetime="2017-08-21T03:33:00.000Z" itemprop="datePublished">2017-08-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/21/microservice-monitor-introduce/">分布式微服务监控</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="什么是微服务？"><a href="#什么是微服务？" class="headerlink" title="什么是微服务？"></a>什么是微服务？</h2><p>​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud</a>, <a href="https://www.cncf.io/" target="_blank" rel="external">CNCF</a>等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。</p>
+<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png" alt=""></p>
+<ol>
+<li><p>服务网关</p>
+<p>将后端的多个服务变成黑盒，对外之暴露唯一的服务网关，网关根据路由配置将外面访问的请求转发到具体的某一个服务上。一些成熟的网关组件其实除了路由功能以外，还集成了诸如，权限验证，服务注册/发现/负责均衡，限流和容错的功能。</p>
+</li>
+<li><p>权限验证 </p>
+<p>若想要请求后端的微服务，需要对请求进行相应验证，第一次访问时根据相应的授权凭证（例如:用户名/密码），到授权服务那里进行权限鉴定，若鉴定成功，根据相应的加盐加密机制会生成一个Token串，下次请求再来时需要携带此Token串，授权服务会对Token串进行解密校验，该Token串是唯一的，并且可以标识用户的身份以及存储一些用户信息。</p>
+</li>
+<li><p>服务注册/发现/负载均衡</p>
+<p>每个微服务启动需要到注册中心组建去注册自己，将自己的地址以及服务名告诉注册中心，若要实现基于性能的负载均衡，同时还要上传自己的CPU,内存等信息给注册中心。当需要消费服务时需要先到注册中心那里根据服务名来获取提供服务的服务地址。每个服务一般会注册多个实例，一般会根据一些策略（wrr，round robin等）来挑选具体某一个服务实例。</p>
+</li>
+<li><p>限流/熔断/降级</p>
+<p>熔断其实类似日常生活中的“保险丝”，一个用户请求的调用，在微服务内部可能是多个服务之间的连环调用，若其中一个或几个服务产生了系统瓶颈，可能就会导致超时，这样会阻碍整体请求的调用进度，从而导致整个系统连接数过多，造成系统瘫痪，那么熔断要做的就是当发现某一服务的错误、超时、负载，达到某一指标时候来拦截后续的请求。当服务产生熔断后，那么就需要对服务进行降级，降级可以立即给用户返回，即日返回的是空白内容，顾名思义限流就是限制请求的qps，将请求的数量控制在服务可以接受的范围内。</p>
+</li>
+<li><p>消息中心</p>
+<p>它在微服务中起到了很多作用，利用消息的订阅发布可以解决，分布式最终一致性的问题，而且也可以实现服务之间的异步调用。</p>
+</li>
+<li><p>请求追踪</p>
+</li>
+</ol>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-linux-command-record" class="article article-type-post" itemscope itemprop="blogPost">
   
