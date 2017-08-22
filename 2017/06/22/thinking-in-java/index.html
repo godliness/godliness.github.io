@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://godliness.github.io/2017/06/22/thinking-in-java/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
 <meta property="og:description" content="Socket readline() 自动阻塞 public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任">
-<meta property="og:updated_time" content="2017-08-14T08:54:18.000Z">
+<meta property="og:updated_time" content="2017-08-22T02:18:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java编程思想">
 <meta name="twitter:description" content="Socket readline() 自动阻塞 public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任">
@@ -242,14 +242,14 @@
 <li>switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。</li>
 <li>子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。</li>
 <li>new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。</li>
-<li>static关键字不能应用于局部变量，只能应用于静态域。</li>
+<li>static关键字不能应用于局部变量，只能应用于静态域。<a id="more"></a></li>
 <li>static方法中不能使用this,super关键字</li>
 <li>JAVA接口中对于字段会加上隐式的public,final,static,方法会加上public,abstract.</li>
 <li>is-a 继承 has-a 组合</li>
 <li>类的信息加载一次后被多次重用，static变量在类加载是被初始化和赋值</li>
 <li>类中所有private方法，都隐式的指定为final.</li>
 <li>final类中的方法全部隐式的定义为final方法.</li>
-<li>将方法声明为final，可以关闭该方法的后期绑定.<a id="more"></a></li>
+<li>将方法声明为final，可以关闭该方法的后期绑定.</li>
 <li>在父类构造器中调用被子类覆盖的方法时，方法中所涉及到的子类变量，无论子类为该变量的初始化值为多少，在父类中该变量的值都是零/null</li>
 <li>子类对象的堆内存中包含父类的对象</li>
 <li>栈有一个很重要的特殊性，就是存在栈中的数据可以共享。</li>
@@ -325,7 +325,7 @@
         <p><span>本文标题:</span><a href="/2017/06/22/thinking-in-java/">Java编程思想</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年06月22日 - 10时54分</p>
-        <p><span>最后更新:</span>2017年08月14日 - 16时54分</p>
+        <p><span>最后更新:</span>2017年08月22日 - 10时18分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/22/thinking-in-java/" title="Java编程思想">http://godliness.github.io/2017/06/22/thinking-in-java/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/06/22/thinking-in-java/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
 <meta property="og:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-08-14T08:54:18.000Z">
+<meta property="og:updated_time" content="2017-08-22T02:20:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言学习笔记">
 <meta name="twitter:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
@@ -245,6 +245,7 @@
 <li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
 </li>
 <li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
+<a id="more"></a>
 </li>
 <li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
 </li>
@@ -259,7 +260,6 @@
 <li><p>对性能要求较高时，应避免使用defer Unlock</p>
 </li>
 <li><p>读写并发时，用RWMutex性能会更好一些</p>
-<a id="more"></a>
 </li>
 <li><p>对单个数据读写保护，可尝试使用原子操作</p>
 </li>
@@ -331,7 +331,7 @@
         <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年08月14日 - 16时54分</p>
+        <p><span>最后更新:</span>2017年08月22日 - 10时20分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
