@@ -561,11 +561,7 @@
 </blockquote>
 <h3 id="Step1-操作系统的准备"><a href="#Step1-操作系统的准备" class="headerlink" title="Step1 操作系统的准备"></a>Step1 操作系统的准备</h3><p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/selinux</div></pre></td></tr></table></figure>
-<p>将 SELINUX的值从enforcing改成disabled。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELINUX=disabled</div></pre></td></tr></table></figure>
-<p>然后重启服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reboot</div></pre></td></tr></table></figure></p>
-<p>再次登录服务器并检查 SELinux 状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getenforce</div></pre></td></tr></table></figure>
+<p>将 SELINUX的值从enforcing改成disabled。<br>
           
       
       
