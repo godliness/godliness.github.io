@@ -7,18 +7,18 @@
   
   <title>分布式微服务监控 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。   服务网关 将后端的多个服务变成黑盒，对外之暴露唯一的服务网关">
+  <meta name="description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
 <meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式微服务监控">
 <meta property="og:url" content="http://godliness.github.io/2017/08/21/microservice-monitor-introduce/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
-<meta property="og:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。   服务网关 将后端的多个服务变成黑盒，对外之暴露唯一的服务网关">
+<meta property="og:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png">
-<meta property="og:updated_time" content="2017-08-21T10:20:12.000Z">
+<meta property="og:updated_time" content="2017-08-22T02:16:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式微服务监控">
-<meta name="twitter:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。   服务网关 将后端的多个服务变成黑盒，对外之暴露唯一的服务网关">
+<meta name="twitter:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
 <meta name="twitter:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
@@ -236,7 +236,7 @@
       
           
         <h2 id="什么是微服务？"><a href="#什么是微服务？" class="headerlink" title="什么是微服务？"></a>什么是微服务？</h2><p>​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud</a>, <a href="https://www.cncf.io/" target="_blank" rel="external">CNCF</a>等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。</p>
-<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png" alt=""></p>
+<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png" alt=""><br><a id="more"></a></p>
 <ol>
 <li><p>服务网关</p>
 <p>将后端的多个服务变成黑盒，对外之暴露唯一的服务网关，网关根据路由配置将外面访问的请求转发到具体的某一个服务上。一些成熟的网关组件其实除了路由功能以外，还集成了诸如，权限验证，服务注册/发现/负责均衡，限流和容错的功能。</p>
@@ -313,7 +313,7 @@
         <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">分布式微服务监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月21日 - 18时20分</p>
+        <p><span>最后更新:</span>2017年08月22日 - 10时16分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="分布式微服务监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
