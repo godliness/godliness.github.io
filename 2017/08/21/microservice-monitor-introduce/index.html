@@ -5,21 +5,21 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>分布式微服务监控 | Peter&#39;s Blog</title>
+  <title>说说微服务与监控 | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
-<meta name="keywords" content="微服务">
+  <meta name="description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
+<meta name="keywords" content="微服务,监控">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式微服务监控">
+<meta property="og:title" content="说说微服务与监控">
 <meta property="og:url" content="http://godliness.github.io/2017/08/21/microservice-monitor-introduce/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
-<meta property="og:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
-<meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png">
-<meta property="og:updated_time" content="2017-08-22T02:16:40.000Z">
+<meta property="og:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
+<meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
+<meta property="og:updated_time" content="2017-08-23T03:56:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式微服务监控">
-<meta name="twitter:description" content="什么是微服务？​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
-<meta name="twitter:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png">
+<meta name="twitter:title" content="说说微服务与监控">
+<meta name="twitter:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
+<meta name="twitter:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -135,7 +135,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -214,7 +214,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      分布式微服务监控
+      说说微服务与监控
     </h1>
   
 
@@ -225,7 +225,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/监控/">监控</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -235,8 +235,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="什么是微服务？"><a href="#什么是微服务？" class="headerlink" title="什么是微服务？"></a>什么是微服务？</h2><p>​    微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud</a>, <a href="https://www.cncf.io/" target="_blank" rel="external">CNCF</a>等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。</p>
-<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170821-170833@2x.png" alt=""><br><a id="more"></a></p>
+        <h2 id="微服务简介"><a href="#微服务简介" class="headerlink" title="微服务简介"></a>微服务简介</h2><p>微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud</a>, <a href="https://www.cncf.io/" target="_blank" rel="external">CNCF</a>等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。</p>
+<p><img src="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png" alt=""><br><a id="more"></a></p>
 <ol>
 <li><p>服务网关</p>
 <p>将后端的多个服务变成黑盒，对外之暴露唯一的服务网关，网关根据路由配置将外面访问的请求转发到具体的某一个服务上。一些成熟的网关组件其实除了路由功能以外，还集成了诸如，权限验证，服务注册/发现/负责均衡，限流和容错的功能。</p>
@@ -253,9 +253,27 @@
 <li><p>消息中心</p>
 <p>它在微服务中起到了很多作用，利用消息的订阅发布可以解决，分布式最终一致性的问题，而且也可以实现服务之间的异步调用。</p>
 </li>
-<li><p>请求追踪</p>
+<li><p>分布式跟踪</p>
+<p>分布式微服务中，对外暴露的用户请求，在微服务内部可能会是服务之间互相调用多次的结果，某一个请求超时或出现错误，我们都需要了如指掌。目前相应组件也有很好的实现，主要就是根据链表的数据结构，对整个调用链进行唯一的TraceID标识，每个调用节点也有自己的SpanID和上一个调用节点的ParentID,ParentID为Null的就是起始调用节点。每个节点会存储相应的信息，包括客户端发起请求时间，服务端收到请求时间等等。默认这些信息都会存入内存中，也可进行数据持久化，然后通过WebUI查看整个调用链的详细信息，便于分析。</p>
+</li>
+<li><p>REST/RPC/序列化</p>
+<p>微服务中，无论是对外暴露的接口，还是服务之间互相调用的接口，都离不开通讯协议与序列化。通讯协议有我们所熟知的http, soap, websocket,rpc等，序列化有json,xml,protobuf,bytes,text等。对外提供服务的接口一般都会使用http+json的方式，服务内部之间调用的话通常会使用rpc+prtobuf的方式，rcp是二进制的，它比http传输性能要高，而且protobuf的序列化/反序列化性能同样比json的要高，http是可以跨语言的，没有语言的约束，但rpc对语言是有一定约束的，但目前有很多成熟的rpc框架同样也可以实现跨语言。</p>
+</li>
+<li><p>统一配置管理</p>
+<p>微服务自然会有很多个小服务，若每个服务都有自己的一些配置，那么运维起来简直就是噩梦，所以统一的配置管理是必要的，目前有一些成熟的开源的框架都可以做到，有了配置中心，我们就可以根据不同环境应用不同的配置，多种配置都可以存到git中，进行版本控制，根据路径规则匹配不用的配置。同样也可以支持热更新，无需重启服务。</p>
+</li>
+<li><p>CI/CD</p>
+<p>持续集成与持续交付，快速的迭代是微服务所需的，服务多了本来就复杂，而且服务之间的接口变更和新功能的添加都会比较容易造成互相制约，这样的话，容持续集成与交付没有的话，那项目进度就会被拉的很长，目前CI/CD比较好的方式就是，git + jekins + docker, git负责源码版本控制，jekins进行自动化的打包，编译，测试，部署，这里部署我们可以使用docker容器，也可以不使用，直接放到物理机上运行，主要还是看项目的底层架构。</p>
+</li>
+<li><p>日志</p>
+<p>分布式的微服务，每个服务都会产生日志，那么当要分析问题时我们肯定不会每台机器，每台服务去查看日志，这也会是一场噩梦，好的办法就是收集聚合所有服务的日志，然后汇总到一起，根据服务名，TraceID,IP等一些关键字进行过滤来找出有用的日志。ELK就是解决日志问题的利器。</p>
+</li>
+<li><p>监控</p>
+<p>单点应用定位问题相对来说是比较好定位的，但是服务多了，微服务之间互相的接口交互，哪个节点出现了问题都需要快速定位到出现问题的点，若微服务运行在容器当中，我们同样要考虑容器的监控，以及app的日志监控，同样还有app的业务监控。</p>
 </li>
 </ol>
+<p>以上已经把微服务的大部分功能模块做了一个严明扼要的阐述，目的是可以对微服务有一个全局的认识，那么下面我们就来仔细聊聊微服务的监控。</p>
+<p>##微服务的监控</p>
 
       
       
@@ -310,12 +328,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">分布式微服务监控</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月22日 - 10时16分</p>
+        <p><span>最后更新:</span>2017年08月23日 - 11时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="分布式微服务监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="说说微服务与监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -342,7 +360,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是微服务？"><span class="toc-number">1.</span> <span class="toc-text">什么是微服务？</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务简介"><span class="toc-number">1.</span> <span class="toc-text">微服务简介</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -402,7 +420,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/microservice-monitor-introduce/">分布式微服务监控</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/profiling-go-programs/">Go程序性能分析工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/thinking-in-java/">Java编程思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/go-in-action-records/">Go In Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/profiling-go-programs/">Go程序性能分析工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/22/thinking-in-java/">Java编程思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/go-in-action-records/">Go In Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/install-etcd-teach/">部署etcd简易教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
