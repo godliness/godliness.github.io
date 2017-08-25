@@ -16,7 +16,7 @@
 <meta property="og:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png">
-<meta property="og:updated_time" content="2017-08-25T07:22:40.000Z">
+<meta property="og:updated_time" content="2017-08-25T07:34:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说微服务与监控">
 <meta name="twitter:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
@@ -277,7 +277,7 @@
 <h2 id="微服务的监控"><a href="#微服务的监控" class="headerlink" title="微服务的监控"></a>微服务的监控</h2><p>对于微服务系统来说，相对比较复杂的是监控，容器编排，还有日志收集，容器编排目前有很好的实现，比如<a href="https://kubernetes.io/" target="_blank" rel="external">Kubernetes</a>, <a href="https://github.com/docker/swarm" target="_blank" rel="external">Swarm</a>, <a href="http://mesos.apache.org/" target="_blank" rel="external">Mesos</a>,等等，这些都解决了容器的编排问题，这里之所以提到容器编排，是因为微服务的落地比较好的实现方式就是运行在容器当中，多亏了这些开源组件的存在，很多微服务所要考虑的问题都被集成到这些平台中了。那么对于这种多说上千万个虚拟容器的大集群来说，监控到底怎么实现呢？</p>
 <p>基于容器的微服务监控大致可以分为，容器与宿主机的监控(基础监控)，API监控，调用链监控以及应用本身的监控，那么接下来就简单的说一下这几种方案。</p>
 <p><strong>容器与宿主机的监控</strong></p>
-<p>基于容器的微服务监控和原始的监控是有很大区别的，因为服务的实例生存周期很短，分分钟可能就会有容器的生灭。微服务的容器与宿主机的监控离不开CPU,内存,磁盘,网卡这些基础的性能指标，对于宿主机的监控来说，我们可以依然使用原始的监控方式，每个宿主机安装一个代理来采集服务器的性能指标，代理在采集性能指标的时候可以打上时间戳和相应的标签来区分不同性能指标的数据维度（metric），然后将监控数据汇总到时间序列数据库，里面的数据可以对接目前一些开源的组件来进行可视化的展示，也可以对接报警服务（结合报警服务的报警策略）进行报警。容器的监控自然就和宿主机不太一样了，我们不能说给每个容器镜像内部都集成一个监控代理（agent）,这样的话侵入性太强, 不易于维护。目前有比较成熟的开源产品<a href="https://prometheus.io/" target="_blank" rel="external">Promethus</a>，它有很多的Exporter可以用来采集监控数据，例如我们想采集Kubernetes上所有容器（pod）的性能指标的话，Promethus可以通过直接配置多个Kubernetes ApiServer的Endpoints来监控整个Kubernetes集群。</p>
+<p>基于容器的微服务监控和原始的监控是有很大区别的，因为服务的实例生存周期很短，分分钟可能就会有容器的生灭。微服务的容器与宿主机的监控离不开CPU,内存,磁盘,网卡这些基础的性能指标，对于宿主机的监控来说，我们可以依然使用原始的监控方式，每个宿主机安装一个代理来采集服务器的性能指标，代理在采集性能指标的时候可以打上时间戳和相应的标签来区分不同性能指标的数据维度（metric），然后将监控数据汇总到时间序列数据库，里面的数据可以对接目前一些开源的组件来进行可视化的展示，也可以对接报警服务（结合报警服务的报警策略）进行报警。容器的监控自然就和宿主机不太一样了，我们不能说给每个容器镜像内部都集成一个监控代理（agent）,这样的话侵入性太强, 不易于维护。目前有比较成熟的开源产品<a href="https://prometheus.io/" target="_blank" rel="external">Prometheus</a>，它有很多的Exporter可以用来采集监控数据，例如我们想采集Kubernetes上所有容器（pod）的性能指标的话，Promethus可以通过直接配置多个Kubernetes ApiServer的Endpoints来监控整个Kubernetes集群。</p>
 <p><strong>API监控</strong></p>
 <p>微服务对外暴露的api都是经过服务网关来访问的，那么我们可以在网关上对这些api进行流量的分析与监控，监控api的访问量，api的响应体状态码，当某些指标达到阀值时我们就可以进行报警，目前也有很多开源的产品可以使用，例如<a href="https://getkong.org/" target="_blank" rel="external">Kong</a>，它可以安装很多功能性插件，其中就有dashboard插件，以及监控插件。</p>
 <p><strong>调用链监控</strong></p>
@@ -344,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月25日 - 15时22分</p>
+        <p><span>最后更新:</span>2017年08月25日 - 15时34分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="说说微服务与监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
