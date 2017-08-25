@@ -15,7 +15,8 @@
 <meta property="og:site_name" content="Peter&#39;s Blog">
 <meta property="og:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
-<meta property="og:updated_time" content="2017-08-23T03:59:04.000Z">
+<meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png">
+<meta property="og:updated_time" content="2017-08-25T06:18:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说微服务与监控">
 <meta name="twitter:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的概念。">
@@ -239,7 +240,7 @@
 <p><img src="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png" alt=""><br><a id="more"></a></p>
 <ol>
 <li><p>服务网关</p>
-<p>将后端的多个服务变成黑盒，对外之暴露唯一的服务网关，网关根据路由配置将外面访问的请求转发到具体的某一个服务上。一些成熟的网关组件其实除了路由功能以外，还集成了诸如，权限验证，服务注册/发现/负责均衡，限流和容错的功能。</p>
+<p>将后端的多个服务变成黑盒，对外之暴露唯一的服务网关，网关根据路由配置将外面访问的请求转发到具体的某一个服务上。一些成熟的网关组件其实除了路由功能以外，还集成了诸如，权限验证，服务注册/发现/负责均衡，熔断,限流和降级的功能。</p>
 </li>
 <li><p>权限验证 </p>
 <p>若想要请求后端的微服务，需要对请求进行相应验证，第一次访问时根据相应的授权凭证（例如:用户名/密码），到授权服务那里进行权限鉴定，若鉴定成功，根据相应的加盐加密机制会生成一个Token串，下次请求再来时需要携带此Token串，授权服务会对Token串进行解密校验，该Token串是唯一的，并且可以标识用户的身份以及存储一些用户信息。</p>
@@ -248,7 +249,7 @@
 <p>每个微服务启动需要到注册中心组建去注册自己，将自己的地址以及服务名告诉注册中心，若要实现基于性能的负载均衡，同时还要上传自己的CPU,内存等信息给注册中心。当需要消费服务时需要先到注册中心那里根据服务名来获取提供服务的服务地址。每个服务一般会注册多个实例，一般会根据一些策略（wrr，round robin等）来挑选具体某一个服务实例。</p>
 </li>
 <li><p>限流/熔断/降级</p>
-<p>熔断其实类似日常生活中的“保险丝”，一个用户请求的调用，在微服务内部可能是多个服务之间的连环调用，若其中一个或几个服务产生了系统瓶颈，可能就会导致超时，这样会阻碍整体请求的调用进度，从而导致整个系统连接数过多，造成系统瘫痪，那么熔断要做的就是当发现某一服务的错误、超时、负载，达到某一指标时候来拦截后续的请求。当服务产生熔断后，那么就需要对服务进行降级，降级可以立即给用户返回，即日返回的是空白内容，顾名思义限流就是限制请求的qps，将请求的数量控制在服务可以接受的范围内。</p>
+<p>熔断其实类似日常生活中的“保险丝”，一个用户请求的调用，在微服务内部可能是多个服务之间的连环调用，若其中一个或几个服务产生了系统瓶颈，可能就会导致超时，这样会阻碍整体请求的调用进度，从而导致整个系统连接数过多，造成系统瘫痪，那么熔断要做的就是当发现某一服务的错误、超时、负载，达到某一指标时候来拦截后续的请求。当服务产生熔断后，那么就需要对服务进行降级，降级可以立即给用户返回，即时返回空白内容，顾名思义限流就是限制请求的qps，将请求的数量控制在服务可以接受的范围内。</p>
 </li>
 <li><p>消息中心</p>
 <p>它在微服务中起到了很多作用，利用消息的订阅发布可以解决，分布式最终一致性的问题，而且也可以实现服务之间的异步调用。</p>
@@ -263,7 +264,7 @@
 <p>微服务自然会有很多个小服务，若每个服务都有自己的一些配置，那么运维起来简直就是噩梦，所以统一的配置管理是必要的，目前有一些成熟的开源的框架都可以做到，有了配置中心，我们就可以根据不同环境应用不同的配置，多种配置都可以存到git中，进行版本控制，根据路径规则匹配不用的配置。同样也可以支持热更新，无需重启服务。</p>
 </li>
 <li><p>CI/CD</p>
-<p>持续集成与持续交付，快速的迭代是微服务所需的，服务多了本来就复杂，而且服务之间的接口变更和新功能的添加都会比较容易造成互相制约，这样的话，容持续集成与交付没有的话，那项目进度就会被拉的很长，目前CI/CD比较好的方式就是，git + jekins + docker, git负责源码版本控制，jekins进行自动化的打包，编译，测试，部署，这里部署我们可以使用docker容器，也可以不使用，直接放到物理机上运行，主要还是看项目的底层架构。</p>
+<p>持续集成与持续交付，快速的迭代是微服务所需的，服务多了本来就复杂，而且服务之间的接口变更和新功能的添加都会比较容易造成互相制约，这样的话，容持续集成与交付没有的话，那项目进度就会被拉的很长，目前CI/CD比较好的方式就是，git + jenkins + docker, git负责源码版本控制，jekins进行自动化的打包，编译，测试，部署，这里部署我们可以使用docker容器，也可以不使用，直接放到物理机上运行，主要还是看项目的底层架构。</p>
 </li>
 <li><p>日志</p>
 <p>分布式的微服务，每个服务都会产生日志，那么当要分析问题时我们肯定不会每台机器，每台服务去查看日志，这也会是一场噩梦，好的办法就是收集聚合所有服务的日志，然后汇总到一起，根据服务名，TraceID,IP等一些关键字进行过滤来找出有用的日志。ELK就是解决日志问题的利器。</p>
@@ -273,7 +274,20 @@
 </li>
 </ol>
 <p>以上已经把微服务的大部分功能模块做了一个严明扼要的阐述，目的是可以对微服务有一个全局的认识，那么下面我们就来仔细聊聊微服务的监控。</p>
-<h2 id="微服务的监控"><a href="#微服务的监控" class="headerlink" title="微服务的监控"></a>微服务的监控</h2>
+<h2 id="微服务的监控"><a href="#微服务的监控" class="headerlink" title="微服务的监控"></a>微服务的监控</h2><p>对于微服务系统来说，相对比较复杂的是监控，容器编排，还有日志收集，容器编排目前有很好的实现，比如Kubernetes, Swarm, Mesos,等等，这些都解决了容器的编排问题，这里之所以提到容器编排，是因为微服务的落地比较好的实现方式就是落在容器当中，再加上这些容器的资源调度和编排管理平台很多微服务所要考虑的问题都被集成到这些平台中了。那么对于这种多说上千万个虚拟容器的大集群来说，监控到底怎么实现呢？</p>
+<p>基于容器的微服务监控大致可以分为，容器与宿主机的监控(基础监控)，API监控，调用链监控以及应用本身的监控，那么接下来就简单的说一下这几种方案。</p>
+<p><strong>容器与宿主机的监控</strong></p>
+<p>基于容器的微服务监控和原始的监控是有很大区别的，因为服务的实例生存周期很短，分分钟可能就会有容器的生灭。同样微服务的容器与宿主机的监控同样离不开CPU,内存,磁盘,网卡这些基础的性能指标。对于宿主机的监控，我们可以依然使用原始的监控方式，每个宿主机安装一个代理来采集服务器的性能指标，代理在采集性能指标的时候可以打上时间戳和相应的标签来区分不同的数据维度性能指标（metric），然后将监控数据汇总到时间序列数据库，里面的数据可以对接目前一些开源的引用来进行可视化的展示，也可以对接报警服务（结合报警服务的报警策略）进行报警。容器的监控自然就和宿主机不太一样了，我们不能说给每个容器镜像内部都集成一个监控代理（agent）,这样的话侵入性太强, 不易于维护。目前有比较成熟的开源产品<a href="https://prometheus.io/" target="_blank" rel="external">Promethus</a>，它有很多的Exporter可以用来采集监控数据，例如我们想采集Kubernetes上所有容器（pod）的性能指标的话，Promethus可以通过直接配置多个Kubernetes ApiServer的Endpoints来监控整个Kubernetes集群。</p>
+<p><strong>API监控</strong></p>
+<p>微服务对外暴露的api都是经过服务网关来访问的，那么我们可以在网关上对这些api进行流量的分析与监控，监控api的访问量，api的响应体状态码，当某些指标达到阀值时我们就可以进行报警，目前也有很多开源的产品可以使用，例如<a href="https://getkong.org/" target="_blank" rel="external">Kong</a>，它可以安装很多功能性插件，其中就有dashboard插件，以及监控插件。</p>
+<p><strong>调用链监控</strong></p>
+<p>有了对整个微服务调用链的监控，我们可以有一种一览全局的感觉，对个微服务集群的部署情况，以及运行情况了如指掌，可以很快的定位问题，协同开发人员进行性能调优，量化运维部门的价值。目前有比较成熟的开源项目<a href="https://research.google.com/pubs/pub36356.html" target="_blank" rel="external">Google Dapper</a>没有开源只有论文，<a href="http://zipkin.io/" target="_blank" rel="external">Zipkin</a>, <a href="http://opentracing.io/" target="_blank" rel="external">OpenTracing</a>,这些都是根据谷歌的论文开发的开源产品都很不错。</p>
+<p><strong>应用本身的监控</strong></p>
+<p>微服务应用本身的监控就实践方式就比较灵活了，多种多样。这里我就说一下我自己基于Kubernetes实现的微服务应用级的监控，先上个图：</p>
+<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png" alt=""></p>
+<p>在Kubernetes的master节点，也就是安装apiserver的那台服务器上运行一个监控插件，该插件可以通过一个kubernetes提供的官方<a href="https://github.com/kubernetes/client-go" target="_blank" rel="external">客户端</a>来访问apiserver,首先我们要告知插件要监控哪个namespace下的哪个service，然后，插件通过和apiserver进行交互获取某个service下所有Pods的实例，插件会并发访问所有pod提供的/metrics接口（Path可配）,并给每个pod的返回数据（json格式，遵守一定的数据格式契约）打上pod_name的标签来标识每个pod返回的metrics，打上pod_name标签的同时也会打上service_name的标签用来区分具体是哪个service的监控数据。通过插件收集整理后的数据会上传到时间序列数据库中，后续就可以根据数据进行可视化分析以及展示（<a href="https://grafana.com/" target="_blank" rel="external">Granfana</a>），同样若是结合开源监控<a href="https://prometheus.io/" target="_blank" rel="external">Promethus</a>, <a href="https://github.com/TalkingData/owl" target="_blank" rel="external">OWL</a>也可以实现监控报警，只不过结合不同的监控需要对接它们的自定义格式罢了。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>微服务目前也是在如火如荼的发展着，随之产生的技术栈和开源组件也是百花齐放，到底什么样的方式和组件最适合，最好用都是仁者见仁，智者见智。技术无好坏，用的顺手就可以，管它什么语言实现的，重要的是理解与思想。以上是<a href="https://godliness.github.io">鄙人</a>的一些拙见，阅读了一些技术性文章和书籍加上自己的一些理解所总结，希望能给那些还没有走进微服务的人带了一点启发。</p>
+
       
       
         <div class="page-reward">
@@ -330,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月23日 - 11时59分</p>
+        <p><span>最后更新:</span>2017年08月25日 - 14时18分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="说说微服务与监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -359,7 +373,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务简介"><span class="toc-number">1.</span> <span class="toc-text">微服务简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务的监控"><span class="toc-number">2.</span> <span class="toc-text">微服务的监控</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务简介"><span class="toc-number">1.</span> <span class="toc-text">微服务简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务的监控"><span class="toc-number">2.</span> <span class="toc-text">微服务的监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
