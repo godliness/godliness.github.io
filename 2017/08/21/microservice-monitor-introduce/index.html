@@ -16,7 +16,7 @@
 <meta property="og:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png">
-<meta property="og:updated_time" content="2017-08-25T07:34:56.000Z">
+<meta property="og:updated_time" content="2017-08-28T03:01:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说微服务与监控">
 <meta name="twitter:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
@@ -286,7 +286,7 @@
 <p>微服务应用本身的监控的方式就比较多样了。这里我就说一下我自己基于Kubernetes实现的微服务应用级的监控插件，先上个图：</p>
 <p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png" alt=""></p>
 <p>在Kubernetes的master节点，也就是安装apiserver的那台服务器上运行一个监控插件，该插件可以通过一个kubernetes提供的官方<a href="https://github.com/kubernetes/client-go" target="_blank" rel="external">客户端</a>来访问apiserver,首先我们要告知插件要监控哪个namespace下的哪个service，然后，插件通过和apiserver进行交互获取某个service下所有Pods的实例，插件会并发访问所有pod提供的/metrics接口（Path可配）,并给每个pod的返回数据（json格式，遵守一定的数据格式契约）打上pod_name的标签来标识每个pod返回的metrics，打上pod_name标签的同时也会打上service_name的标签用来区分具体是哪个service的监控数据。通过插件收集整理后的数据会上传到时间序列数据库中，后续就可以根据数据进行可视化分析以及展示（<a href="https://grafana.com/" target="_blank" rel="external">Granfana</a>），同样若是结合开源监控<a href="https://prometheus.io/" target="_blank" rel="external">Prometheus</a>, <a href="https://github.com/TalkingData/owl" target="_blank" rel="external">OWL</a>也可以实现监控报警，只不过结合不同的监控需要返回它们所需要的监控数据格式罢了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>微服务目前也是在如火如荼的发展着，随之产生的技术栈和开源组件也是百花齐放，到底什么样的方式和组件是最适合的，这些都是仁者见仁，智者见智。技术无好坏，用的顺手合适就可以，解决相应的问题用合适的方法和武器，知己知彼，不一定所以的问题都要使用微服务来解决，杀鸡焉用宰牛刀。以上是<a href="https://godliness.github.io">鄙人</a>的一些拙见，阅读了一些技术性文章和书籍加上自己的一些拙见所总结，希望能给那些还没有走进以及即将走进微服务的人带来一丝启发。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>微服务目前也是在如火如荼的发展着，随之产生的技术栈和开源组件也是百花齐放，到底什么样的方式和组件是最适合的，这些都是仁者见仁，智者见智。技术无好坏，用的顺手合适就可以，解决相应的问题用合适的方法和武器，知己知彼，不一定所以的问题都要使用微服务来解决，杀鸡焉用宰牛刀。以上是<a href="https://godliness.github.io">鄙人</a>的一些拙见，阅读了一些技术性文章和书籍加上自己的一些理解所总结，希望能给那些还没有走进以及即将走进微服务的人带来一丝启发。</p>
 
       
       
@@ -344,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月25日 - 15时34分</p>
+        <p><span>最后更新:</span>2017年08月28日 - 11时01分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="说说微服务与监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
