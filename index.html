@@ -131,7 +131,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
                     </div>
                 </section>
                 
@@ -194,6 +194,72 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-data-structure-record" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/28/data-structure-record/" class="article-date">
+      <time datetime="2017-08-28T03:05:49.000Z" itemprop="datePublished">2017-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/data-structure-record/">data-structure-record</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="程序设计-数据结构-算法"><a href="#程序设计-数据结构-算法" class="headerlink" title="程序设计 = 数据结构 + 算法"></a><strong>程序设计 = 数据结构 + 算法</strong></h2><p><strong>数据</strong>：是描述客官事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。</p>
+<p><strong>数据元素</strong>：是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。</p>
+<p><strong>数据项</strong>：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位。</p>
+<p><strong>数据对象</strong>: 是性质相同的数据元素的集合，是数据的子集。</p>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/08/28/data-structure-record/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-microservice-monitor-introduce" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -805,70 +871,10 @@
 
 
   
-    <article id="post-go-comments-review" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2017/03/20/go-comments-review/" class="article-date">
-      <time datetime="2017-03-20T14:53:28.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/go-comments-review/">Go语言CodeReivew注释总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="Gofmt"><a href="#Gofmt" class="headerlink" title="Gofmt"></a>Gofmt</h4><p>在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。</p>
-<h4 id="Go变量命名"><a href="#Go变量命名" class="headerlink" title="Go变量命名"></a>Go变量命名</h4><p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/03/20/go-comments-review/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
