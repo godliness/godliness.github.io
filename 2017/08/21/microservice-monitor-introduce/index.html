@@ -16,7 +16,7 @@
 <meta property="og:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png">
 <meta property="og:image" content="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png">
-<meta property="og:updated_time" content="2017-08-28T03:01:48.000Z">
+<meta property="og:updated_time" content="2017-08-29T09:34:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说微服务与监控">
 <meta name="twitter:description" content="微服务简介微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：Spring Cloud, CNCF等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。">
@@ -246,7 +246,7 @@
 <p>若想要请求后端的微服务，需要对请求进行相应验证，第一次访问时根据相应的授权凭证（例如:用户名/密码），到授权服务那里进行权限鉴定，若鉴定成功，根据相应的加盐加密算法会生成一个Token串，下次请求再来时需要携带此Token串，授权服务会对Token串进行解密校验，该Token串是唯一的，并且可以标识用户的身份以及存储一些profile信息。</p>
 </li>
 <li><p>服务注册/发现/负载均衡</p>
-<p>每个微服务启动需要到注册中心那里去注册自己，将自己的地址以及服务名告诉注册中心，若要实现基于性能的负载均衡，同时还要上传自己的CPU,内存等信息给注册中心。当需要消费服务时需要先到注册中心那里根据服务名来获取提供服务的服务地址。每个服务一般会注册多个实例，一般会根据一些策略（wrr，round robin等）来挑选具体某一个服务实例，注册中心需服务实例会保持着心跳机制，若服务实例挂掉就会从注册中心消失，因为注册中心没有继续收到服务传过来的心跳信息，则会判定该服务死亡，那么就会从服务列表中将其删除。</p>
+<p>每个微服务启动需要到注册中心那里去注册自己，将自己的地址以及服务名告诉注册中心，若要实现基于性能的负载均衡，同时还要上传自己的CPU,内存等信息给注册中心。当需要消费服务时需要先到注册中心那里根据服务名来获取提供服务的服务地址。每个服务一般会注册多个实例，一般会根据一些策略（wrr，round robin等）来挑选具体某一个服务实例，注册中心与服务实例会保持着心跳机制，若服务实例挂掉就会从注册中心消失，因为注册中心没有继续收到服务传过来的心跳信息，则会判定该服务死亡，那么就会从服务列表中将其删除。</p>
 </li>
 <li><p>限流/熔断/降级</p>
 <p>熔断其实类似日常生活中的“保险丝”，一个用户请求的调用，在微服务内部可能是多个服务之间的连环调用，若其中一个或几个服务产生了系统瓶颈，就会导致超时，这样会阻碍整体调用链的调用进度，从而导致整个系统连接数过多，造成系统瘫痪，那么熔断要做的就是当发现某一服务的错误、超时、负载，达到某一指标时候来拦截后续的请求。当服务产生熔断后，那么就需要对服务进行降级，降级可以立即给用户一个返回，及时的返回空白内容或是错误信息。顾名思义限流就是限制请求的qps，将请求的数量控制在该服务可以接受的范围内。</p>
@@ -286,7 +286,7 @@
 <p>微服务应用本身的监控的方式就比较多样了。这里我就说一下我自己基于Kubernetes实现的微服务应用级的监控插件，先上个图：</p>
 <p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170825-121621@2x.png" alt=""></p>
 <p>在Kubernetes的master节点，也就是安装apiserver的那台服务器上运行一个监控插件，该插件可以通过一个kubernetes提供的官方<a href="https://github.com/kubernetes/client-go" target="_blank" rel="external">客户端</a>来访问apiserver,首先我们要告知插件要监控哪个namespace下的哪个service，然后，插件通过和apiserver进行交互获取某个service下所有Pods的实例，插件会并发访问所有pod提供的/metrics接口（Path可配）,并给每个pod的返回数据（json格式，遵守一定的数据格式契约）打上pod_name的标签来标识每个pod返回的metrics，打上pod_name标签的同时也会打上service_name的标签用来区分具体是哪个service的监控数据。通过插件收集整理后的数据会上传到时间序列数据库中，后续就可以根据数据进行可视化分析以及展示（<a href="https://grafana.com/" target="_blank" rel="external">Granfana</a>），同样若是结合开源监控<a href="https://prometheus.io/" target="_blank" rel="external">Prometheus</a>, <a href="https://github.com/TalkingData/owl" target="_blank" rel="external">OWL</a>也可以实现监控报警，只不过结合不同的监控需要返回它们所需要的监控数据格式罢了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>微服务目前也是在如火如荼的发展着，随之产生的技术栈和开源组件也是百花齐放，到底什么样的方式和组件是最适合的，这些都是仁者见仁，智者见智。技术无好坏，用的顺手合适就可以，解决相应的问题用合适的方法和武器，知己知彼，不一定所以的问题都要使用微服务来解决，杀鸡焉用宰牛刀。以上是<a href="https://godliness.github.io">鄙人</a>的一些拙见，阅读了一些技术性文章和书籍加上自己的一些理解所总结，希望能给那些还没有走进以及即将走进微服务的人带来一丝启发。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>微服务目前也是在如火如荼的发展着，随之产生的技术栈和开源组件也是百花齐放，到底什么样的方式和组件是最适合的，这些都是仁者见仁，智者见智。技术无好坏，用的顺手合适就可以，解决相应的问题用合适的方法和武器，知己知彼，不一定所有的问题都要使用微服务来解决，杀鸡焉用宰牛刀。以上是<a href="https://godliness.github.io">鄙人</a>的一些拙见，阅读了一些技术性文章和书籍加上自己的一些理解所总结，希望能给那些还没有走进以及即将走进微服务的人带来一丝启发。</p>
 
       
       
@@ -344,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
         <p><span>发布时间:</span>2017年08月21日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年08月28日 - 11时01分</p>
+        <p><span>最后更新:</span>2017年08月29日 - 17时34分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/21/microservice-monitor-introduce/" title="说说微服务与监控">http://godliness.github.io/2017/08/21/microservice-monitor-introduce/</a>
             <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/21/microservice-monitor-introduce/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
