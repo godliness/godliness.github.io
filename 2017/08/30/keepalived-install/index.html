@@ -5,19 +5,19 @@
   <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
   <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
   
-  <title>Go语言学习笔记 | Peter&#39;s Blog</title>
+  <title>安装Keepalived | Peter&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta name="keywords" content="读书笔记,golang">
+  <meta name="description" content="安装Keepalived下载源码包1wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz 解压源码包1tar zxvf ./keepalived-1.3.6.tar.gz 安装1234yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel li">
+<meta name="keywords" content="keepalived">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言学习笔记">
-<meta property="og:url" content="http://godliness.github.io/2017/04/06/go-language-study-records/index.html">
+<meta property="og:title" content="安装Keepalived">
+<meta property="og:url" content="http://godliness.github.io/2017/08/30/keepalived-install/index.html">
 <meta property="og:site_name" content="Peter&#39;s Blog">
-<meta property="og:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
-<meta property="og:updated_time" content="2017-08-22T02:20:27.000Z">
+<meta property="og:description" content="安装Keepalived下载源码包1wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz 解压源码包1tar zxvf ./keepalived-1.3.6.tar.gz 安装1234yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel li">
+<meta property="og:updated_time" content="2017-09-01T09:53:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言学习笔记">
-<meta name="twitter:description" content="对读Chanel进行Close操作会失败  对关闭了的Chanel进行写操作会失败  单向Channel无法再转换回双向Channel  关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。  每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2">
+<meta name="twitter:title" content="安装Keepalived">
+<meta name="twitter:description" content="安装Keepalived下载源码包1wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz 解压源码包1tar zxvf ./keepalived-1.3.6.tar.gz 安装1234yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel li">
   
     <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
   
@@ -195,11 +195,11 @@
     </div>
 </nav>
 
-      <div class="body-wrap"><article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-keepalived-install" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
+      <a href="/2017/08/30/keepalived-install/" class="article-date">
+      <time datetime="2017-08-30T10:30:16.000Z" itemprop="datePublished">2017-08-30</time>
 </a>
     </div>
   
@@ -212,7 +212,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言学习笔记
+      安装Keepalived
     </h1>
   
 
@@ -223,7 +223,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keepalived/">keepalived</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -233,48 +233,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-<a id="more"></a>
-</li>
-<li><p>runtime.Gosched()方法会让出当前线程给其他任务，当前任务被放回队列等待重新调度。</p>
-</li>
-<li><p>被设置成nil的Channel会处于阻塞状态</p>
-</li>
-<li><p>select语句要记得加default，如此可以避免select阻塞</p>
-</li>
-<li><p>在使用Mutex时，尽量缩小锁力度</p>
-</li>
-<li><p>Mutex不支持递归锁，双重锁定会导致死锁</p>
-</li>
-<li><p>对性能要求较高时，应避免使用defer Unlock</p>
-</li>
-<li><p>读写并发时，用RWMutex性能会更好一些</p>
-</li>
-<li><p>对单个数据读写保护，可尝试使用原子操作</p>
-</li>
-<li><p>GOBIN环境变量用于替代工作空间的bin目录，作为go install 保存路径。</p>
-</li>
-<li><p>在使用Git版本控制器时，要避免使用bin,pkg目录，尽量的src下创建存储仓库</p>
-</li>
-<li><p>Import . pkgname 的方式不建议在正式代码中使用</p>
-</li>
-<li><p>所有Internal的包只能被其父级目录访问</p>
-</li>
-<li><p>从当前源文件所在目录开始逐级向上构造vendor全路径，直到发现路径匹配的目标为止。匹配失败择依旧搜索GOPATH目录</p>
-</li>
-</ol>
-
+        <h2 id="安装Keepalived"><a href="#安装Keepalived" class="headerlink" title="安装Keepalived"></a>安装Keepalived</h2><h4 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz</div></pre></td></tr></table></figure>
+<h4 id="解压源码包"><a href="#解压源码包" class="headerlink" title="解压源码包"></a>解压源码包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf ./keepalived-1.3.6.tar.gz</div></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel libnfnetlink-devel</div><div class="line">cd keepalived-1.3.6/</div><div class="line">./configure --prefix=/usr/local/keepalived</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>####配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cp /usr/local/keepalived/sbin/keepalived /usr/sbin/</div><div class="line">cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/</div><div class="line">cp ./keepalived/etc/init.d/keepalived /etc/init.d/</div><div class="line">chmod +x /etc/init.d/keepalived</div><div class="line">mkdir /etc/keepalived/</div><div class="line">cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/</div></pre></td></tr></table></figure></p>
+<p>主配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">! Configuration File for keepalived</div><div class="line"></div><div class="line">global_defs &#123;</div><div class="line">   router_id dev1</div><div class="line">   vrrp_skip_check_adv_addr</div><div class="line">   vrrp_garp_interval 0</div><div class="line">   vrrp_gna_interval 0</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_script chk_controller &#123;</div><div class="line">    script &quot;/etc/keepalived/check_controller.sh&quot;</div><div class="line">    interval 2</div><div class="line">    weight -2</div><div class="line">    fall 3</div><div class="line">    rise 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_instance VI_1 &#123;</div><div class="line">    state MASTER</div><div class="line">    interface em1</div><div class="line">    virtual_router_id 1</div><div class="line">    mcast_src_ip 172.25.0.6</div><div class="line">    priority 100</div><div class="line">    advert_int 1</div><div class="line">    authentication &#123;</div><div class="line">        auth_type PASS</div><div class="line">        auth_pass qwerasdf</div><div class="line">    &#125;</div><div class="line">    virtual_ipaddress &#123;</div><div class="line">        172.25.0.254/17</div><div class="line">    &#125;</div><div class="line">    track_script &#123;</div><div class="line">        chk_controller</div><div class="line">    &#125;</div><div class="line">    notify_master &quot;systemctl restart owl-controller&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">! Configuration File for keepalived</div><div class="line"></div><div class="line">global_defs &#123;</div><div class="line">   router_id dev1</div><div class="line">   vrrp_skip_check_adv_addr</div><div class="line">   vrrp_garp_interval 0</div><div class="line">   vrrp_gna_interval 0</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_script chk_controller &#123;</div><div class="line">    script &quot;/etc/keepalived/check_controller.sh&quot;</div><div class="line">    interval 2</div><div class="line">    weight -2</div><div class="line">    fall 3 </div><div class="line">    rise 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_instance VI_1 &#123;</div><div class="line">    state BACKUP</div><div class="line">    interface em1</div><div class="line">    virtual_router_id 1</div><div class="line">    mcast_src_ip 172.25.0.7</div><div class="line">    priority 99</div><div class="line">    advert_int 1</div><div class="line">    authentication &#123;</div><div class="line">        auth_type PASS</div><div class="line">        auth_pass qwerasdf</div><div class="line">    &#125;</div><div class="line">    virtual_ipaddress &#123;</div><div class="line">        172.25.0.254/17</div><div class="line">    &#125;</div><div class="line">    track_script &#123;</div><div class="line">        chk_controller</div><div class="line">    &#125;</div><div class="line">    notify_master &quot;systemctl restart owl-controller&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="检查脚本"><a href="#检查脚本" class="headerlink" title="检查脚本"></a>检查脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">counter=$(ps -C controller --no-heading|wc -l)</div><div class="line">if [ &quot;$&#123;counter&#125;&quot; = &quot;0&quot; ]; then</div><div class="line">    exit 1</div><div class="line">fi</div></pre></td></tr></table></figure>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start keepalived</div></pre></td></tr></table></figure>
       
       
         <div class="page-reward">
@@ -328,13 +295,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/30/keepalived-install/">安装Keepalived</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Peter Ma 的个人博客">Peter Ma</a></p>
-        <p><span>发布时间:</span>2017年04月06日 - 17时17分</p>
-        <p><span>最后更新:</span>2017年08月22日 - 10时20分</p>
+        <p><span>发布时间:</span>2017年08月30日 - 18时30分</p>
+        <p><span>最后更新:</span>2017年09月01日 - 17时53分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/06/go-language-study-records/" title="Go语言学习笔记">http://godliness.github.io/2017/04/06/go-language-study-records/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/04/06/go-language-study-records/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/30/keepalived-install/" title="安装Keepalived">http://godliness.github.io/2017/08/30/keepalived-install/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://godliness.github.io/2017/08/30/keepalived-install/　　作者: Peter Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -347,18 +314,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/05/25/go-in-action-records/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Go In Action
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/30/install-etcd-teach/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部署etcd简易教程</div>
+    <a href="/2017/08/28/data-structure-record/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构概述</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -369,7 +327,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Keepalived"><span class="toc-number">1.</span> <span class="toc-text">安装Keepalived</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载源码包"><span class="toc-number">1.0.1.</span> <span class="toc-text">下载源码包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解压源码包"><span class="toc-number">1.0.2.</span> <span class="toc-text">解压源码包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.0.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查脚本"><span class="toc-number">1.0.4.</span> <span class="toc-text">检查脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.0.5.</span> <span class="toc-text">运行</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -420,13 +378,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/25/go-in-action-records/" title="上一篇: Go In Action">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/30/install-etcd-teach/" title="下一篇: 部署etcd简易教程">
+            <a href="/2017/08/28/data-structure-record/" title="下一篇: 数据结构概述">
                 <i class="fa fa-angle-right"></i>
             </a>
         
