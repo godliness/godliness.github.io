@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>读书笔记 on Go</title>
-    <link>http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+    <link>https://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in 读书笔记 on Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Aug 2017 11:05:49 +0000</lastBuildDate>
     
-	<atom:link href="http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据结构概述</title>
-      <link>http://godliness.github.io/technology/data-structure-record/</link>
+      <link>https://godliness.github.io/technology/data-structure-record/</link>
       <pubDate>Mon, 28 Aug 2017 11:05:49 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/data-structure-record/</guid>
+      <guid>https://godliness.github.io/technology/data-structure-record/</guid>
       <description>程序设计 = 数据结构 + 算法 数据：是描述客官事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。
 数据元素：是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。
 数据项：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位。
@@ -53,10 +53,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>Java编程思想</title>
-      <link>http://godliness.github.io/technology/thinking-in-java/</link>
+      <link>https://godliness.github.io/technology/thinking-in-java/</link>
       <pubDate>Thu, 22 Jun 2017 10:54:08 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/thinking-in-java/</guid>
+      <guid>https://godliness.github.io/technology/thinking-in-java/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;Socket readline() 自动阻塞&lt;/li&gt;
 &lt;li&gt;public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。&lt;/li&gt;
@@ -71,19 +71,19 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>Go In Action</title>
-      <link>http://godliness.github.io/technology/go-in-action-records/</link>
+      <link>https://godliness.github.io/technology/go-in-action-records/</link>
       <pubDate>Thu, 25 May 2017 10:10:55 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-in-action-records/</guid>
+      <guid>https://godliness.github.io/technology/go-in-action-records/</guid>
       <description> Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。 main.go 文件中 init 方法会在 main 方法之前执行 main方法在main包中才会编译出可执行文件 import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法 package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量 引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。 在main方法结束前来结束所有的go协程会减少bug和错误 for range 的第二个参数其实就是value的复制元素 函数传参都是值拷贝 定义常量时不需要指定类型 定义接口时，若方法只有一个，那么它的命名需要加上后缀“er” 若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然 接收类型为引用类型的方法不能被赋值为值的接口调用，接收类型为值类型的方法，可以被赋值类型为引用类型和值类型的接口调用 接口类型的实现可以是某个类的引用类型也可以是值类型 array := [&amp;hellip;]int{10, 20, 30, 40, 50} 这种方式声明数组无需指定数组长度 array := [5]int{1: 10, 2: 20} 指定特定位置为固定的值 slice := []int{10, 20, 30, 40, 50} 创建长度为5的数组切片 一个线程绑定到一个逻辑处理器上，多个协程被添加到逻辑任务队列中，由go运行时调度器进行调度，当有一个协程调用了系统blocking syscall后，这个线程就会从该逻辑处理器中卸下来，继续等待，调度器会再创建一个线程来绑定到该逻辑处理器上，并从运行队列中挑选一个go协程来运行。 若一个go协程需要进行一个网络I/O调用，那么该协程就会从逻辑处理器上卸下来并转移到由go运行时构造的网络轮询器上，当轮询器检测到读或写操作准备好后，该go协程就会重新调度到逻辑处理器上去处理相应的操作 默认的运行时可以启动的线程数是10000，这个值可以通过SetMaxThreads方法更改，当线程数超过最大值，程序将崩溃。 并发的实质是一个物理CPU(也可以多个物理CPU) 在若干道程序之间多路复用，并发性是对有限物理资源强制行使多用户共享以提高效率。 并行性指两个或两个以上事件或活动在同一时刻发生。在多道程序环境下，并行性使多个程序同一时刻可在不同CPU上同时执行。 若想go协程真正的并行运行，那么就必须运行的多物理处理器的机器上若机器只有一个处理器，就算是多线程也只是并发而已 单元测试的方法必须以Test开头，接收参数是Test的指针类型，无返回值，这样才能被识别为单元测试方法  </description>
     </item>
     
     <item>
       <title>Go语言学习笔记</title>
-      <link>http://godliness.github.io/technology/go-language-study-records/</link>
+      <link>https://godliness.github.io/technology/go-language-study-records/</link>
       <pubDate>Thu, 06 Apr 2017 17:17:16 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-language-study-records/</guid>
+      <guid>https://godliness.github.io/technology/go-language-study-records/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;对读Chanel进行Close操作会失败&lt;/p&gt;&lt;/li&gt;
 

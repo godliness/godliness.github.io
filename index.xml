@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go</title>
-    <link>http://godliness.github.io/</link>
+    <link>https://godliness.github.io/</link>
     <description>Recent content on Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 30 Aug 2017 18:30:16 +0000</lastBuildDate>
     
-	<atom:link href="http://godliness.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://godliness.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>安装Keepalived</title>
-      <link>http://godliness.github.io/technology/keepalived-install/</link>
+      <link>https://godliness.github.io/technology/keepalived-install/</link>
       <pubDate>Wed, 30 Aug 2017 18:30:16 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/keepalived-install/</guid>
+      <guid>https://godliness.github.io/technology/keepalived-install/</guid>
       <description>安装Keepalived 下载源码包 wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz  解压源码包 tar zxvf ./keepalived-1.3.6.tar.gz  安装 yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel libnfnetlink-devel cd keepalived-1.3.6/ ./configure --prefix=/usr/local/keepalived make &amp;amp;&amp;amp; make install  ####配置
 cp /usr/local/keepalived/sbin/keepalived /usr/sbin/ cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/ cp ./keepalived/etc/init.d/keepalived /etc/init.d/ chmod +x /etc/init.d/keepalived mkdir /etc/keepalived/ cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/  主配置
 ! Configuration File for keepalived global_defs { router_id dev1 vrrp_skip_check_adv_addr vrrp_garp_interval 0 vrrp_gna_interval 0 } vrrp_script chk_controller { script &amp;quot;/etc/keepalived/check_controller.sh&amp;quot; interval 2 weight -2 fall 3 rise 2 } vrrp_instance VI_1 { state MASTER interface em1 virtual_router_id 1 mcast_src_ip 172.</description>
@@ -24,10 +24,10 @@ cp /usr/local/keepalived/sbin/keepalived /usr/sbin/ cp /usr/local/keepalived/etc
     
     <item>
       <title>数据结构概述</title>
-      <link>http://godliness.github.io/technology/data-structure-record/</link>
+      <link>https://godliness.github.io/technology/data-structure-record/</link>
       <pubDate>Mon, 28 Aug 2017 11:05:49 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/data-structure-record/</guid>
+      <guid>https://godliness.github.io/technology/data-structure-record/</guid>
       <description>程序设计 = 数据结构 + 算法 数据：是描述客官事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。
 数据元素：是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。
 数据项：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位。
@@ -64,10 +64,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>说说微服务与监控</title>
-      <link>http://godliness.github.io/technology/microservice-monitor-introduce/</link>
+      <link>https://godliness.github.io/technology/microservice-monitor-introduce/</link>
       <pubDate>Mon, 21 Aug 2017 11:33:00 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/microservice-monitor-introduce/</guid>
+      <guid>https://godliness.github.io/technology/microservice-monitor-introduce/</guid>
       <description>&lt;h2 id=&#34;微服务简介&#34;&gt;微服务简介&lt;/h2&gt;
 
 &lt;p&gt;微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：&lt;a href=&#34;http://projects.spring.io/spring-cloud/&#34;&gt;Spring Cloud&lt;/a&gt;, &lt;a href=&#34;https://www.cncf.io/&#34;&gt;CNCF&lt;/a&gt;等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。&lt;/p&gt;
@@ -78,10 +78,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>应用程序调优所需的一些Linux命令</title>
-      <link>http://godliness.github.io/technology/linux-command-record/</link>
+      <link>https://godliness.github.io/technology/linux-command-record/</link>
       <pubDate>Fri, 18 Aug 2017 16:57:37 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/linux-command-record/</guid>
+      <guid>https://godliness.github.io/technology/linux-command-record/</guid>
       <description>&lt;h5 id=&#34;uptime&#34;&gt;uptime&lt;/h5&gt;
 
 &lt;p&gt;此命令可以查看服务器的系统负载情况：&lt;/p&gt;
@@ -101,10 +101,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>Go程序性能分析工具</title>
-      <link>http://godliness.github.io/technology/profiling-go-programs/</link>
+      <link>https://godliness.github.io/technology/profiling-go-programs/</link>
       <pubDate>Thu, 10 Aug 2017 14:36:07 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/profiling-go-programs/</guid>
+      <guid>https://godliness.github.io/technology/profiling-go-programs/</guid>
       <description>&lt;p&gt;在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文&lt;a href=&#34;http://research.google.com/pubs/pub37122.html&#34;&gt;Loop Recognition in C++/Java/Go/Scala.&lt;/a&gt; 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。&lt;/p&gt;
 
 &lt;p&gt;通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）&lt;/p&gt;
@@ -116,10 +116,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>Java编程思想</title>
-      <link>http://godliness.github.io/technology/thinking-in-java/</link>
+      <link>https://godliness.github.io/technology/thinking-in-java/</link>
       <pubDate>Thu, 22 Jun 2017 10:54:08 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/thinking-in-java/</guid>
+      <guid>https://godliness.github.io/technology/thinking-in-java/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;Socket readline() 自动阻塞&lt;/li&gt;
 &lt;li&gt;public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。&lt;/li&gt;
@@ -134,10 +134,10 @@ O(1) &amp;lt; O(logn) &amp;lt; O(n) &amp;lt; O(nlogn) &amp;lt; O(n²) &amp;lt; O
     
     <item>
       <title>MYAQL5.7安装</title>
-      <link>http://godliness.github.io/technology/mysql-install/</link>
+      <link>https://godliness.github.io/technology/mysql-install/</link>
       <pubDate>Fri, 09 Jun 2017 17:20:49 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/mysql-install/</guid>
+      <guid>https://godliness.github.io/technology/mysql-install/</guid>
       <description>&lt;p&gt;安装环境：CentOS7 64位，MySQL5.7&lt;/p&gt;
 
 &lt;h3 id=&#34;step-1-配置yum源&#34;&gt;Step 1 配置YUM源&lt;/h3&gt;
@@ -155,10 +155,10 @@ yum localinstall mysql57-community-release-el7-8.noarch.rpm
     
     <item>
       <title>采用ELK进行网络流量分析的安装过程</title>
-      <link>http://godliness.github.io/technology/elk-install/</link>
+      <link>https://godliness.github.io/technology/elk-install/</link>
       <pubDate>Fri, 09 Jun 2017 15:57:56 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/elk-install/</guid>
+      <guid>https://godliness.github.io/technology/elk-install/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;所有ELK组件均基于版本5.4.1&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -176,19 +176,19 @@ yum localinstall mysql57-community-release-el7-8.noarch.rpm
     
     <item>
       <title>Go In Action</title>
-      <link>http://godliness.github.io/technology/go-in-action-records/</link>
+      <link>https://godliness.github.io/technology/go-in-action-records/</link>
       <pubDate>Thu, 25 May 2017 10:10:55 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-in-action-records/</guid>
+      <guid>https://godliness.github.io/technology/go-in-action-records/</guid>
       <description> Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。 main.go 文件中 init 方法会在 main 方法之前执行 main方法在main包中才会编译出可执行文件 import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法 package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量 引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。 在main方法结束前来结束所有的go协程会减少bug和错误 for range 的第二个参数其实就是value的复制元素 函数传参都是值拷贝 定义常量时不需要指定类型 定义接口时，若方法只有一个，那么它的命名需要加上后缀“er” 若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然 接收类型为引用类型的方法不能被赋值为值的接口调用，接收类型为值类型的方法，可以被赋值类型为引用类型和值类型的接口调用 接口类型的实现可以是某个类的引用类型也可以是值类型 array := [&amp;hellip;]int{10, 20, 30, 40, 50} 这种方式声明数组无需指定数组长度 array := [5]int{1: 10, 2: 20} 指定特定位置为固定的值 slice := []int{10, 20, 30, 40, 50} 创建长度为5的数组切片 一个线程绑定到一个逻辑处理器上，多个协程被添加到逻辑任务队列中，由go运行时调度器进行调度，当有一个协程调用了系统blocking syscall后，这个线程就会从该逻辑处理器中卸下来，继续等待，调度器会再创建一个线程来绑定到该逻辑处理器上，并从运行队列中挑选一个go协程来运行。 若一个go协程需要进行一个网络I/O调用，那么该协程就会从逻辑处理器上卸下来并转移到由go运行时构造的网络轮询器上，当轮询器检测到读或写操作准备好后，该go协程就会重新调度到逻辑处理器上去处理相应的操作 默认的运行时可以启动的线程数是10000，这个值可以通过SetMaxThreads方法更改，当线程数超过最大值，程序将崩溃。 并发的实质是一个物理CPU(也可以多个物理CPU) 在若干道程序之间多路复用，并发性是对有限物理资源强制行使多用户共享以提高效率。 并行性指两个或两个以上事件或活动在同一时刻发生。在多道程序环境下，并行性使多个程序同一时刻可在不同CPU上同时执行。 若想go协程真正的并行运行，那么就必须运行的多物理处理器的机器上若机器只有一个处理器，就算是多线程也只是并发而已 单元测试的方法必须以Test开头，接收参数是Test的指针类型，无返回值，这样才能被识别为单元测试方法  </description>
     </item>
     
     <item>
       <title>Go语言学习笔记</title>
-      <link>http://godliness.github.io/technology/go-language-study-records/</link>
+      <link>https://godliness.github.io/technology/go-language-study-records/</link>
       <pubDate>Thu, 06 Apr 2017 17:17:16 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-language-study-records/</guid>
+      <guid>https://godliness.github.io/technology/go-language-study-records/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;对读Chanel进行Close操作会失败&lt;/p&gt;&lt;/li&gt;
 
@@ -206,10 +206,10 @@ yum localinstall mysql57-community-release-el7-8.noarch.rpm
     
     <item>
       <title>部署etcd简易教程</title>
-      <link>http://godliness.github.io/technology/install-etcd-teach/</link>
+      <link>https://godliness.github.io/technology/install-etcd-teach/</link>
       <pubDate>Thu, 30 Mar 2017 18:25:11 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/install-etcd-teach/</guid>
+      <guid>https://godliness.github.io/technology/install-etcd-teach/</guid>
       <description>&lt;h4 id=&#34;下载二进制文件&#34;&gt;下载二进制文件&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址
@@ -226,10 +226,10 @@ tar xvf etcd-${ETCD_VER}-linux-amd64.tar.gz
     
     <item>
       <title>Go语言CodeReivew注释总结</title>
-      <link>http://godliness.github.io/technology/go-comments-review/</link>
+      <link>https://godliness.github.io/technology/go-comments-review/</link>
       <pubDate>Mon, 20 Mar 2017 22:53:28 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-comments-review/</guid>
+      <guid>https://godliness.github.io/technology/go-comments-review/</guid>
       <description>&lt;h4 id=&#34;gofmt&#34;&gt;Gofmt&lt;/h4&gt;
 
 &lt;p&gt;在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。&lt;/p&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Go</title>
-    <link>http://godliness.github.io/tags/java/</link>
+    <link>https://godliness.github.io/tags/java/</link>
     <description>Recent content in Java on Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Jun 2017 10:54:08 +0000</lastBuildDate>
     
-	<atom:link href="http://godliness.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://godliness.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java编程思想</title>
-      <link>http://godliness.github.io/technology/thinking-in-java/</link>
+      <link>https://godliness.github.io/technology/thinking-in-java/</link>
       <pubDate>Thu, 22 Jun 2017 10:54:08 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/thinking-in-java/</guid>
+      <guid>https://godliness.github.io/technology/thinking-in-java/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;Socket readline() 自动阻塞&lt;/li&gt;
 &lt;li&gt;public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。&lt;/li&gt;

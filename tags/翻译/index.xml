@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>翻译 on Go</title>
-    <link>http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/</link>
+    <link>https://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/</link>
     <description>Recent content in 翻译 on Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 Aug 2017 14:36:07 +0000</lastBuildDate>
     
-	<atom:link href="http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go程序性能分析工具</title>
-      <link>http://godliness.github.io/technology/profiling-go-programs/</link>
+      <link>https://godliness.github.io/technology/profiling-go-programs/</link>
       <pubDate>Thu, 10 Aug 2017 14:36:07 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/profiling-go-programs/</guid>
+      <guid>https://godliness.github.io/technology/profiling-go-programs/</guid>
       <description>&lt;p&gt;在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文&lt;a href=&#34;http://research.google.com/pubs/pub37122.html&#34;&gt;Loop Recognition in C++/Java/Go/Scala.&lt;/a&gt; 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。&lt;/p&gt;
 
 &lt;p&gt;通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Go语言CodeReivew注释总结</title>
-      <link>http://godliness.github.io/technology/go-comments-review/</link>
+      <link>https://godliness.github.io/technology/go-comments-review/</link>
       <pubDate>Mon, 20 Mar 2017 22:53:28 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/go-comments-review/</guid>
+      <guid>https://godliness.github.io/technology/go-comments-review/</guid>
       <description>&lt;h4 id=&#34;gofmt&#34;&gt;Gofmt&lt;/h4&gt;
 
 &lt;p&gt;在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。&lt;/p&gt;

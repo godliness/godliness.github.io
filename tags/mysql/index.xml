@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mysql on Go</title>
-    <link>http://godliness.github.io/tags/mysql/</link>
+    <link>https://godliness.github.io/tags/mysql/</link>
     <description>Recent content in Mysql on Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Jun 2017 17:20:49 +0000</lastBuildDate>
     
-	<atom:link href="http://godliness.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://godliness.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MYAQL5.7安装</title>
-      <link>http://godliness.github.io/technology/mysql-install/</link>
+      <link>https://godliness.github.io/technology/mysql-install/</link>
       <pubDate>Fri, 09 Jun 2017 17:20:49 +0000</pubDate>
       
-      <guid>http://godliness.github.io/technology/mysql-install/</guid>
+      <guid>https://godliness.github.io/technology/mysql-install/</guid>
       <description>&lt;p&gt;安装环境：CentOS7 64位，MySQL5.7&lt;/p&gt;
 
 &lt;h3 id=&#34;step-1-配置yum源&#34;&gt;Step 1 配置YUM源&lt;/h3&gt;
