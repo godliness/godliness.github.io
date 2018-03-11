@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Go</title>
+    <link>http://godliness.github.io/tags/golang/</link>
+    <description>Recent content in Golang on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Aug 2017 14:36:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go程序性能分析工具</title>
+      <link>http://godliness.github.io/technology/profiling-go-programs/</link>
+      <pubDate>Thu, 10 Aug 2017 14:36:07 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/profiling-go-programs/</guid>
+      <description>&lt;p&gt;在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文&lt;a href=&#34;http://research.google.com/pubs/pub37122.html&#34;&gt;Loop Recognition in C++/Java/Go/Scala.&lt;/a&gt; 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。&lt;/p&gt;
+
+&lt;p&gt;通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）&lt;/p&gt;
+
+&lt;p&gt;Hundt的论文没有指定是使用的哪个版本的C++, Go, Java,和Scala工具。在这篇文章中，我们将使用最新的每周发布的6g Go编译器快照和Ubuntu Natty发行版附带g ++的版本。（我们将不会使用Java或者Scala,因为我们不擅长使用这些语言来写出有效率的程序，所以在这些语言中进行对比的话会有些不公平。由于C++是论文中所述最快的语言，所以和C++来进行对比就足够了。）（更新：在更新过的文章中，我们将要使用最近在amd64平台上开发的Go编译器的快照，并使用在2013年3月份发布的g++最新版本4.8.0）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go In Action</title>
+      <link>http://godliness.github.io/technology/go-in-action-records/</link>
+      <pubDate>Thu, 25 May 2017 10:10:55 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/go-in-action-records/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。&lt;/li&gt;
+&lt;li&gt;main.go 文件中 init 方法会在 main 方法之前执行&lt;/li&gt;
+&lt;li&gt;main方法在main包中才会编译出可执行文件&lt;/li&gt;
+&lt;li&gt;import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法&lt;/li&gt;
+&lt;li&gt;package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量&lt;/li&gt;
+&lt;li&gt;引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil&lt;/li&gt;
+&lt;li&gt;var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。&lt;/li&gt;
+&lt;li&gt;在main方法结束前来结束所有的go协程会减少bug和错误</description>
+    </item>
+    
+    <item>
+      <title>Go语言学习笔记</title>
+      <link>http://godliness.github.io/technology/go-language-study-records/</link>
+      <pubDate>Thu, 06 Apr 2017 17:17:16 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/go-language-study-records/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;对读Chanel进行Close操作会失败&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;对关闭了的Chanel进行写操作会失败&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;单向Channel无法再转换回双向Channel&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go语言CodeReivew注释总结</title>
+      <link>http://godliness.github.io/technology/go-comments-review/</link>
+      <pubDate>Mon, 20 Mar 2017 22:53:28 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/go-comments-review/</guid>
+      <description>&lt;h4 id=&#34;gofmt&#34;&gt;Gofmt&lt;/h4&gt;
+
+&lt;p&gt;在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。&lt;/p&gt;
+
+&lt;h4 id=&#34;go变量命名&#34;&gt;Go变量命名&lt;/h4&gt;
+
+&lt;p&gt;Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

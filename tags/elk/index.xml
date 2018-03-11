@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elk on Go</title>
+    <link>http://godliness.github.io/tags/elk/</link>
+    <description>Recent content in Elk on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Jun 2017 15:57:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/elk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>采用ELK进行网络流量分析的安装过程</title>
+      <link>http://godliness.github.io/technology/elk-install/</link>
+      <pubDate>Fri, 09 Jun 2017 15:57:56 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/elk-install/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;所有ELK组件均基于版本5.4.1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;step1-操作系统的准备&#34;&gt;Step1 操作系统的准备&lt;/h3&gt;
+
+&lt;p&gt;禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim /etc/sysconfig/selinux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将 SELINUX的值从enforcing改成disabled。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on Go</title>
+    <link>http://godliness.github.io/tags/mysql/</link>
+    <description>Recent content in Mysql on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Jun 2017 17:20:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MYAQL5.7安装</title>
+      <link>http://godliness.github.io/technology/mysql-install/</link>
+      <pubDate>Fri, 09 Jun 2017 17:20:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/mysql-install/</guid>
+      <description>&lt;p&gt;安装环境：CentOS7 64位，MySQL5.7&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-配置yum源&#34;&gt;Step 1 配置YUM源&lt;/h3&gt;
+
+&lt;p&gt;在官网中下载YUM源rpm安装包：&lt;a href=&#34;http://dev.mysql.com/downloads/repo/yum/&#34;&gt;http://dev.mysql.com/downloads/repo/yum/&lt;/a&gt; ，或者手动下载安装包。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+
+yum localinstall mysql57-community-release-el7-8.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;检查mysql源是否安装成功
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

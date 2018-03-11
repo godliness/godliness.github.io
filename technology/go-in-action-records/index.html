@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Go In Action</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Go In Action</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/technology/go-in-action-records/">Go In Action</a></h4>
+    <h5>May 25, 2017</h5>
+    
+    <a href="http://godliness.github.io/tags/golang"><kbd class="item-tag">golang</kbd></a>
+    
+    <a href="http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><kbd class="item-tag">读书笔记</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><ol>
+<li>Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。</li>
+<li>main.go 文件中 init 方法会在 main 方法之前执行</li>
+<li>main方法在main包中才会编译出可执行文件</li>
+<li>import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法</li>
+<li>package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量</li>
+<li>引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil</li>
+<li>var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。</li>
+<li>在main方法结束前来结束所有的go协程会减少bug和错误
+</li>
+<li>for range 的第二个参数其实就是value的复制元素</li>
+<li>函数传参都是值拷贝</li>
+<li>定义常量时不需要指定类型</li>
+<li>定义接口时，若方法只有一个，那么它的命名需要加上后缀“er”</li>
+<li>若调用对象为引用类型，函数的接收者为值类型，那么编译器就会自动的进行对象反引用，反之亦然</li>
+<li>接收类型为引用类型的方法不能被赋值为值的接口调用，接收类型为值类型的方法，可以被赋值类型为引用类型和值类型的接口调用</li>
+<li>接口类型的实现可以是某个类的引用类型也可以是值类型</li>
+<li>array := [&hellip;]int{10, 20, 30, 40, 50} 这种方式声明数组无需指定数组长度</li>
+<li>array := [5]int{1: 10, 2: 20} 指定特定位置为固定的值</li>
+<li>slice := []int{10, 20, 30, 40, 50} 创建长度为5的数组切片</li>
+<li>一个线程绑定到一个逻辑处理器上，多个协程被添加到逻辑任务队列中，由go运行时调度器进行调度，当有一个协程调用了系统blocking syscall后，这个线程就会从该逻辑处理器中卸下来，继续等待，调度器会再创建一个线程来绑定到该逻辑处理器上，并从运行队列中挑选一个go协程来运行。</li>
+<li>若一个go协程需要进行一个网络I/O调用，那么该协程就会从逻辑处理器上卸下来并转移到由go运行时构造的网络轮询器上，当轮询器检测到读或写操作准备好后，该go协程就会重新调度到逻辑处理器上去处理相应的操作</li>
+<li>默认的运行时可以启动的线程数是10000，这个值可以通过SetMaxThreads方法更改，当线程数超过最大值，程序将崩溃。</li>
+<li>并发的实质是一个物理CPU(也可以多个物理CPU) 在若干道程序之间多路复用，并发性是对有限物理资源强制行使多用户共享以提高效率。</li>
+<li>并行性指两个或两个以上事件或活动在同一时刻发生。在多道程序环境下，并行性使多个程序同一时刻可在不同CPU上同时执行。</li>
+<li>若想go协程真正的并行运行，那么就必须运行的多物理处理器的机器上若机器只有一个处理器，就算是多线程也只是并发而已</li>
+<li>单元测试的方法必须以Test开头，接收参数是Test的指针类型，无返回值，这样才能被识别为单元测试方法</li>
+</ol></div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_FkbCWfPac3" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

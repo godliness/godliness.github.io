@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>部署etcd简易教程</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">部署etcd简易教程</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/technology/install-etcd-teach/">部署etcd简易教程</a></h4>
+    <h5>March 30, 2017</h5>
+    
+    <a href="http://godliness.github.io/tags/etcd"><kbd class="item-tag">etcd</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><h4 id="下载二进制文件">下载二进制文件</h4>
+
+<pre><code>DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址
+
+ETCD_VER=v3.1.5  #设置etcd版本号
+
+wget ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+tar xvf etcd-${ETCD_VER}-linux-amd64.tar.gz
+</code></pre>
+
+<p></p>
+
+<h4 id="部署文件">部署文件</h4>
+
+<p>将如下内容写入文件 /etc/etcd/etcd.conf 中：</p>
+
+<pre><code>
+# [member]
+
+ETCD_NAME=default
+ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;
+
+# ETCD_WAL_DIR=&quot;&quot;
+
+# ETCD_SNAPSHOT_COUNT=&quot;10000&quot;
+
+# ETCD_HEARTBEAT_INTERVAL=&quot;100&quot;
+
+# ETCD_ELECTION_TIMEOUT=&quot;1000&quot;
+
+# ETCD_LISTEN_PEER_URLS=&quot;http://localhost:2380&quot;
+
+ETCD_LISTEN_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;
+
+# ETCD_MAX_SNAPSHOTS=&quot;5&quot;
+
+# ETCD_MAX_WALS=&quot;5&quot;
+
+# ETCD_CORS=&quot;&quot;
+
+#
+
+# [cluster]
+
+# ETCD_INITIAL_ADVERTISE_PEER_URLS=&quot;http://localhost:2380&quot;
+
+# if you use different ETCD_NAME (e.g. test), set ETCD_INITIAL_CLUSTER value for this name, i.e. &quot;test=http://...&quot;
+
+# ETCD_INITIAL_CLUSTER=&quot;default=http://localhost:2380&quot;
+
+# ETCD_INITIAL_CLUSTER_STATE=&quot;new&quot;
+
+# ETCD_INITIAL_CLUSTER_TOKEN=&quot;etcd-cluster&quot;
+
+ETCD_ADVERTISE_CLIENT_URLS=&quot;http://0.0.0.0:2379&quot;
+
+# ETCD_DISCOVERY=&quot;&quot;
+
+# ETCD_DISCOVERY_SRV=&quot;&quot;
+
+# ETCD_DISCOVERY_FALLBACK=&quot;proxy&quot;
+
+# ETCD_DISCOVERY_PROXY=&quot;&quot;
+
+#
+
+# [proxy]
+
+# ETCD_PROXY=&quot;off&quot;
+
+# ETCD_PROXY_FAILURE_WAIT=&quot;5000&quot;
+
+# ETCD_PROXY_REFRESH_INTERVAL=&quot;30000&quot;
+
+# ETCD_PROXY_DIAL_TIMEOUT=&quot;1000&quot;
+
+# ETCD_PROXY_WRITE_TIMEOUT=&quot;5000&quot;
+
+# ETCD_PROXY_READ_TIMEOUT=&quot;0&quot;
+
+#
+
+# [security]
+
+# ETCD_CERT_FILE=&quot;&quot;
+
+# ETCD_KEY_FILE=&quot;&quot;
+
+# ETCD_CLIENT_CERT_AUTH=&quot;false&quot;
+
+# ETCD_TRUSTED_CA_FILE=&quot;&quot;
+
+# ETCD_PEER_CERT_FILE=&quot;&quot;
+
+# ETCD_PEER_KEY_FILE=&quot;&quot;
+
+# ETCD_PEER_CLIENT_CERT_AUTH=&quot;false&quot;
+
+# ETCD_PEER_TRUSTED_CA_FILE=&quot;&quot;
+
+# [logging]
+
+# ETCD_DEBUG=&quot;false&quot;
+
+# examples for -log-package-levels etcdserver=WARNING,security=DEBUG
+
+# ETCD_LOG_PACKAGE_LEVELS=&quot;&quot;
+</code></pre>
+
+<p>将 etcd, etcdctl放入 /usr/bin/下，并将如下内容写进/usr/lib/systemd/system/etcd.service文件</p>
+
+<pre><code>[Unit]
+Description=Etcd Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+WorkingDirectory=/var/lib/etcd/
+EnvironmentFile=-/etc/etcd/etcd.conf
+User=etcd
+# set GOMAXPROCS to number of processors
+ExecStart=/bin/bash -c &quot;GOMAXPROCS=$(nproc) /usr/bin/etcd --name=\&quot;${ETCD_NAME}\&quot; --data-dir=\&quot;${ETCD_DATA_DIR}\&quot; --listen-client-urls=\&quot;${ETCD_LISTEN_CLIENT_URLS}\&quot;&quot;
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<h4 id="启动并校验">启动并校验</h4>
+
+<pre><code>systemctl start etcd
+
+systemctl enable etcd
+
+systemctl status etcd
+
+etcdctl ls
+</code></pre>
+
+<h4 id="集群">集群</h4>
+
+<p>若要部署多节点集群也比较简单，只要更改etcd.conf文件以及etcd.service添加相应配置即可</p>
+
+<p>可以参考链接：<a href="https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md">https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md</a></p></div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_FkbCWfPac3" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

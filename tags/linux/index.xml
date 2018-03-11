@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Go</title>
+    <link>http://godliness.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Aug 2017 16:57:37 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>应用程序调优所需的一些Linux命令</title>
+      <link>http://godliness.github.io/technology/linux-command-record/</link>
+      <pubDate>Fri, 18 Aug 2017 16:57:37 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/linux-command-record/</guid>
+      <description>&lt;h5 id=&#34;uptime&#34;&gt;uptime&lt;/h5&gt;
+
+&lt;p&gt;此命令可以查看服务器的系统负载情况：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uptime
+12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一列是系统当前时间和系统运行了多长时间&lt;/p&gt;
+
+&lt;p&gt;第二列是当前在现用户&lt;/p&gt;
+
+&lt;p&gt;第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24核，那么平均负载大于24以后就证明cpu超负荷）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

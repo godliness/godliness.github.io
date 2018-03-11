@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Go语言CodeReivew注释总结</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Go语言CodeReivew注释总结</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/technology/go-comments-review/">Go语言CodeReivew注释总结</a></h4>
+    <h5>March 20, 2017</h5>
+    
+    <a href="http://godliness.github.io/tags/golang"><kbd class="item-tag">golang</kbd></a>
+    
+    <a href="http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91"><kbd class="item-tag">翻译</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><h4 id="gofmt">Gofmt</h4>
+
+<p>在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。</p>
+
+<h4 id="go变量命名">Go变量命名</h4>
+
+<p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
+
+<p></p>
+
+<h4 id="go协程的生命周期">Go协程的生命周期</h4>
+
+<p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。</p>
+
+<h4 id="go语言的接收体类型">Go语言的接收体类型</h4>
+
+<p>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:</p>
+
+<ol>
+<li>如果接收体是map，func或者chan，那就不要使用指针类型(因为本来它们就是指针类型)。如果接收体是一个slice，并且方法不会调用reslice操作，也不会重新给slice分配内存的话，那就不要使用指针类型。</li>
+<li>如果方法需要改变接收体，那么这个接收体的类型必须是指针类型。</li>
+<li>如果接收体中包含sync.Mutex或类似的同步字段结构时，则接收体必须是指针类型，以避免接收体复制后导致同步失效。</li>
+<li>如果接收体是一个大的结构体或者数组，那么使用指针类型的接收体就会更有效率。多大算大呢？假设把接收体的所有元素作为参数传给方法，如果你觉得参数有点多，那么它就是大的。</li>
+<li>函数在并发调用接收体的方法时，可以在方法中改变此接收体吗？当并发调用值类型接收体的方法时，这时每一次调用都会复制一份新接收体，所以其他方法对于接收体的修改，并不会对原接收体产生作用。若想让所有的修改在原接收体上起作用，那么接收体的类型必须是指针类型。</li>
+<li>如果接收体是一个结构体，数组或者切片，并且它们当中有的元素就是指针，它们指向了值可能发生变化的元素，那么就请使用指针类型的接收体，因为它将使读代码的人对于接收体的意图更加的清晰。</li>
+<li>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</li>
+<li>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</li>
+</ol></div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_FkbCWfPac3" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

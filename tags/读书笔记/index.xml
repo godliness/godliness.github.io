@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>读书笔记 on Go</title>
+    <link>http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 读书笔记 on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Aug 2017 11:05:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据结构概述</title>
+      <link>http://godliness.github.io/technology/data-structure-record/</link>
+      <pubDate>Mon, 28 Aug 2017 11:05:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/data-structure-record/</guid>
+      <description>&lt;h2 id=&#34;程序设计-数据结构-算法&#34;&gt;&lt;strong&gt;程序设计 = 数据结构 + 算法&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;数据&lt;/strong&gt;：是描述客官事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据元素&lt;/strong&gt;：是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据项&lt;/strong&gt;：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据对象&lt;/strong&gt;: 是性质相同的数据元素的集合，是数据的子集。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java编程思想</title>
+      <link>http://godliness.github.io/technology/thinking-in-java/</link>
+      <pubDate>Thu, 22 Jun 2017 10:54:08 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/thinking-in-java/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Socket readline() 自动阻塞&lt;/li&gt;
+&lt;li&gt;public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。&lt;/li&gt;
+&lt;li&gt;java中的变量都是静态绑定的，方法的话只有构造函数，static和final(所有private默认是final的)是静态绑定的。&lt;/li&gt;
+&lt;li&gt;多态：父类的引用指向子类对象，父类引用调用子类中没有的方法时会去父类中找（如果子类中有直接调用子类，动态绑定），父类引用调用成员变量时，去调用父类的成员变量而不是子类（静态绑定）。&lt;/li&gt;
+&lt;li&gt;成员变量不初始化的话，虚拟机会自动为其初始化；但是，局部变量不初始化的话，虚拟机不会自动为其初始化（报错）。&lt;/li&gt;
+&lt;li&gt;switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。&lt;/li&gt;
+&lt;li&gt;子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。&lt;/li&gt;
+&lt;li&gt;new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。&lt;/li&gt;
+&lt;li&gt;static关键字不能应用于局部变量，只能应用于静态域。</description>
+    </item>
+    
+    <item>
+      <title>Go In Action</title>
+      <link>http://godliness.github.io/technology/go-in-action-records/</link>
+      <pubDate>Thu, 25 May 2017 10:10:55 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/go-in-action-records/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。&lt;/li&gt;
+&lt;li&gt;main.go 文件中 init 方法会在 main 方法之前执行&lt;/li&gt;
+&lt;li&gt;main方法在main包中才会编译出可执行文件&lt;/li&gt;
+&lt;li&gt;import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法&lt;/li&gt;
+&lt;li&gt;package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量&lt;/li&gt;
+&lt;li&gt;引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil&lt;/li&gt;
+&lt;li&gt;var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。&lt;/li&gt;
+&lt;li&gt;在main方法结束前来结束所有的go协程会减少bug和错误</description>
+    </item>
+    
+    <item>
+      <title>Go语言学习笔记</title>
+      <link>http://godliness.github.io/technology/go-language-study-records/</link>
+      <pubDate>Thu, 06 Apr 2017 17:17:16 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/go-language-study-records/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;对读Chanel进行Close操作会失败&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;对关闭了的Chanel进行写操作会失败&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;单向Channel无法再转换回双向Channel&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

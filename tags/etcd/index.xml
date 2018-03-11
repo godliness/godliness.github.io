@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Etcd on Go</title>
+    <link>http://godliness.github.io/tags/etcd/</link>
+    <description>Recent content in Etcd on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Mar 2017 18:25:11 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>部署etcd简易教程</title>
+      <link>http://godliness.github.io/technology/install-etcd-teach/</link>
+      <pubDate>Thu, 30 Mar 2017 18:25:11 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/technology/install-etcd-teach/</guid>
+      <description>&lt;h4 id=&#34;下载二进制文件&#34;&gt;下载二进制文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;DOWNLOAD_URL=https://storage.googleapis.com/etcd  #etcd存储地址
+
+ETCD_VER=v3.1.5  #设置etcd版本号
+
+wget ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+tar xvf etcd-${ETCD_VER}-linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

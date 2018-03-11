@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Go程序性能分析工具</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Go程序性能分析工具</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/technology/profiling-go-programs/">Go程序性能分析工具</a></h4>
+    <h5>August 10, 2017</h5>
+    
+    <a href="http://godliness.github.io/tags/golang"><kbd class="item-tag">golang</kbd></a>
+    
+    <a href="http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91"><kbd class="item-tag">翻译</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><p>在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文<a href="http://research.google.com/pubs/pub37122.html">Loop Recognition in C++/Java/Go/Scala.</a> 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。</p>
+
+<p>通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）</p>
+
+<p>Hundt的论文没有指定是使用的哪个版本的C++, Go, Java,和Scala工具。在这篇文章中，我们将使用最新的每周发布的6g Go编译器快照和Ubuntu Natty发行版附带g ++的版本。（我们将不会使用Java或者Scala,因为我们不擅长使用这些语言来写出有效率的程序，所以在这些语言中进行对比的话会有些不公平。由于C++是论文中所述最快的语言，所以和C++来进行对比就足够了。）（更新：在更新过的文章中，我们将要使用最近在amd64平台上开发的Go编译器的快照，并使用在2013年3月份发布的g++最新版本4.8.0）</p>
+
+<p></p>
+
+<pre><code>$ go version
+go version devel +08d20469cc20 Tue Mar 26 08:27:18 2013 +0100 linux/amd64
+$ g++ --version
+g++ (GCC) 4.8.0
+Copyright (C) 2013 Free Software Foundation, Inc.
+...
+$
+</code></pre>
+
+<p>这个程序运行在一个3.4GHz Core i7-2600 CPU 和 16 GB内存，Gentoo Linux&rsquo;s 3.8.4-gentoo的内核的电脑上。 这个机器通过下面的命令禁用了CPU频率缩放</p>
+
+<pre><code>$ sudo bash
+# for i in /sys/devices/system/cpu/cpu[0-7]
+do
+    echo performance &gt; $i/cpufreq/scaling_governor
+done
+#
+</code></pre>
+
+<p>我们取<a href="https://github.com/hundt98847/multi-language-bench">Hundt&rsquo;s benchmark programs</a>程序中的C++和Go的版本，修改一下仅仅输出一行我们想要的信息。我们利用Linux time命令去输出用户消耗时间，系统消耗时间，实际消耗时间，和最大内存使用：</p>
+
+<pre><code>$ cat xtime
+#!/bin/sh
+/usr/bin/time -f '%Uu %Ss %er %MkB %C' &quot;$@&quot;
+$
+
+$ make havlak1cc
+g++ -O3 -o havlak1cc havlak1.cc
+$ ./xtime ./havlak1cc
+# of loops: 76002 (total 3800100)
+loop-0, nest: 0, depth: 0
+17.70u 0.05s 17.80r 715472kB ./havlak1cc
+$
+
+$ make havlak1
+go build havlak1.go
+$ ./xtime ./havlak1
+# of loops: 76000 (including 1 artificial root node)
+25.05u 0.11s 25.20r 1334032kB ./havlak1
+$
+</code></pre>
+
+<p>C++程序运行了17.8秒并且使用了700MB的内存。Go程序运行了25.2秒并且使用了1302MB内存。（这些测量很难与论文中的测量达成一致，但是本篇文章的重点是探索如何使用‘go tool pprof’工具，而不是重现论文中的结果。）</p>
+
+<p>在开始调整Go程序之前，需要先开启profilling功能。如果程序代码使用了<a href="http://golang.org/pkg/testing/">Go testing package</a>的benchmarking支持，我们也可以使用gotest&rsquo;s的标准参数-cpuprofile和-memprofile。像在下面的单体程序中，我们需要引入包runtime/pprof并添加几行代码：</p>
+
+<pre><code>var cpuprofile = flag.String(&quot;cpuprofile&quot;, &quot;&quot;, &quot;write cpu profile to file&quot;)
+
+func main() {
+    flag.Parse()
+    if *cpuprofile != &quot;&quot; {
+        f, err := os.Create(*cpuprofile)
+        if err != nil {
+            log.Fatal(err)
+        }
+        pprof.StartCPUProfile(f)
+        defer pprof.StopCPUProfile()
+    }
+    ...
+</code></pre>
+
+<p>新的代码定义了一个参数cpuprofile，调用这个<a href="http://golang.org/pkg/flag/">Go flag library</a> 去解析命令行参数，如果传了cpuprofile参数， <a href="http://golang.org/pkg/runtime/pprof/#StartCPUProfile">starts CPU profiling</a>就会重定向到那个参数所命名的文件中。这个分析器需要在程序退出之前调用一个<a href="http://golang.org/pkg/runtime/pprof/#StopCPUProfile"><code>StopCPUProfile</code></a>方法来清空写入到文件中的缓冲内容。我们使用defer来确保main函数返回前函数被调用。
+添加了如上代码后，我们就可以通过带上-cpuprofile参数来运行程序，然后运行<code>go roo pprof</code>去或者性能分析指标。</p>
+
+<pre><code>$ make havlak1.prof
+./havlak1 -cpuprofile=havlak1.prof
+# of loops: 76000 (including 1 artificial root node)
+$ go tool pprof havlak1 havlak1.prof
+Welcome to pprof!  For help, type 'help'.
+(pprof)
+</code></pre>
+
+<p>这个<code>go tool pprof</code> 命令就是<a href="https://github.com/gperftools/gperftools">Google&rsquo;s <code>pprof</code> C++ profiler</a>.的轻量级变种。最重要的命令就是topN，它可以展示出指标的前几个较大的数值：</p>
+
+<pre><code>(pprof) top10
+Total: 2525 samples
+     298  11.8%  11.8%      345  13.7% runtime.mapaccess1_fast64
+     268  10.6%  22.4%     2124  84.1% main.FindLoops
+     251   9.9%  32.4%      451  17.9% scanblock
+     178   7.0%  39.4%      351  13.9% hash_insert
+     131   5.2%  44.6%      158   6.3% sweepspan
+     119   4.7%  49.3%      350  13.9% main.DFS
+      96   3.8%  53.1%       98   3.9% flushptrbuf
+      95   3.8%  56.9%       95   3.8% runtime.aeshash64
+      95   3.8%  60.6%      101   4.0% runtime.settype_flush
+      88   3.5%  64.1%      988  39.1% runtime.mallocgc
+</code></pre>
+
+<p>当启用CPU分析时，Go程序每秒钟停止大约100次，并将当前运行的goroutine堆栈中的程序计数器的样本记录下来。该配置文件具有2525个样本，因此运行时间超出了25秒。在 <code>go tool pprof</code> 的输出中，每个函数都会有一行数据指标在样例中。前两列展示了函数运行的样例数量（而不是一个调用过的函数的次数），作为原始数量以及占总样本数量的百分比。这个runtime.mapaccess1_fast64函数运行了298个样例，或者占总样例数的11.8%。前十个输出是按照样例数进行排序的。第三列展示了前几行所运行样本数量的总和占总样本数量的百分比：前三行就占用了32.5%。第四列和第五列展示了函数出现的次数（包括正在运行的和调用过的次数总和）. 这个main.FindLoops函数的运行占了总采样的10.6%,但是它在调用栈中的次数占用了总采样的84.1%.</p>
+
+<p>通过使用参数-cum对第四列和第五列的排序得到如下输出：</p>
+
+<pre><code>(pprof) top5 -cum
+Total: 2525 samples
+       0   0.0%   0.0%     2144  84.9% gosched0
+       0   0.0%   0.0%     2144  84.9% main.main
+       0   0.0%   0.0%     2144  84.9% runtime.main
+       0   0.0%   0.0%     2124  84.1% main.FindHavlakLoops
+     268  10.6%  10.6%     2124  84.1% main.FindLoops
+(pprof) top5 -cum
+</code></pre>
+
+<p>实际上main.FindLoops和main.main的总和应该是100％，但每个堆栈样本只包括最下面的100个堆栈帧;在大约四分之一的样本中，递归的main.DFS函数比main.main深了100多个帧，所以完整的跟踪被截断了。</p>
+
+<p>堆栈跟踪样本包含有比文本列表可以显示的数据更有趣的函数调用关系数据。 Web命令以SVG格式写入配置文件数据图，并在Web浏览器中打开。（还有一个gv命令写入PostScript，并在Ghostview中打开它，对于任一命令，您需要安装graphviz。）</p>
+
+<pre><code>(pprof) web
+</code></pre>
+
+<p>图片的一部分 <a href="https://rawgit.com/rsc/benchgraffiti/master/havlak/havlak1.svg">the full graph</a>看起来像这样:</p>
+
+<p>图中的每个框对应于单个函数，并且框的大小根据运行函数的采样数量来确定。从框X到框Y的连线表示X调用Y;沿边缘的数字代表调用所出现在样本中的次数。如果调用单个函数在样本中出现了多次，例如在递归函数调用期间，每个外观都会计入边缘权重。这解释了21342次的次数从main.DFS到它自己的函数框。</p>
+
+<p>一目了然，我们可以看到该程序花费了大量时间在哈希操作中，原因是Go使用了map值。我们也可以告诉Web命令只使用包含特定函数的示例，例如runtime.mapaccess1_fast64，它排除了图中无用的函数。</p>
+
+<pre><code>(pprof) web mapaccess1
+</code></pre>
+
+<p>如果我们看一眼的话，我们可以看到main.FindLoops和main.DFS正在对runtime.mapaccess1_fast64进行调用。</p>
+
+<p>现在我们对大局有了一个粗略的概念，现在是放大特定功能的时候了。我们先来看看main.DFS，因为它是一个较短的函数：</p>
+
+<pre><code>(pprof) list DFS
+Total: 2525 samples
+ROUTINE ====================== main.DFS in /home/rsc/g/benchgraffiti/havlak/havlak1.go
+   119    697 Total samples (flat / cumulative)
+     3      3  240: func DFS(currentNode *BasicBlock, nodes []*UnionFindNode, number map[*BasicBlock]int, last []int, current int) int {
+     1      1  241:     nodes[current].Init(currentNode, current)
+     1     37  242:     number[currentNode] = current
+     .      .  243:
+     1      1  244:     lastid := current
+    89     89  245:     for _, target := range currentNode.OutEdges {
+     9    152  246:             if number[target] == unvisited {
+     7    354  247:                     lastid = DFS(target, nodes, number, last, lastid+1)
+     .      .  248:             }
+     .      .  249:     }
+     7     59  250:     last[number[currentNode]] = lastid
+     1      1  251:     return lastid
+(pprof)
+</code></pre>
+
+<p>这条命令展示了函数DFS的源码（实际上，他会匹配满足正则表达式DFS的所有函数）。</p>
+
+<p>前三列是运行该行时采集的样本数，运行该行或从该行调用的代码中采集的样本数以及文件中的行号。相应的命令disasm显示函数的反汇编代码而不是源代码;当有足够的样本时，这可以帮助您了解哪些命令比较消耗性能。这个 <code>weblist</code> 命令混合了两种模式: 它会返回这样的输出 <a href="https://rawgit.com/rsc/benchgraffiti/master/havlak/havlak1.html">a source listing in which clicking a line shows the disassembly</a>.</p>
+
+<p>由于我们已经知道时间都消耗在哈希运行时函数实现的map查找上，所以我们最关心的是第二列。在递归调用DFS（第247行）中花费了大量时间，正如递归遍历所预期的那样耗时。除了递归以外，看起来像是时间消耗在对第242,246和250行的map映射的访问。对于这种查找，map不是最有效的选择。就像它们在编译器中一样，基本块结构具有分配给它们的唯一序列号。而不是使用map[* BasicBlock] int，我们可以使用[] int，一个由块号索引的切片。可以用数组以及切片代替使用的，尽量不要是用map。将number从map更改为切片需要在程序中修改7行代码，这样它的运行时间将会缩短2倍。</p>
+
+<pre><code>$ make havlak2
+go build havlak2.go
+$ ./xtime ./havlak2
+# of loops: 76000 (including 1 artificial root node)
+16.55u 0.11s 16.69r 1321008kB ./havlak2
+$
+</code></pre>
+
+<p>(可以看看这个连接 <a href="https://github.com/rsc/benchgraffiti/commit/58ac27bcac3ffb553c29d0b3fb64745c91c95948">diff between <code>havlak1</code> and <code>havlak2</code></a>)</p>
+
+<p>我们可以再运行一次性能分析，函数main.DFS不再是运行时所消耗的最大部分：</p>
+
+<pre><code>$ make havlak2.prof
+./havlak2 -cpuprofile=havlak2.prof
+# of loops: 76000 (including 1 artificial root node)
+$ go tool pprof havlak2 havlak2.prof
+Welcome to pprof!  For help, type 'help'.
+(pprof)
+(pprof) top5
+Total: 1652 samples
+     197  11.9%  11.9%      382  23.1% scanblock
+     189  11.4%  23.4%     1549  93.8% main.FindLoops
+     130   7.9%  31.2%      152   9.2% sweepspan
+     104   6.3%  37.5%      896  54.2% runtime.mallocgc
+      98   5.9%  43.5%      100   6.1% flushptrbuf
+(pprof)
+</code></pre>
+
+<p>这个main.DFS没有再出现在性能数据中，并且剩下的程序运行时间也降了下来。现在程序所消耗的时间大多数都花费在内存分配以及垃圾回收中（runtime.mallocgc, 这个函数会周期性的运行内存分配以及垃圾回收，大概占用总时间的54.2%）.去找出为什么垃圾回收器占用了这么多时间，那我们就不得不找出什么分配的内存。一种方法就是添加内存性能分析到程序中。如果提供了-memprofile标志，程序将在循环查找的一次迭代后停止，写入内存数据到文件中然后退出：</p>
+
+<pre><code>var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to this file&quot;)
+...
+
+    FindHavlakLoops(cfgraph, lsgraph)
+    if *memprofile != &quot;&quot; {
+        f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatal(err)
+        }
+        pprof.WriteHeapProfile(f)
+        f.Close()
+        return
+    }
+</code></pre>
+
+<p>我们调用程序通过-memprofile参数来输出一个性能分析文件：</p>
+
+<pre><code>$ make havlak3.mprof
+go build havlak3.go
+./havlak3 -memprofile=havlak3.mprof
+$
+</code></pre>
+
+<p>(可以看一下 <a href="https://github.com/rsc/benchgraffiti/commit/b78dac106bea1eb3be6bb3ca5dba57c130268232">diff from havlak2</a>)</p>
+
+<p>我们使用和<code>go tool pprof</code>完全一样的方式。 现在我们正在检查的样本是内存分配，而不是cpu占用时间。</p>
+
+<pre><code>$ go tool pprof havlak3 havlak3.mprof
+Adjusting heap profiles for 1-in-524288 sampling rate
+Welcome to pprof!  For help, type 'help'.
+(pprof) top5
+Total: 82.4 MB
+    56.3  68.4%  68.4%     56.3  68.4% main.FindLoops
+    17.6  21.3%  89.7%     17.6  21.3% main.(*CFG).CreateNode
+     8.0   9.7%  99.4%     25.6  31.0% main.NewBasicBlockEdge
+     0.5   0.6% 100.0%      0.5   0.6% itab
+     0.0   0.0% 100.0%      0.5   0.6% fmt.init
+(pprof)
+</code></pre>
+
+<p>这个命令<code>go tool pprof</code> 展示出，函数FindLoops大约占用了总内存82.4MB的56.3MB内存；另一个CreateNode函数占用了17.6MB内存. 为了减少开销，内存分析器仅记录每半兆字节分配大约一个块的信息（“1-in-524288采样率”），因此这些是实际计数的近似值。</p>
+
+<p>找到具体的内存占用，我们可以遍历出这些函数。</p>
+
+<pre><code>(pprof) list FindLoops
+Total: 82.4 MB
+ROUTINE ====================== main.FindLoops in /home/rsc/g/benchgraffiti/havlak/havlak3.go
+  56.3   56.3 Total MB (flat / cumulative)
+...
+   1.9    1.9  268:     nonBackPreds := make([]map[int]bool, size)
+   5.8    5.8  269:     backPreds := make([][]int, size)
+     .      .  270:
+   1.9    1.9  271:     number := make([]int, size)
+   1.9    1.9  272:     header := make([]int, size, size)
+   1.9    1.9  273:     types := make([]int, size, size)
+   1.9    1.9  274:     last := make([]int, size, size)
+   1.9    1.9  275:     nodes := make([]*UnionFindNode, size, size)
+     .      .  276:
+     .      .  277:     for i := 0; i &lt; size; i++ {
+   9.5    9.5  278:             nodes[i] = new(UnionFindNode)
+     .      .  279:     }
+...
+     .      .  286:     for i, bb := range cfgraph.Blocks {
+     .      .  287:             number[bb.Name] = unvisited
+  29.5   29.5  288:             nonBackPreds[i] = make(map[int]bool)
+     .      .  289:     }
+...
+</code></pre>
+
+<p>看起来当前的瓶颈和上一个一样：在可以用简单数据结构的地方却使用了map。FindLoops函数占用了大约29.5MB的内存。</p>
+
+<p>另外，如果我们使用&ndash;inuse_objects标志运行<code>go tool pprof</code>，它会报告分配次数计数而不是内存占用大小：</p>
+
+<pre><code>$ go tool pprof --inuse_objects havlak3 havlak3.mprof
+Adjusting heap profiles for 1-in-524288 sampling rate
+Welcome to pprof!  For help, type 'help'.
+(pprof) list FindLoops
+Total: 1763108 objects
+ROUTINE ====================== main.FindLoops in /home/rsc/g/benchgraffiti/havlak/havlak3.go
+720903 720903 Total objects (flat / cumulative)
+...
+     .      .  277:     for i := 0; i &lt; size; i++ {
+311296 311296  278:             nodes[i] = new(UnionFindNode)
+     .      .  279:     }
+     .      .  280:
+     .      .  281:     // Step a:
+     .      .  282:     //   - initialize all nodes as unvisited.
+     .      .  283:     //   - depth-first traversal and numbering.
+     .      .  284:     //   - unreached BB's are marked as dead.
+     .      .  285:     //
+     .      .  286:     for i, bb := range cfgraph.Blocks {
+     .      .  287:             number[bb.Name] = unvisited
+409600 409600  288:             nonBackPreds[i] = make(map[int]bool)
+     .      .  289:     }
+...
+(pprof)
+</code></pre>
+
+<p>由于大约~200,000的map占用了29.5MB的内存，map的初始化占用了大约150字节。用map来存储键值对是合理的，但是用map来存储简单的集合结构就多此一举了。</p>
+
+<p>我们可以使用简单的数据切片来替代map去遍历元素。有一个例外的就是使用map来做实现去重算法，因为map的key是不可能重复的。但也可以使用内嵌函数来来实现这个功能：</p>
+
+<pre><code>func appendUnique(a []int, x int) []int {
+    for _, y := range a {
+        if x == y {
+            return a
+        }
+    }
+    return append(a, x)
+}
+</code></pre>
+
+<p>除了写这个函数外，让这个Go程序来使用数组切片去替代map还需要修改几行代码。</p>
+
+<pre><code>$ make havlak4
+go build havlak4.go
+$ ./xtime ./havlak4
+# of loops: 76000 (including 1 artificial root node)
+11.84u 0.08s 11.94r 810416kB ./havlak4
+$
+</code></pre>
+
+<p>(参考<a href="https://github.com/rsc/benchgraffiti/commit/245d899f7b1a33b0c8148a4cd147cb3de5228c8a">diff from havlak3</a>)</p>
+
+<p>现在我们比之前开始的时候快了2.11几倍。让我们再看一下CPU的性能分析。</p>
+
+<pre><code>$ make havlak4.prof
+./havlak4 -cpuprofile=havlak4.prof
+# of loops: 76000 (including 1 artificial root node)
+$ go tool pprof havlak4 havlak4.prof
+Welcome to pprof!  For help, type 'help'.
+(pprof) top10
+Total: 1173 samples
+     205  17.5%  17.5%     1083  92.3% main.FindLoops
+     138  11.8%  29.2%      215  18.3% scanblock
+      88   7.5%  36.7%       96   8.2% sweepspan
+      76   6.5%  43.2%      597  50.9% runtime.mallocgc
+      75   6.4%  49.6%       78   6.6% runtime.settype_flush
+      74   6.3%  55.9%       75   6.4% flushptrbuf
+      64   5.5%  61.4%       64   5.5% runtime.memmove
+      63   5.4%  66.8%      524  44.7% runtime.growslice
+      51   4.3%  71.1%       51   4.3% main.DFS
+      50   4.3%  75.4%      146  12.4% runtime.MCache_Alloc
+(pprof)
+</code></pre>
+
+<p>现在内存分配和紧跟着的垃圾收集（runtime.mallocgc）占我们运行时间的50.9％。 查看系统为什么是垃圾回收在占用运行时间的另一种方法是查看什么导致的垃圾回收，从下图可以看出大部分时间用在了mallocgc函数：</p>
+
+<pre><code>(pprof) web mallocgc
+</code></pre>
+
+<p>从这个图很难看出发生了什么，因为有包含了太多的小节点,从而掩盖了大的节点。我们可以告诉<code>go tool pprof</code>不必去计算小于10%的样本：</p>
+
+<pre><code>$ go tool pprof --nodefraction=0.1 havlak4 havlak4.prof
+Welcome to pprof!  For help, type 'help'.
+(pprof) web mallocgc
+</code></pre>
+
+<p>我们现在可以轻松跟随粗箭头，看看FindLoops是触发大部分的垃圾收集的函数。如果我们列出FindLoops函数，我们可以看到开始的是否大多都是正确的：</p>
+
+<pre><code>(pprof) list FindLoops
+...
+     .      .  270: func FindLoops(cfgraph *CFG, lsgraph *LSG) {
+     .      .  271:     if cfgraph.Start == nil {
+     .      .  272:             return
+     .      .  273:     }
+     .      .  274:
+     .      .  275:     size := cfgraph.NumNodes()
+     .      .  276:
+     .    145  277:     nonBackPreds := make([][]int, size)
+     .      9  278:     backPreds := make([][]int, size)
+     .      .  279:
+     .      1  280:     number := make([]int, size)
+     .     17  281:     header := make([]int, size, size)
+     .      .  282:     types := make([]int, size, size)
+     .      .  283:     last := make([]int, size, size)
+     .      .  284:     nodes := make([]*UnionFindNode, size, size)
+     .      .  285:
+     .      .  286:     for i := 0; i &lt; size; i++ {
+     2     79  287:             nodes[i] = new(UnionFindNode)
+     .      .  288:     }
+...
+(pprof)
+</code></pre>
+
+<p>每当FindLoops被调用时，它都会分配一些相当大的数据结构。由于benchmark调用了FindLoops 50次，这些加起来就累积了大量的垃圾，所以就产生了大量的垃圾回收操作。</p>
+
+<p>使用垃圾回收语言并不意味着您就可以忽略内存分配问题。 在这种情况下，一个简单的解决方案是引入缓存，以便每次调用FindLoops可以会重用以前的分配的调用存储。 （事实上，在Hundt的论文中，他解释说，Java程序需要这个改变才能得到任何合理的性能，但是在其他垃圾回收的实现中他并没有做同样的改变。）</p>
+
+<p>我们将添加一个全局缓存结构：</p>
+
+<pre><code>var cache struct {
+    size int
+    nonBackPreds [][]int
+    backPreds [][]int
+    number []int
+    header []int
+    types []int
+    last []int
+    nodes []*UnionFindNode
+}
+</code></pre>
+
+<p>然后，我们可以让FindLoops函数去用这个缓存结构来替代内存的分配：</p>
+
+<pre><code>if cache.size &lt; size {
+    cache.size = size
+    cache.nonBackPreds = make([][]int, size)
+    cache.backPreds = make([][]int, size)
+    cache.number = make([]int, size)
+    cache.header = make([]int, size)
+    cache.types = make([]int, size)
+    cache.last = make([]int, size)
+    cache.nodes = make([]*UnionFindNode, size)
+    for i := range cache.nodes {
+        cache.nodes[i] = new(UnionFindNode)
+    }
+}
+
+nonBackPreds := cache.nonBackPreds[:size]
+for i := range nonBackPreds {
+    nonBackPreds[i] = nonBackPreds[i][:0]
+}
+backPreds := cache.backPreds[:size]
+for i := range nonBackPreds {
+    backPreds[i] = backPreds[i][:0]
+}
+number := cache.number[:size]
+header := cache.header[:size]
+types := cache.types[:size]
+last := cache.last[:size]
+nodes := cache.nodes[:size]
+</code></pre>
+
+<p>类似这种全局变量的使用是不好的工程实践，当然这意味着对FindLoops的并发调用现在是不安全的。 现在，我们正在进行尽可能小的改变，以了解对我们的程序性能至关重要的地方在哪里; 这个变化很简单，并且反映了Java实现中的代码。 Go程序的最终版本将使用单独的LoopFinder实例来跟踪此内存，从而恢复并发使用的可能性。</p>
+
+<pre><code>$ make havlak5
+go build havlak5.go
+$ ./xtime ./havlak5
+# of loops: 76000 (including 1 artificial root node)
+8.03u 0.06s 8.11r 770352kB ./havlak5
+$
+</code></pre>
+
+<p>（参考<a href="https://github.com/rsc/benchgraffiti/commit/2d41d6d16286b8146a3f697dd4074deac60d12a4">diff from havlak4</a>）</p>
+
+<p>我们可以做更多的工作来清理程序并使其运行的更快，但目前所展示的都需要性能分析才可以进行程序优化。在函数FindLoops遍历的内部循环中使用的工作列表其实可以重复使用，并且可以与在该过程中生成的单例“节点池”配合使用。 类似地，循环图存储可以在每次迭代上重用，而不是重新分配。 除了这些性能变化，最终版本是使用惯用的Go风格，使用数据结构和方法编写的。 风格变化对运行时间影响不大：算法和约束并没有改变。</p>
+
+<p>最终的修改版本运行时间为2.29秒并占用了351MB的内存：</p>
+
+<pre><code>$ make havlak6
+go build havlak6.go
+$ ./xtime ./havlak6
+# of loops: 76000 (including 1 artificial root node)
+2.26u 0.02s 2.29r 360224kB ./havlak6
+$
+</code></pre>
+
+<p>目前程序运行的时间比之前快了11倍。即使我们禁用重用生成循环图功能，仅仅在循环中查找bookeeping时来进行缓存，那运行的速度也比之前的快了6.7倍多，占用的内存比之前少了1.5倍多。</p>
+
+<pre><code>$ ./xtime ./havlak6 -reuseloopgraph=false
+# of loops: 76000 (including 1 artificial root node)
+3.69u 0.06s 3.76r 797120kB ./havlak6 -reuseloopgraph=false
+$
+</code></pre>
+
+<p>当然，将此Go程序与原始C ++程序进行比较是不公平的，该程序使用诸如<code>set</code>的低效数据结构，而使用<code>vector</code>会比较合适一些。作为完备性测，我们将最终的Go程序翻译成<a href="https://github.com/rsc/benchgraffiti/blob/master/havlak/havlak6.cc">equivalent C++ code</a>.。 它的执行时间类似于Go程序：</p>
+
+<pre><code>$ make havlak6cc
+g++ -O3 -o havlak6cc havlak6.cc
+$ ./xtime ./havlak6cc
+# of loops: 76000 (including 1 artificial root node)
+1.99u 0.19s 2.19r 387936kB ./havlak6cc
+</code></pre>
+
+<p>Go程序的运行速度几乎和C ++程序一样快。 由于C ++程序正在使用自动删除和分配而不是显式缓存，所以C ++程序有点缩短并且易于编写，但并不是很明显：</p>
+
+<pre><code>$ wc havlak6.cc; wc havlak6.go
+ 401 1220 9040 havlak6.cc
+ 461 1441 9467 havlak6.go
+$
+</code></pre>
+
+<p>(参考 <a href="https://github.com/rsc/benchgraffiti/blob/master/havlak/havlak6.cc">havlak6.cc</a> 和 <a href="https://github.com/rsc/benchgraffiti/blob/master/havlak/havlak6.go">havlak6.go</a>)</p>
+
+<p>Benchmarks测试与其测量的程序一样好。 我们使用<code>go tool pprof</code>来研究一个低效的Go程序，然后将其性能提高一个数量级，并将其内存使用量降低3.7倍。 与等效优化的C ++程序的后续比较表明，当程序员注意内部循环生成多少垃圾时，Go可以与C ++竞争。</p>
+
+<p>程序源代码，Linux x86-64二进制文件和配置文件可以在GitHub的 <a href="https://github.com/rsc/benchgraffiti/">benchgraffiti project on GitHub</a>中找到。</p>
+
+<p>如上所述，<code>go test</code>已经包括这些分析标志：定义一个 <a href="http://golang.org/pkg/testing/">benchmark function</a>，而且你都设置好了。 还有一个用于分析数据的标准HTTP接口。 在HTTP服务器中添加</p>
+
+<pre><code>import _ &quot;net/http/pprof&quot;
+</code></pre>
+
+<p>这个导入将会为/debug /pprof /下的几个URL安装处理程序。 然后，您可以使用单个参数运行<code>go tool pprof</code> - 服务器的分析数据的URL，它将下载一个实时的profile分析文件。</p>
+
+<pre><code>go tool pprof http://localhost:6060/debug/pprof/profile   # 30-second CPU profile
+go tool pprof http://localhost:6060/debug/pprof/heap      # heap profile
+go tool pprof http://localhost:6060/debug/pprof/block     # goroutine blocking profile
+</code></pre>
+
+<p>By Russ Cox, July 2011; updated by Shenghou Ma, May 2013，翻译 马超。</p></div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_FkbCWfPac3" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

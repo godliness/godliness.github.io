@@ -1,989 +1,153 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="gMt7WMX3TJ" />
-  <meta name="google-site-verification" content="PF62v7y-qoER_Bt0rTKDnp8VRGwDuOs0kLLGyg8SxJM" />
-  
-  <title>Peter&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Peter&#39;s Blog">
-<meta property="og:url" content="http://godliness.github.io/index.html">
-<meta property="og:site_name" content="Peter&#39;s Blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter&#39;s Blog">
-  
-    <link rel="alternative" href="/atom.xml" title="Peter&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-    
-    
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
-</head>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Go</title>
+        <style>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.jpg" class="js-avatar">
-            
-        </a>
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
 
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="Hey Dude!">Peter Ma</a></h1>
-        </hgroup>
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
 
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        <link href="http://godliness.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Go" />
+        <link href="http://godliness.github.io/index.xml" rel="feed" type="application/rss+xml" title="Go" />
         
         
         
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-			<li onclick="location.href='/archives'">归档</li>
-                        <li>标签</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
+    </head>
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl mail" target="_blank" href="mailto:machaojms@126.com" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/godliness" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/godliness" title="zhihu">zhihu</a>
-                            
-                                <a class="fl weibo" target="_blank" href="http://weibo.com/1570530605" title="weibo">weibo</a>
-                            
-                                <a class="fl twitter" target="_blank" href="https://twitter.com/godlinesssss" title="twitter">twitter</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/elk/" style="font-size: 10px;">elk</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/golang/" style="font-size: 20px;">golang</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/keepalived/" style="font-size: 10px;">keepalived</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/监控/" style="font-size: 10px;">监控</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
-                    </div>
-                </section>
-                
-                
-                
-
-                
-                
-                <section class="switch-part switch-part3">
-                
-                    <div id="js-aboutme">我是一只普普通通的程序猿，有个做全栈架构师的梦想，为了梦想可以放弃香蕉的猿！</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Hey Dude!">Peter Ma</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Hey Dude!">Peter Ma</a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="mail" target="_blank" href="mailto:machaojms@126.com" title="mail">mail</a>
-                    
-                        <a class="github" target="_blank" href="https://github.com/godliness" title="github">github</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/godliness" title="zhihu">zhihu</a>
-                    
-                        <a class="weibo" target="_blank" href="http://weibo.com/1570530605" title="weibo">weibo</a>
-                    
-                        <a class="twitter" target="_blank" href="https://twitter.com/godlinesssss" title="twitter">twitter</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-
-      <div class="body-wrap">
-  
-    <article id="post-keepalived-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/30/keepalived-install/" class="article-date">
-      <time datetime="2017-08-30T10:30:16.000Z" itemprop="datePublished">2017-08-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/30/keepalived-install/">安装Keepalived</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="安装Keepalived"><a href="#安装Keepalived" class="headerlink" title="安装Keepalived"></a>安装Keepalived</h2><h4 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://www.keepalived.org/software/keepalived-1.3.6.tar.gz</div></pre></td></tr></table></figure>
-<h4 id="解压源码包"><a href="#解压源码包" class="headerlink" title="解压源码包"></a>解压源码包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf ./keepalived-1.3.6.tar.gz</div></pre></td></tr></table></figure>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install -y openssl-devel libnl3-devel ipset-devel iptables-devel libnfnetlink-devel</div><div class="line">cd keepalived-1.3.6/</div><div class="line">./configure --prefix=/usr/local/keepalived</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keepalived/">keepalived</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/30/keepalived-install/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-data-structure-record" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/28/data-structure-record/" class="article-date">
-      <time datetime="2017-08-28T03:05:49.000Z" itemprop="datePublished">2017-08-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/data-structure-record/">数据结构概述</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="程序设计-数据结构-算法"><a href="#程序设计-数据结构-算法" class="headerlink" title="程序设计 = 数据结构 + 算法"></a><strong>程序设计 = 数据结构 + 算法</strong></h2><p><strong>数据</strong>：是描述客官事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。</p>
-<p><strong>数据元素</strong>：是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录。</p>
-<p><strong>数据项</strong>：一个数据元素可以由若干个数据项组成，数据项是数据不可分割的最小单位。</p>
-<p><strong>数据对象</strong>: 是性质相同的数据元素的集合，是数据的子集。</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/28/data-structure-record/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-microservice-monitor-introduce" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/21/microservice-monitor-introduce/" class="article-date">
-      <time datetime="2017-08-21T03:33:00.000Z" itemprop="datePublished">2017-08-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/21/microservice-monitor-introduce/">说说微服务与监控</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="微服务简介"><a href="#微服务简介" class="headerlink" title="微服务简介"></a>微服务简介</h2><p>微服务的这个词出现已经有几年了，随之产生的组件也有不少，微服务可以抽离出那些大家都会关注的问题，并将它们进行组件化，很多组件聚合到一起就行成了一套微服务框架，目前比较成熟的微服务框架和机构有很多，比如：<a href="http://projects.spring.io/spring-cloud/" target="_blank" rel="external">Spring Cloud</a>, <a href="https://www.cncf.io/" target="_blank" rel="external">CNCF</a>等。那么微服务框架当中都有那些组件呢？下面展示一张图来让大家有一个整体的认识。</p>
-<p><img src="http://or9trsrm0.bkt.clouddn.com/QQ20170822-104659@2x.png" alt=""><br>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微服务/">微服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/监控/">监控</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/21/microservice-monitor-introduce/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-linux-command-record" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/18/linux-command-record/" class="article-date">
-      <time datetime="2017-08-18T08:57:37.000Z" itemprop="datePublished">2017-08-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/linux-command-record/">应用程序调优所需的一些Linux命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h5 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h5><p>此命令可以查看服务器的系统负载情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ uptime</div><div class="line">12:52:21 up 20:22,  1 user,  load average: 40.02, 23.43, 20.08</div></pre></td></tr></table></figure>
-<p>第一列是系统当前时间和系统运行了多长时间</p>
-<p>第二列是当前在现用户</p>
-<p>第三列是系统平均负载（这里的数值代表平均等待获取cpu进程的数量，其中也包括在进行io等待的进程，数值越高负载越高，假如你的服务器是24核，那么平均负载大于24以后就证明cpu超负荷）</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/18/linux-command-record/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-profiling-go-programs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/10/profiling-go-programs/" class="article-date">
-      <time datetime="2017-08-10T06:36:07.000Z" itemprop="datePublished">2017-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/profiling-go-programs/">Go程序性能分析工具</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>在2011年的Scala鼎盛时期，Rober Hundt 发表了一篇论文<a href="http://research.google.com/pubs/pub37122.html" target="_blank" rel="external">Loop Recognition in C++/Java/Go/Scala.</a> 这篇论文实现了一个特定的查找算法，例如在C++,Go,Java,Scala编译器中使用的代码流程分析，可以利用这个去画出一个程序运行的性能分析图。论文中展示的Go程序运行的相当缓慢，这是一个很好的机会来运用Go性能分析工具去分析这个缓慢程序，并使它运行的快起来。</p>
-<p>通过使用Go性能分析工具来找到程序正确的性能瓶颈，可以让Go程序运行的快一个数量级，并减少6倍的内存占用。（更新：由于最近的gcc里面libstdc++的优化，内存占用减少了3.7倍多）</p>
-<p>Hundt的论文没有指定是使用的哪个版本的C++, Go, Java,和Scala工具。在这篇文章中，我们将使用最新的每周发布的6g Go编译器快照和Ubuntu Natty发行版附带g ++的版本。（我们将不会使用Java或者Scala,因为我们不擅长使用这些语言来写出有效率的程序，所以在这些语言中进行对比的话会有些不公平。由于C++是论文中所述最快的语言，所以和C++来进行对比就足够了。）（更新：在更新过的文章中，我们将要使用最近在amd64平台上开发的Go编译器的快照，并使用在2013年3月份发布的g++最新版本4.8.0）</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/08/10/profiling-go-programs/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/22/thinking-in-java/" class="article-date">
-      <time datetime="2017-06-22T02:54:08.000Z" itemprop="datePublished">2017-06-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/22/thinking-in-java/">Java编程思想</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li>Socket readline() 自动阻塞</li>
-<li>public表示紧随其后的元素对任何人都是可用的，private表示除类型创建者和类型的内部方法之外的任何人都不能访问的元素（private就像你与客户端之间的一堵墙），protected关键字与private相当，差别仅在于继承的类可以访问protected成员，但是不能访问private成员，java还有一种默认的访问权限，当没有使用前面提到的任何访问指定词时，它将发挥作用。这种权限通常被称为包访问权限，因为在这种权限下，类可以访问在同一个包中的其他类的成员，但是在包之外，这些成员如同制定了private一样。</li>
-<li>java中的变量都是静态绑定的，方法的话只有构造函数，static和final(所有private默认是final的)是静态绑定的。</li>
-<li>多态：父类的引用指向子类对象，父类引用调用子类中没有的方法时会去父类中找（如果子类中有直接调用子类，动态绑定），父类引用调用成员变量时，去调用父类的成员变量而不是子类（静态绑定）。</li>
-<li>成员变量不初始化的话，虚拟机会自动为其初始化；但是，局部变量不初始化的话，虚拟机不会自动为其初始化（报错）。</li>
-<li>switch语句可以多层叠加,也就是说多个备选条件紧靠，其中没有break的中断，那么符合这些叠加的其中任何一个元素就可以执行最后面那个case以break结尾的选项。比方物体一直滑落，直到遇到break停止。之前经过的所有选项都能被叠加在一起，作为一个判断条件。</li>
-<li>子类通过new语句建立新对象时，默认先构造父类的默认构造器。只能在构造器中调用本类的其他构造器（不能在方法中调用），而且只能调用一次且是在该构造器的第一行调用。</li>
-<li>new某个类对象时，首先初始化成员变量，其次初始化该构造器内的变量。另外是先初始化静态对象（如果它们尚未因前面的对象创建过程而被初始化），而后是“非静态”对象。</li>
-<li>static关键字不能应用于局部变量，只能应用于静态域。
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/22/thinking-in-java/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysql-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/09/mysql-install/" class="article-date">
-      <time datetime="2017-06-09T09:20:49.000Z" itemprop="datePublished">2017-06-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/mysql-install/">MYAQL5.7安装</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>安装环境：CentOS7 64位，MySQL5.7</p>
-<h3 id="Step-1-配置YUM源"><a href="#Step-1-配置YUM源" class="headerlink" title="Step 1 配置YUM源"></a>Step 1 配置YUM源</h3><p>在官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/yum/</a> ，或者手动下载安装包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</div><div class="line"></div><div class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</div></pre></td></tr></table></figure>
-<p>检查mysql源是否安装成功<br>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/09/mysql-install/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-elk-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/09/elk-install/" class="article-date">
-      <time datetime="2017-06-09T07:57:56.000Z" itemprop="datePublished">2017-06-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/elk-install/">采用ELK进行网络流量分析的安装过程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <blockquote>
-<p>所有ELK组件均基于版本5.4.1</p>
-</blockquote>
-<h3 id="Step1-操作系统的准备"><a href="#Step1-操作系统的准备" class="headerlink" title="Step1 操作系统的准备"></a>Step1 操作系统的准备</h3><p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/selinux</div></pre></td></tr></table></figure>
-<p>将 SELINUX的值从enforcing改成disabled。<br>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elk/">elk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大数据/">大数据</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/09/elk-install/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-in-action-records" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/25/go-in-action-records/" class="article-date">
-      <time datetime="2017-05-25T02:10:55.000Z" itemprop="datePublished">2017-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/go-in-action-records/">Go In Action</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li>Channel之所以并发安全的原因是通过复制内存的方式来进行共享内存。</li>
-<li>main.go 文件中 init 方法会在 main 方法之前执行</li>
-<li>main方法在main包中才会编译出可执行文件</li>
-<li>import 语句中的下划线“_”，其实就是初始化后面引入的包，调用包中的init方法</li>
-<li>package中小写字母开头的变量是不可导出（不可被其他包访问）的，而大写字母开头的变量是可以导出的，可以通过函数返回不可导出的变量</li>
-<li>引用型的变量不初始化就使用会报错，因为引用变量的默认值是nil</li>
-<li>var关键字会将变量初始化为它的零值，而:=关键字则不是，可以是一个函数调用的返回也可以是自定义的初始化方法。</li>
-<li>在main方法结束前来结束所有的go协程会减少bug和错误
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/05/25/go-in-action-records/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-language-study-records" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/04/06/go-language-study-records/" class="article-date">
-      <time datetime="2017-04-06T09:17:16.000Z" itemprop="datePublished">2017-04-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/go-language-study-records/">Go语言学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li><p>对读Chanel进行Close操作会失败</p>
-</li>
-<li><p>对关闭了的Chanel进行写操作会失败</p>
-</li>
-<li><p>单向Channel无法再转换回双向Channel</p>
-</li>
-<li><p>关键字go并非执行并发操作，而是创建一个并发任务单元。新建任务被放置在系统队列中，等待调度器安排合适系统线程去获取执行权。</p>
-</li>
-<li><p>每个任务单元除保存函数指针，调用参数外，还会分配执行所需的栈内存空间。相比系统默认MB级别的线程栈，groutine自定义栈初始仅需2KB，所以才能创建成千上万的并发任务。</p>
-</li>
-<li><p>Defer 和 Go关键字，调用的函数，若参数中传入函数，那么参数中的函数会在调用的函数执行前立即执行，求出参数值。</p>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/04/06/go-language-study-records/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
-
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2017 Peter Ma
-            </div>
-            <div class="footer-right">
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >访客到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
-
-    </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Go</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
 
 
+<main>
 
+    <div class="intro">
 
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?e735c584171a3058be972b115ad6ef45";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
+        
 
+        <h1>Go</h1>
 
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
+        <h2>Say hello to the future.</h2>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+    </div>
 
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
+</main>
 
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
+        <footer>
 
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
 
-  </div>
-</body>
+        </footer>
+       
+    </body>
+
 </html>
+

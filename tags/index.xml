@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Go</title>
+    <link>http://godliness.github.io/tags/</link>
+    <description>Recent content in Tags on Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Jun 2017 15:57:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://godliness.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Elk</title>
+      <link>http://godliness.github.io/tags/elk/</link>
+      <pubDate>Fri, 09 Jun 2017 15:57:56 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/elk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Etcd</title>
+      <link>http://godliness.github.io/tags/etcd/</link>
+      <pubDate>Thu, 30 Mar 2017 18:25:11 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>http://godliness.github.io/tags/golang/</link>
+      <pubDate>Thu, 10 Aug 2017 14:36:07 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://godliness.github.io/tags/java/</link>
+      <pubDate>Thu, 22 Jun 2017 10:54:08 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Keepalived</title>
+      <link>http://godliness.github.io/tags/keepalived/</link>
+      <pubDate>Wed, 30 Aug 2017 18:30:16 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/keepalived/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://godliness.github.io/tags/linux/</link>
+      <pubDate>Fri, 18 Aug 2017 16:57:37 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>http://godliness.github.io/tags/mysql/</link>
+      <pubDate>Fri, 09 Jun 2017 17:20:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据</title>
+      <link>http://godliness.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Fri, 09 Jun 2017 17:20:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>微服务</title>
+      <link>http://godliness.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 21 Aug 2017 11:33:00 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据结构</title>
+      <link>http://godliness.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 28 Aug 2017 11:05:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>监控</title>
+      <link>http://godliness.github.io/tags/%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Mon, 21 Aug 2017 11:33:00 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E7%9B%91%E6%8E%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>翻译</title>
+      <link>http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/</link>
+      <pubDate>Thu, 10 Aug 2017 14:36:07 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E7%BF%BB%E8%AF%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>读书笔记</title>
+      <link>http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 28 Aug 2017 11:05:49 +0000</pubDate>
+      
+      <guid>http://godliness.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

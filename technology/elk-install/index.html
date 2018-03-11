@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>采用ELK进行网络流量分析的安装过程</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://godliness.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">采用ELK进行网络流量分析的安装过程</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/technology/">Technology</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:machaojms@126.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/godliness/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/godlinesssss/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/marble-ma-4890b138/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/4558225/godliness"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/technology/elk-install/">采用ELK进行网络流量分析的安装过程</a></h4>
+    <h5>June 9, 2017</h5>
+    
+    <a href="http://godliness.github.io/tags/elk"><kbd class="item-tag">elk</kbd></a>
+    
+    <a href="http://godliness.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE"><kbd class="item-tag">大数据</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><blockquote>
+<p>所有ELK组件均基于版本5.4.1</p>
+</blockquote>
+
+<h3 id="step1-操作系统的准备">Step1 操作系统的准备</h3>
+
+<p>禁用CentOS7服务器上的SELinux。编辑SELinux的配置文件。</p>
+
+<pre><code>vim /etc/sysconfig/selinux
+</code></pre>
+
+<p>将 SELINUX的值从enforcing改成disabled。
+</p>
+
+<pre><code>SELINUX=disabled
+</code></pre>
+
+<p>然后重启服务器</p>
+
+<pre><code>reboot
+</code></pre>
+
+<p>再次登录服务器并检查 SELinux 状态。</p>
+
+<pre><code>getenforce
+</code></pre>
+
+<p>确保结果是 <code>disabled</code>。</p>
+
+<h3 id="step2-安装java">Step2 安装Java</h3>
+
+<p>部署 Elastic stack 依赖于Java，Elasticsearch 需要 Java 8 版本，推荐使用 Oracle JDK 1.8 。我将从官方的 Oracle rpm 包安装 Java 8。</p>
+
+<p>下载 Java 8 的JDK, 请选择linux64的rpm包</p>
+
+<pre><code>http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+</code></pre>
+
+<p>然后使用 <code>rpm</code> 命令安装：</p>
+
+<pre><code>rpm -ivh jdk-8u77-linux-x64.rpm
+</code></pre>
+
+<p>最后，检查 java JDK 版本，确保它正常工作。</p>
+
+<pre><code>java -version
+</code></pre>
+
+<p>您将看到服务器的 Java 版本。</p>
+
+<p>这里要注意的是，可能有您安装的服务器上已经有java 7了，那么就要运行下面命令，让默认版本为java 8。</p>
+
+<pre><code>/usr/sbin/alternatives --config java
+</code></pre>
+
+<p>显示如下:</p>
+
+<pre><code>There are 2 programs which provide 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*  1  /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.101-2.6.6.1.el7_2.x86_64/jre/bin/java
+   2   /usr/java/jdk1.8.0_131/jre/bin/java
+
+Enter to keep the current selection[+], or type selection number:
+</code></pre>
+
+<p>这个时候输入数字2就可以了，然后敲击回车，之后再检测一下Java的版本，应该就没有问题了。</p>
+
+<h3 id="step3-安装和配置-elasticsearch和xpack">Step3 安装和配置 Elasticsearch和xpack</h3>
+
+<p>在安装 Elasticsearch 之前，将 elastic.co 的密钥添加到服务器。</p>
+
+<pre><code>rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+</code></pre>
+
+<p>接下来，使用 <code>wget</code> 下载 Elasticsearch 5.4.1，然后安装它。</p>
+
+<pre><code>wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.1.rpm
+rpm -ivh elasticsearch-5.4.1.rpm
+</code></pre>
+
+<p>Elasticsearch 已经安装好了。 现在进入配置目录编辑 <code>elasticsaerch.yml</code> 配置文件。</p>
+
+<pre><code>cd /etc/elasticsearch/
+vim elasticsearch.yml
+</code></pre>
+
+<p>启用 Elasticsearch 的内存锁。这将禁用 Elasticsearch 的内存交换。</p>
+
+<pre><code>bootstrap.memory_lock: true
+</code></pre>
+
+<p>在 <code>Network</code> 块中，取消注释 <code>network.host</code> 和 <code>http.port</code> 行。</p>
+
+<pre><code>network.host: 0.0.0.0
+http.port: 9200
+</code></pre>
+
+<p>保存文件并退出编辑器。</p>
+
+<p>现在编辑 <code>elasticsearch.service</code> 文件的内存锁配置。</p>
+
+<pre><code>vim /usr/lib/systemd/system/elasticsearch.service
+</code></pre>
+
+<p>确保该值为 infinity。</p>
+
+<pre><code>LimitMEMLOCK=infinity
+</code></pre>
+
+<p>保存并退出。</p>
+
+<p>然后编辑/etc/sysconfig/elasticsearch文件的内存锁配置。</p>
+
+<pre><code>MAX_LOCKED_MEMORY=unlimited
+</code></pre>
+
+<p>保存并退出。</p>
+
+<p>Elasticsearch 配置到此结束。Elasticsearch 将在本机的 9200 端口运行，我们通过在 CentOS 服务器上启用 <code>mlockall</code> 来禁用内存交换。重新加载 systemd，将 Elasticsearch 置为开机启动，然后启动服务。</p>
+
+<pre><code>sudo systemctl daemon-reload 
+sudo systemctl enable elasticsearch 
+sudo systemctl start elasticsearch
+</code></pre>
+
+<p>等待 Eelasticsearch 启动成功，然后检查服务器上打开的端口，确保 9200 端口的状态是 <code>LISTEN</code>。</p>
+
+<pre><code>netstat -plntu | grep 9200
+</code></pre>
+
+<p>然后检查内存锁以确保启用 <code>mlockall</code>，并使用以下命令检查 Elasticsearch 是否正在运行。</p>
+
+<pre><code>curl -XGET 'localhost:9200/_nodes?filter_path=**.mlockall&amp;pretty'
+
+{
+  &quot;nodes&quot; : {
+    &quot;o6f3SEdsRg-IidCsiaicHw&quot; : {
+      &quot;process&quot; : {
+        &quot;mlockall&quot; : true
+      }
+    }
+  }
+}
+
+curl -XGET 'localhost:9200/?pretty'
+
+{
+  &quot;name&quot; : &quot;*****&quot;,
+  &quot;cluster_name&quot; : &quot;production&quot;,
+  &quot;cluster_uuid&quot; : &quot;n8VLYl__Qo6WWC-VDbAUcg&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;5.4.1&quot;,
+    &quot;build_hash&quot; : &quot;2cfe0df&quot;,
+    &quot;build_date&quot; : &quot;2017-05-29T16:05:51.443Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;6.5.1&quot;
+  },
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
+
+</code></pre>
+
+<p>到此elasticsearch安装完了。</p>
+
+<p>安装xpack扩展插件</p>
+
+<pre><code>/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack
+</code></pre>
+
+<p>修改elasticsearch.yml配置文件，添加如下配置</p>
+
+<pre><code>action.auto_create_index: true
+xpack.security.enabled: false
+</code></pre>
+
+<p>重启elasticsearch</p>
+
+<pre><code>systemctl restart elasticsearch
+</code></pre>
+
+<h3 id="step4-安装和配置-logstash">Step4 安装和配置 Logstash</h3>
+
+<p>下载 Logstash 并使用 rpm 进行安装。</p>
+
+<pre><code>wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.1.rpm
+rpm -ivh logstash-5.4.1.rpm
+</code></pre>
+
+<p>转到 logstash 配置目录，并在 <code>/etc/logstash/conf.d</code> 子目录中创建新的配置文件<code>sflow.conf</code>。</p>
+
+<pre><code>input {
+  udp {
+    host =&gt; [&quot;添加本地监听地址&quot;]
+    port =&gt; 6343
+    codec =&gt; sflow {
+    }
+    type =&gt; sflow
+  }
+}
+
+output {
+  elasticsearch {
+    hosts =&gt; [&quot;localhost:9200&quot;]
+    index =&gt; &quot;logstash-sflow-%{+YYYY.MM.dd}&quot;
+  }
+}
+</code></pre>
+
+<p>这里我们需要安装一个logstash的插件，让它支持slfow协议的解码。</p>
+
+<pre><code>/usr/share/logstash/bin/logstash-plugin install logstash-codec-sflow
+</code></pre>
+
+<p>安装logstash的xpack插件</p>
+
+<pre><code>/usr/share/logstash/bin/logstash-plugin install x-pack
+</code></pre>
+
+<p>修改<code>/etc/logstash/logstash.yml</code>配置文件添加xpack对于logstash的监控:</p>
+
+<pre><code>xpack.monitoring.elasticsearch.url: http://localhost:9200
+</code></pre>
+
+<p>这里我们没有启用xpack的鉴权，所以不需要指定用户名与密码。</p>
+
+<h3 id="step5-安装和配置-kibana">Step5 安装和配置 Kibana</h3>
+
+<p>用 <code>wget</code> 下载 Kibana 5.4.1，然后使用 <code>rpm</code> 命令安装：</p>
+
+<pre><code>wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.1-x86_64.rpm
+rpm -ivh kibana-5.4.1-x86_64.rpm
+</code></pre>
+
+<p>编辑 Kibana 配置文件。</p>
+
+<pre><code>vim /etc/kibana/kibana.yml
+</code></pre>
+
+<p>去掉配置文件中 <code>server.port</code>、<code>server.host</code> 和 <code>elasticsearch.url</code> 这三行的注释。</p>
+
+<pre><code>server.port: 5601
+server.host: &quot;YourIP&quot;
+elasticsearch.url: &quot;http://localhost:9200&quot;
+</code></pre>
+
+<p>将 Kibana 设为开机启动，并且启动 Kibana 。</p>
+
+<pre><code>sudo systemctl enable kibana
+sudo systemctl start kibana
+</code></pre>
+
+<p>至此所有都已经安装完成，打开网址<a href="http://YouKibanaIP:5601/">http://YouKibanaIP:5601/</a>, 就能看到相应的数据。记得创建Kibana Sflow的索引，logstash-sflow-*。</p>
+
+<p>安装Kibana的Xpack插件</p>
+
+<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170627-122212@2x.png" alt="" /></p>
+
+<p><img src="http://or9trsrm0.bkt.clouddn.com/WX20170630-145117@2x.png" alt="" /></p></div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_FkbCWfPac3" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
