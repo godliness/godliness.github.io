@@ -6,19 +6,10 @@
     <description>Recent content in Technologies on Godliness</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Mar 2018 18:44:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Aug 2017 18:30:16 +0000</lastBuildDate>
     
 	<atom:link href="https://godliness.github.io/technology/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>My First Post</title>
-      <link>https://godliness.github.io/technology/my-first-post/</link>
-      <pubDate>Mon, 12 Mar 2018 18:44:23 +0800</pubDate>
-      
-      <guid>https://godliness.github.io/technology/my-first-post/</guid>
-      <description>odsadsa dsadsa dsada</description>
-    </item>
     
     <item>
       <title>安装Keepalived</title>
