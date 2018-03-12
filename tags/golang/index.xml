@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Marble Ma</title>
+    <title>Golang on Godliness</title>
     <link>https://godliness.github.io/tags/golang/</link>
-    <description>Recent content in Golang on Marble Ma</description>
+    <description>Recent content in Golang on Godliness</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 Aug 2017 14:36:07 +0000</lastBuildDate>
