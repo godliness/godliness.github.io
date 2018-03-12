@@ -36,6 +36,29 @@
     </item>
     
     <item>
+      <title>Go语言CodeReivew注释总结</title>
+      <link>https://godliness.github.io/technology/go-comments-review/</link>
+      <pubDate>Fri, 12 May 2017 22:53:28 +0000</pubDate>
+      
+      <guid>https://godliness.github.io/technology/go-comments-review/</guid>
+      <description>Gofmt 在你的代码上运行gofmt来自动修复大多数刻板的样式问题。绝大部分的Go代码都会使用gofmt进行格式化代码。本文余下的部分会讲一下写非刻板的样式问题。另一种方法是使用goimports，gofmt的超集，额外添加（和删除）必要的导入行。
+注释语句 参考 https://golang.org/doc/effective_go.html#commentary。注释文档的声明应该是个完整的句子，即使看起来有一些冗余。这样的话当我们导出godoc文档的时候，格式会看起来比较好一些。注释应该以要描述的内容开头并以句号来结束:
+// Request represents a request to run a command. type Request struct { ... // Encode writes the JSON encoding of req to w. func Encode(w io.Writer, req *Request) { ...  注意除了句号以外，也可以使用（!,?）来结束注释。除此之外，还有很多工具可以用来标识types和method（例如 easyjson: json和golint的MATCH）。这样的规则很难被格式化。
+Contexts context.Context类型的值可以携带一些可以跨API和进程边界的安全凭证，跟踪信息，截止时间，取消信号。Go程序可以明确地传送上下文到函数调用的整个调用链，从进来的RPC和HTTP请求到出去的响应体。
+大多数的函数通过第一个参数来接收Context对象：
+func F(ctx context.Context, /* other arguments */) {}  一个不需要与特定请求绑定的函数可能会使用context.Background()，即使你认为你不需要上下文也要传递Context参数，要不然就会报错，默认的情况下，我们都会使用context.Background()来直接获得Context对象，除非你有充分的理由说明这么做是错的。
+不要添加Context成员到结构体中；而是将ctx参数添加到需要传递该类型的每种方法上。唯一的例外就是调用的方法要与标准库或第三方库中的接口相匹配。
+不要创建自定义的Context类型或使用Context以外的接口。
+如果你有应用数据需要传递，请将其置于接收器的参数中，使用全局变量，或者如果它真的应该存入Context中，则才将其存入。
+Context是不可变的，所以我们可以传递相同的ctx参数到多个方法调用，来共享截止时间，取消信号，凭证，以及追踪信息等等。
+Copying 为了避免意外的情形，当从一个包中复制结构体的时候要小心一些。例如，bytes.Buffer类型中包含一个[]byte切片，并且对于短字符串的优化，切片可能会引用一个小的字节数组。如果你复制了Buffer,副本中的切片可能会替换原始的数组，从而导致后续的方法调用会产生奇怪的效果。
+一般来说，请不要复制值类型T,如果它的方法中有关联到指针类型*T。
+声明空的切片 当声明空的切片时，优先选择
+var t []string  其次是
+t := []string{}  前者声明了一个nil的切片，然后后者则声明了一个non-nil的切片，长度为0.</description>
+    </item>
+    
+    <item>
       <title>Go语言学习笔记</title>
       <link>https://godliness.github.io/technology/go-language-study-records/</link>
       <pubDate>Thu, 06 Apr 2017 17:17:16 +0000</pubDate>
