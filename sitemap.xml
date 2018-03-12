@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://godliness.github.io/technology/my-first-post/</loc>
+    <lastmod>2018-03-12T18:44:23+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://godliness.github.io/technology/keepalived-install/</loc>
     <lastmod>2017-08-30T18:30:16+00:00</lastmod>
   </url>
@@ -81,7 +86,7 @@
   
   <url>
     <loc>https://godliness.github.io/</loc>
-    <lastmod>2017-08-30T18:30:16+00:00</lastmod>
+    <lastmod>2018-03-12T18:44:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -123,7 +128,7 @@
   
   <url>
     <loc>https://godliness.github.io/technology/</loc>
-    <lastmod>2017-08-30T18:30:16+00:00</lastmod>
+    <lastmod>2018-03-12T18:44:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
