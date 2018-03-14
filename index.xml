@@ -201,9 +201,8 @@ func F(ctx context.Context, /* other arguments */) {}  一个不需要与特定�
 Context是不可变的，所以我们可以传递相同的ctx参数到多个方法调用，来共享截止时间，取消信号，凭证，以及追踪信息等等。
 Copying 为了避免意外的情形，当从一个包中复制结构体的时候要小心一些。例如，bytes.Buffer类型中包含一个[]byte切片，并且对于短字符串的优化，切片可能会引用一个小的字节数组。如果你复制了Buffer,副本中的切片可能会替换原始的数组，从而导致后续的方法调用会产生奇怪的效果。
 一般来说，请不要复制值类型T,如果它的方法中有关联到指针类型*T。
-声明空的切片 当声明空的切片时，优先选择
-var t []string  其次是
-t := []string{}  前者声明了一个nil的切片，然后后者则声明了一个non-nil的切片，长度为0.</description>
+Declaring Empty Slices 当声明空的切片时，优先选择
+var t []string  其次是</description>
     </item>
     
     <item>

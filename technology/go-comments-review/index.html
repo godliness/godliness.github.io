@@ -201,7 +201,7 @@ func Encode(w io.Writer, req *Request) { ...
 
 <p>一般来说，请不要复制值类型T,如果它的方法中有关联到指针类型*T。</p>
 
-<h4 id="声明空的切片">声明空的切片</h4>
+<h4 id="declaring-empty-slices">Declaring Empty Slices</h4>
 
 <p>当声明空的切片时，优先选择</p>
 
@@ -221,15 +221,342 @@ func Encode(w io.Writer, req *Request) { ...
 
 <p>关于Go中关于nil的更多讨论请查看Francesc Campoy的文章 <a href="https://www.youtube.com/watch?v=ynoY2xz-F8s">Understanding Nil</a>.</p>
 
-<h4 id="go变量命名">Go变量命名</h4>
+<h4 id="crypto-rand">Crypto Rand</h4>
 
-<p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
+<p>不要使用math/rand包来生成密钥，即使是一次性的密钥，没有种子的话，密钥生成器是完全可以预测的。若利用time.Nanoseconds()作为种子，则只有很小的时间复杂度。我们可以运用crypto/rand的Reader,作为替代，如果你想输出16位编码的密钥或者是base64编码的密钥。</p>
 
-<h4 id="go协程的生命周期">Go协程的生命周期</h4>
+<pre><code>import (
+    &quot;crypto/rand&quot;
+    // &quot;encoding/base64&quot;
+    // &quot;encoding/hex&quot;
+    &quot;fmt&quot;
+)
+
+func Key() string {
+    buf := make([]byte, 16)
+    _, err := rand.Read(buf)
+    if err != nil {
+        panic(err)  // out of randomness, should never happen
+    }
+    return fmt.Sprintf(&quot;%x&quot;, buf)
+    // or hex.EncodeToString(buf)
+    // or base64.StdEncoding.EncodeToString(buf)
+}
+</code></pre>
+
+<h4 id="doc-comments">Doc Comments</h4>
+
+<p>所有上层的，被导出的名字都应该有文档注释，那些没有导出的比较重要类型与方法也应该有相应的注释。关于文档注释的更多信息请查看 <a href="https://golang.org/doc/effective_go.html#commentary">https://golang.org/doc/effective_go.html#commentary</a>。</p>
+
+<h4 id="don-t-panic">Don&rsquo;t Panic</h4>
+
+<p>请看一下 <a href="https://golang.org/doc/effective_go.html#errors">https://golang.org/doc/effective_go.html#errors</a>. 不要运用panic去做正常的错误处理，运用error类型和多个错误返回来进行错误处理。</p>
+
+<h4 id="error-strings">Error Strings</h4>
+
+<p>错误日志字符串不要以大写字母开头（除非是以合适的名词或缩略词开头的），也不要以标点符号结尾，因为它们会接着其他的上下文。就是这样，使用 fmt.Errorf(&ldquo;something bad&rdquo;) 而不要使用 fmt.Errorf(&ldquo;Something bad&rdquo;)，就像log.Printf(&ldquo;Reading %s: %v&rdquo;, filename, err)这种，不应该还有大写字母。这种根本就不适合拿来记录日志，它隐式地面向行，并且不在其他消息内部进行组合。</p>
+
+<h4 id="examples">Examples</h4>
+
+<p>添加新软件包时，应包含相应用法的示例：可运行的示例或演示完整调用序列的简单测试。</p>
+
+<p>了解更多可以参考 <a href="https://blog.golang.org/examples">testable Example() functions</a>.</p>
+
+<h4 id="goroutine-lifetimes">Goroutine Lifetimes</h4>
 
 <p>当你启动Goroutine的时候，一定要搞清楚这个协程什么时候退出以及是否可以退出。Goroutine可以阻塞在发送或接收channel上，从而造成内存泄露：垃圾回收器将不会终止一个goroutine，即使它所阻塞的通道变得不可读写。如果goroutine不泄漏的话，当不再需要此协程的时候仍让它持续运行，这可能会导致其他微妙或难以诊断的问题。向已关闭的channel上发送数据会导致异常。修改仍在使用的输入数据可能会导致数据竞争。 让goroutine持续运行空转任意长的时间可能会导致不可预测的内存使用。尽量保持并发代码足够的简单，来使得goroutine的生命周期显而易见。 如果这样不可行的话，就记录下goroutines退出的时间和原因。</p>
 
-<h4 id="go语言的接收体类型">Go语言的接收体类型</h4>
+<h4 id="handle-errors">Handle Errors</h4>
+
+<p>请看<a href="https://golang.org/doc/effective_go.html#errors">https://golang.org/doc/effective_go.html#errors</a>。不要通过使用 _ 变量符来抛弃一个函数返回的错误，要接收它并检查它是否运行成功。尽量的去处理错误，返回它，或者，确实是一些特殊的情况，我们在对其进行panic。</p>
+
+<h4 id="imports">Imports</h4>
+
+<p>尽量避免将导入的包进行重命名；好的包的命名都会不需要重命名的。若一旦发生命名冲突，优先将自己本地的或者特定项目的导入包进行改名。</p>
+
+<p>将导入的包进行分组，并用空格间隔他们。标准库的包总是会在第一组中。</p>
+
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+	&quot;hash/adler32&quot;
+	&quot;os&quot;
+
+	&quot;appengine/foo&quot;
+	&quot;appengine/user&quot;
+
+        &quot;github.com/foo/bar&quot;
+	&quot;rsc.io/goversion/version&quot;
+)
+</code></pre>
+
+<p><a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> 将会为你完成这些事情.</p>
+
+<h4 id="import-dot">Import Dot</h4>
+
+<p>这个“import .” 形式在测试中式很有用的，由于环形依赖是不可以在测试的包中存在的：</p>
+
+<pre><code>package foo_test
+
+import (
+	&quot;bar/testutil&quot; // also imports &quot;foo&quot;
+	. &quot;foo&quot;
+)
+</code></pre>
+
+<p>在这个例子当中，这个测试文件是不能在foo包中的，因为它引用了bar/testutil包，这个包则引用了foo包。所以我们运用这个“import .”形式来让这个测试文件假装是foo包的一部分，虽然它不是。除此之外，请不要在你的程序里面使用“import .”。因为它会让你的程序很难理解，比如这样会无法很清楚判断你的程序是否有一个叫做Quux的上层函数的定义，还是说这个Quux存在于你所导入的包中。</p>
+
+<h4 id="in-band-errors">In-Band Errors</h4>
+
+<p>在C语言或其他相似的语言中，像函数那样返回-1或null去代表错误或者缺失的结果：</p>
+
+<pre><code>// Lookup returns the value for key or &quot;&quot; if there is no mapping for key.
+func Lookup(key string) string
+
+// Failing to check a for an in-band error value can lead to bugs:
+Parse(Lookup(key))  // returns &quot;parse failure for value&quot; instead of &quot;no value for key&quot;
+</code></pre>
+
+<p>Go对于多个返回的值提供了很好的解决方案。通过调用者来检查错误值，一个函数需要返回一个额外的值来表示返回的其他值是否正确。这个返回的值可以是一个error类型的值，或者boolean类型，当不需要进行其他说明。它应该是最后的返回值。</p>
+
+<pre><code>// Lookup returns the value for key or ok=false if there is no mapping for key.
+func Lookup(key string) (value string, ok bool)
+</code></pre>
+
+<p>这个可以避免调用者使用错误的使用结果：</p>
+
+<pre><code>Parse(Lookup(key))  // compile-time error
+</code></pre>
+
+<p>并鼓励更健壮和可读的代码:</p>
+
+<pre><code>value, ok := Lookup(key)
+if !ok  {
+    return fmt.Errorf(&quot;no value for %q&quot;, key)
+}
+return Parse(value)
+</code></pre>
+
+<p>这个规则适用于可导出的函数，但是也同样适用于不可导出的函数。</p>
+
+<p>当调用者不需要处理与其他值不同的值时，像nil,&ldquo;&rdquo;,和-1这样的函数返回值是正确的。</p>
+
+<p>像某些标准库函数（如包“strings”中的函数）会返回内带的错误返回值。这大大简化了字符串操作的代码，但代价是程序员需要做出更多的付出。一般来说，Go代码都应该返回错误的附加值。</p>
+
+<h4 id="indent-error-flow">Indent Error Flow</h4>
+
+<p>尽量保持常规的代码路径为最小缩进，并首先进行错误的处理。这样提高了代码的可读性，并可以快速扫描常规的代码：</p>
+
+<pre><code>if err != nil {
+	// error handling
+} else {
+	// normal code
+}
+</code></pre>
+
+<p>可以替代的写法是：</p>
+
+<pre><code>if err != nil {
+	// error handling
+	return // or continue, etc.
+}
+// normal code
+</code></pre>
+
+<p>如果这个if语句有一个初始化的语句，例如：</p>
+
+<pre><code>x, err := f()
+if err != nil {
+	// error handling
+	return
+}
+// use x
+</code></pre>
+
+<p>然后，这个需要移动短变量声明到if语句的同一行：</p>
+
+<pre><code>if x, err := f(); err != nil {
+	// error handling
+	return
+} else {
+	// use x
+}
+</code></pre>
+
+<h4 id="initialisms">Initialisms</h4>
+
+<p>初始字母或首字母缩写词的名称中的单词（例如“URL”或“NATO”）具有一致的情况。 例如，“URL”应该显示为“URL”或“url”（如“urlPony”或“URLPony”），不会显示为“Url”。 举个例子：ServeHTTP不是ServeHttp。 对于具有多个初始化“单词”的标识符，请使用例如“xmlHTTPRequest”或“XMLHTTPRequest”。</p>
+
+<p>这个规则也适用于“ID”，当它是“标识符”的简称时，所以请写“appID”而不是“appId”。</p>
+
+<p>协议缓冲区编译器生成的代码免于此规则。 人工编写的代码比机器编写的代码保持更高的标准。</p>
+
+<h4 id="interfaces">Interfaces</h4>
+
+<p>Go的接口通常属于使用接口类型值的包，而不是实现这些值的包。实现包应该返回具体的（通常是指针或结构体）类型：这样，新添加的方法遍可以添加到实现中，而不需要大量的重构。</p>
+
+<p>不要在API的实现者一侧定义接口来“模拟”; 相反，设计API以便可以使用真实实现的公共API进行测试。</p>
+
+<p>在使用它们之前不要定义接口：如果没有一个现实的使用例子，很难看出接口是否是必要的，更不用说它应该包含什么方法。</p>
+
+<pre><code>package consumer  // consumer.go
+
+type Thinger interface { Thing() bool }
+
+func Foo(t Thinger) string { … }
+</code></pre>
+
+<pre><code>package consumer // consumer_test.go
+
+type fakeThinger struct{ … }
+func (t fakeThinger) Thing() bool { … }
+…
+if Foo(fakeThinger{…}) == &quot;x&quot; { … }
+</code></pre>
+
+<pre><code>// DO NOT DO IT!!!
+package producer
+
+type Thinger interface { Thing() bool }
+
+type defaultThinger struct{ … }
+func (t defaultThinger) Thing() bool { … }
+
+func NewThinger() Thinger { return defaultThinger{ … } }
+</code></pre>
+
+<p>而是返回一个具体类型，让消费者模拟生产者实现。</p>
+
+<pre><code>package producer
+
+type Thinger struct{ … }
+func (t Thinger) Thing() bool { … }
+
+func NewThinger() Thinger { return Thinger{ … } }
+</code></pre>
+
+<h4 id="line-length">Line Length</h4>
+
+<p>在Go代码中并没有严格的代码长度限制，但是却还是有必要去避免不舒服的长代码的。同样，不要通过添加换行符来使代码行变短，当很长的代码是可读的，例如那些重复的代码。</p>
+
+<p>大多数情况下，当人们用不自然的方式来包装行（在函数调用或函数声明的中，或多或少地的会有一些例外）时，如果包装合理的参数数量或简短的变量名称，则包装将是不必要的。 对于长的代码行来说，摆脱长名称则会有更大的帮助。</p>
+
+<p>换句话说，由于你写的东西的语义（作为一般规则）而不是因为行的长度而断行。 如果您发现这会产生过长的行，请更改名称或语义，这样可能会是一个更好结果。</p>
+
+<p>实际上，这与关于函数应该有多长的建议完全相同。 没有规则规定“永远不会有超过N行的函数”，但肯定会有这样的事情：函数的名字太长，或者函数名字过于短小，解决方法是改变函数的边界，而不是统计到底有多少行代码。</p>
+
+<h4 id="mixed-caps">Mixed Caps</h4>
+
+<p>参考一下 <a href="https://golang.org/doc/effective_go.html#mixed-caps">https://golang.org/doc/effective_go.html#mixed-caps</a>.即使它打破了其他语言的一些规定。举例说明就是一个未导出的常量是maxLength，而不是<code>MaxLength</code> 或<code>MAX_LENGTH</code>。</p>
+
+<p>同样可以参考<a href="https://github.com/golang/go/wiki/CodeReviewComments#initialisms">Initialisms</a>。</p>
+
+<h4 id="named-result-parameters">Named Result Parameters</h4>
+
+<p>考虑它在Godoc中的样子。 命名结果参数如:</p>
+
+<pre><code>func (n *Node) Parent1() (node *Node)
+func (n *Node) Parent2() (node *Node, err error)
+</code></pre>
+
+<p>这种在Godoc会比较麻烦；更好的做法是这样：</p>
+
+<pre><code>func (n *Node) Parent1() *Node
+func (n *Node) Parent2() (*Node, error)
+</code></pre>
+
+<p>另一方面，如果一个函数返回两个或三个相同类型的参数，或者如果结果的含义根据上下文理解并不是很清楚的话，则在这种情况下添加名称可能会更有用一些。不要因为不想在函数内部使用var关键字，才选择去运用命名结果参数；以不必要的API冗长为代价换取轻微的实施简便性。</p>
+
+<pre><code>func (f *Foo) Location() (float64, float64, error)
+</code></pre>
+
+<p>不如下面的编码容易理解：</p>
+
+<pre><code>// Location returns f's latitude and longitude.
+// Negative values mean south and west, respectively.
+func (f *Foo) Location() (lat, long float64, err error)
+</code></pre>
+
+<p>如果函数是只有少数的几行，则裸返回值是可以的。一旦它是一个中等大小的函数，那就请明确你的返回值。推论：仅仅因为它能让你使用裸返回才去运用命名结果参数是不值得的。文档的清晰度总是比在函数中保存一两行更重要。</p>
+
+<p>最后，在某些情况下，你需要使用命名结果参数而在defer函数中来更改结果参数。这总是好的。</p>
+
+<h4 id="naked-returns">Naked Returns</h4>
+
+<p>参考一下 <a href="https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters">Named Result Parameters</a>.</p>
+
+<h4 id="package-comments">Package Comments</h4>
+
+<p>包注释，就像godoc提供的所有注释一样，必须在package语句的旁边，并且不需要空行。</p>
+
+<pre><code>// Package math provides basic constants and mathematical functions.
+package math
+</code></pre>
+
+<pre><code>/*
+Package template implements data-driven templates for generating textual
+output such as HTML.
+....
+*/
+package template
+</code></pre>
+
+<p>对于“package main”命令，在二进制命名后其他样式的注释也是可以的（如果在第一行，也要记住首字母大写），举个例子，对于“package main”来说，在seedgen目录中，你应该这样写：</p>
+
+<pre><code>// Binary seedgen ...
+package main
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>// Command seedgen ...
+package main
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>// Program seedgen ...
+package main
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>// The seedgen command ...
+package main
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>// The seedgen program ...
+package main
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>// Seedgen ..
+package main
+</code></pre>
+
+<p>这些都是例子，这些的合理的例子都是可以接受的。</p>
+
+<p>请注意，以小写字开头的句子不是包注释的可接受选项，因为它们是公开可见的，应该用正确的英文书写，包括大写句子的第一个单词。 当二进制名称是第一个单词时，即使它不严格匹配命令行调用的拼写，也需要大写它。</p>
+
+<p>更多信息请参考一下 <a href="https://golang.org/doc/effective_go.html#commentary">https://golang.org/doc/effective_go.html#commentary</a>。</p>
+
+<h4 id="package-names">Package Names</h4>
+
+<p>所有对包中名称的引用都将使用包名来完成，因此您可以从标识符中省略该名称。 例如，如果您使用的是包chubby，则不需要输入ChubbyFile，有些客户端会替你写入chubby.ChubbyFile。 取而代之的是，命名文件类型，那些客户端将写入chubby.File。 避免像util，common，misc，api，类型和接口这些毫无意义的软件包名称。 有关更多信息，请参阅<a href="http://golang.org/doc/effective_go.html#package-names和http://blog.golang.org/package-names。">http://golang.org/doc/effective_go.html#package-names和http://blog.golang.org/package-names。</a></p>
+
+<h4 id="pass-values">Pass Values</h4>
+
+<p>若仅仅是为了节省几个字节，那么就请不要使用指针作为函数的参数。在一个函数中，若仅仅是将参数x来当做*x来用，那么则无需使用指针。很多的例子，就比如传指针字符串（*string）或（*io.Reader）,这些都是固定大小的，那么就没必要使用指针。但是这个建议并不适用于大的结构体或者小的可变的结构体。</p>
+
+<h4 id="receiver-names">Receiver Names</h4>
+
+<p>方法接收者的名字应该能够反映其身份；通常一个单词的一个或两个字母的缩写就足够了（例如“Client”,使用“c”或“cl”）。不要去使用通用的名称，比如“me”,&ldquo;this&rdquo;或“self”,这些名称都是面向对象语言的典型关键字，与函数相比，他更强调方法的调用。这个名字不需要向方法论证那样具有描述性，因为它的作用是显而易见的，并且没有任何文档的目的。 它可能很短，因为它几乎出现在每种类型的每种方法的每一行上; 熟悉并且简洁。 也要保持一致：如果您用一种方法调用接收器“c”，则不要在另一个方法中将其称为“cl”。</p>
+
+<h4 id="receiver-type">Receiver Type</h4>
 
 <p>对于Gopher来讲，什么时候使用值类型，什么时候使用指针类型作为方法的接收体类型，是一个比较纠结的问题。如果你左右不定的话，那么就请你使用指针类型，但是有的时候使用值类型接收体是会有一定意义的，如果接收体是小的且不变的结构体或者基本类型，这个时候使用值类型作为接收体便可以提高代码的运行效率，下面是一些比较有用的指导:</p>
 
@@ -243,6 +570,39 @@ func Encode(w io.Writer, req *Request) { ...
 <li>如果接收体是一个小的数组或者天生就是值类型的结构体(比如 time.Time 类型)，而且没有可修改的字段和指针，又或者接收体是一个简单的基本类型，例如int或string，那么就请使用值类型的接收体。这样的话，采用值类型的接收体可以减少生成垃圾的数量; 如果将值传递给值类型接收体的方法，则使用的是堆栈拷贝而不是堆拷贝（编译器尝试智能地避免这种堆分配，但它并不总是成功的）。因此在没有进行性能分析之前，请不要随意的使用值类型的接收体。</li>
 <li>最后，当你在为了选取哪种类型的接收体而犹豫时，安全起见，请选择指针类型的接收体。</li>
 </ol>
+
+<h4 id="synchronous-functions">Synchronous Functions</h4>
+
+<p>首选同步函数 - 直接返回结果或返回之前完成任何回调或通道操作的函数 - 相比异步处理函数。</p>
+
+<p>同步函数可以将goroutine集中在一个调用中，从而更容易推断它们的生命周期并避免泄漏和数据竞争。 它们也更容易测试：调用者可以传递输入并检查输出，而不需要轮询或同步。</p>
+
+<p>如果调用者需要更多的并发性，他们可以通过从单独的goroutine调用函数来轻松地添加它。 但是在呼叫方去除不必要的并发是非常困难的 - 有时是不可能的。</p>
+
+<h4 id="useful-test-failures">Useful Test Failures</h4>
+
+<p>测试应该失败，并提供有用的信息，说明什么是错误的，有哪些输入，实际得到了什么，以及期望的。 编写一堆assertFoo助手可能很诱人，但要确保你的助手生成有用的错误消息。 假设调试失败测试的人不是你，而不是你的团队。 典型的Go测试失败:</p>
+
+<pre><code>if got != tt.want {
+	t.Errorf(&quot;Foo(%q) = %d; want %d&quot;, tt.in, got, tt.want) // or Fatalf, if test can't test anything more past this point
+}
+</code></pre>
+
+<p>请注意，此处的顺序实际上是 != 预期的，并且消息也使用该顺序。 一些测试框架鼓励向后写这些：0 != x，“期望0，得到x”等等。 Go没有。</p>
+
+<p>如果这看起来像是要打很多的字，你可能要写一个表驱动的测试。</p>
+
+<p>在使用不同输入的测试助手时，另一种常见的消除测试失败问题的方法是用不同的TestFoo函数包装每个调用者，以便测试失败时使用该名称：</p>
+
+<pre><code>func TestSingleValue(t *testing.T) { testHelper(t, []int{80}) }
+func TestNoValues(t *testing.T)    { testHelper(t, []int{}) }
+</code></pre>
+
+<p>在以后的情况下，你的测试都会失败的，并向将来调试代码的人发送有用的信息。</p>
+
+<h4 id="variable-names">Variable Names</h4>
+
+<p>Go语言中的变量命名应该是短命名好过长命名，特别是对于有空间限制的局部变量。最好是命名成c而不是lineCount,命名成i而不是sliceIndex。基本规则：若变量的使用离它的声明越远，那就越应该使变量名更具有描述性。对于方法接收体，一个或两个字母就足够了。常见变量如循环索引和读取值可以是单个字母（i，r）。越是那些特殊的东西和全局变量就越需要更具有描述性的名称。</p>
 </div>
 
     
